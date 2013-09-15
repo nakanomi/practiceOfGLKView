@@ -26,12 +26,19 @@
 	self = [super init];
 	if (self != nil) {
 		_programId = 0;
+		for (int index = 0; index < (sizeof(_uniforms) / sizeof(_uniforms[0])); index++) {
+			_uniforms[index] = -1;
+		}
 	}
 	return self;
 }
 
 - (void)dealloc
 {
+	if (self.programId != 0) {
+		glDeleteProgram(_programId);
+		_programId = 0;
+	}
 	NSLog(@"%s", __PRETTY_FUNCTION__);
 	[super dealloc];
 }
@@ -40,6 +47,7 @@
 {
 	BOOL result = NO;
 	@try {
+		assert(_programId == 0);
 		GLuint vertShader, fragShader;
 		NSString *vertShaderPathname, *fragShaderPathname;
 		
