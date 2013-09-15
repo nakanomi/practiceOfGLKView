@@ -43,6 +43,16 @@
 	[super dealloc];
 }
 
+- (GLint) getUniformIndex: (int) index
+{
+	int result = -1;
+	if ((index >= 0) && (index < (sizeof(_uniforms) / sizeof(_uniforms[0])))) {
+		result = _uniforms[index];
+	}
+	return result;
+}
+
+
 - (BOOL)loadShaderWithVsh: (NSString*)vshFile withFsh:(NSString*)fshFile
 {
 	BOOL result = NO;
