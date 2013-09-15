@@ -7,6 +7,21 @@
 //
 
 #import "ShaderBase.h"
+enum
+{
+    ATTRIB_VERTEX,
+    ATTRIB_NORMAL,
+    NUM_ATTRIBUTES
+};
+
+enum
+{
+    UNIFORM_MODELVIEWPROJECTION_MATRIX,
+    UNIFORM_NORMAL_MATRIX,
+    NUM_UNIFORMS
+};
+
+
 
 @interface MyShader : ShaderBase
 {
