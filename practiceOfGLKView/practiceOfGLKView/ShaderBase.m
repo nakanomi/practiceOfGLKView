@@ -10,11 +10,14 @@
 
 @interface ShaderBase()
 {
-	GLint _uniforms[NUM_UNIFORMS];
 }
 - (BOOL)compileShader:(GLuint *)shader type:(GLenum)type file:(NSString *)file;
 - (BOOL)linkProgram:(GLuint)prog;
 - (BOOL)validateProgram:(GLuint)prog;
+
+- (BOOL)setupAttributes;
+- (BOOL)setupUniforms;
+- (void)initUniforms;
 
 @end
 
@@ -26,9 +29,7 @@
 	self = [super init];
 	if (self != nil) {
 		_programId = 0;
-		for (int index = 0; index < (sizeof(_uniforms) / sizeof(_uniforms[0])); index++) {
-			_uniforms[index] = -1;
-		}
+		[self initUniforms];
 	}
 	return self;
 }
@@ -41,15 +42,6 @@
 	}
 	NSLog(@"%s", __PRETTY_FUNCTION__);
 	[super dealloc];
-}
-
-- (GLint) getUniformIndex: (int) index
-{
-	int result = -1;
-	if ((index >= 0) && (index < (sizeof(_uniforms) / sizeof(_uniforms[0])))) {
-		result = _uniforms[index];
-	}
-	return result;
 }
 
 
@@ -83,13 +75,9 @@
 		
 		// Attach fragment shader to program.
 		glAttachShader(_programId, fragShader);
-#warning -TODO
-		// TODO "position"などの名前は固定にしない。
-		// 呼び出し側からのテーブル設定か、シェーダーの解析にする
 		// Bind attribute locations.
 		// This needs to be done prior to linking.
-		glBindAttribLocation(_programId, ATTRIB_VERTEX, "position");
-		glBindAttribLocation(_programId, ATTRIB_NORMAL, "normal");
+		[self setupAttributes];
 		
 		// Link program.
 		if (![self linkProgram:_programId]) {
@@ -112,8 +100,7 @@
 		}
 		
 		// Get uniform locations.
-		_uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX] = glGetUniformLocation(_programId, "modelViewProjectionMatrix");
-		_uniforms[UNIFORM_NORMAL_MATRIX] = glGetUniformLocation(_programId, "normalMatrix");
+		[self setupUniforms];
 		
 		// Release vertex and fragment shaders.
 		if (vertShader) {
@@ -212,7 +199,31 @@
     
     return YES;
 }
+#pragma mark -publicな仮想関数のようなもの
+- (GLint) getUniformIndex: (int) index
+{
+	int result = -1;
+	assert(NO);
+	return result;
+}
 
+
+
+#pragma mark -protectedな仮想関数のようなもの
+- (BOOL)setupAttributes
+{
+	assert(NO);
+	return NO;
+}
+- (BOOL)setupUniforms
+{
+	assert(NO);
+	return NO;
+}
+- (void)initUniforms
+{
+	assert(NO);
+}
 
 
 @end

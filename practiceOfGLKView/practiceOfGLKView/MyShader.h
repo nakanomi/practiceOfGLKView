@@ -9,5 +9,9 @@
 #import "ShaderBase.h"
 
 @interface MyShader : ShaderBase
+{
+	
+}
+- (GLint) getUniformIndex: (int) index;
 
 @end
