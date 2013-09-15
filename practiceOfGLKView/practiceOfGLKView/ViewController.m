@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ShaderBase.h"
+#import "MyShader.h"
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
@@ -61,7 +62,7 @@ GLfloat gCubeVertexData[216] =
 
 @interface ViewController () {
     //GLuint _program;
-	ShaderBase* _shaderBase;
+	MyShader* _shader;
     
     GLKMatrix4 _modelViewProjectionMatrix;
     GLKMatrix3 _normalMatrix;
@@ -132,8 +133,8 @@ GLfloat gCubeVertexData[216] =
 {
     [EAGLContext setCurrentContext:self.context];
     
-	_shaderBase = [[ShaderBase alloc] init];
-	[_shaderBase loadShaderWithVsh:@"Shader" withFsh:@"Shader"];
+	_shader = [[MyShader alloc] init];
+	[_shader loadShaderWithVsh:@"Shader" withFsh:@"Shader"];
     
     self.effect = [[[GLKBaseEffect alloc] init] autorelease];
     self.effect.light0.enabled = GL_TRUE;
@@ -166,9 +167,9 @@ GLfloat gCubeVertexData[216] =
     
     self.effect = nil;
     
-    if (_shaderBase != nil) {
-		[_shaderBase release];
-		_shaderBase = nil;
+    if (_shader != nil) {
+		[_shader release];
+		_shader = nil;
     }
 }
 
@@ -215,12 +216,12 @@ GLfloat gCubeVertexData[216] =
     // こちらはシェーダーを使わない側
     //glDrawArrays(GL_TRIANGLES, 0, 36);
     
-	assert(_shaderBase != nil);
+	assert(_shader != nil);
     // Render the object again with ES2
-    glUseProgram(_shaderBase.programId);
+    glUseProgram(_shader.programId);
     
-    glUniformMatrix4fv([_shaderBase getUniformIndex:UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, 0, _modelViewProjectionMatrix.m);
-    glUniformMatrix3fv([_shaderBase getUniformIndex: UNIFORM_NORMAL_MATRIX], 1, 0, _normalMatrix.m);
+    glUniformMatrix4fv([_shader getUniformIndex:UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, 0, _modelViewProjectionMatrix.m);
+    glUniformMatrix3fv([_shader getUniformIndex: UNIFORM_NORMAL_MATRIX], 1, 0, _normalMatrix.m);
     
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }

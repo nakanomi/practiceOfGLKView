@@ -23,6 +23,7 @@
 		8A78568917E5B13A001EAB1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A78568817E5B13A001EAB1F /* ViewController.m */; };
 		8A78568C17E5B13A001EAB1F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A78568A17E5B13A001EAB1F /* ViewController.xib */; };
 		8A78569417E5B35E001EAB1F /* ShaderBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A78569317E5B35E001EAB1F /* ShaderBase.m */; };
+		8A78569717E5C7C8001EAB1F /* MyShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A78569617E5C7C8001EAB1F /* MyShader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,8 @@
 		8A78568B17E5B13A001EAB1F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		8A78569217E5B35E001EAB1F /* ShaderBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderBase.h; sourceTree = "<group>"; };
 		8A78569317E5B35E001EAB1F /* ShaderBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShaderBase.m; sourceTree = "<group>"; };
+		8A78569517E5C7C8001EAB1F /* MyShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyShader.h; sourceTree = "<group>"; };
+		8A78569617E5C7C8001EAB1F /* MyShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyShader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +111,8 @@
 				8A78567217E5B13A001EAB1F /* Supporting Files */,
 				8A78569217E5B35E001EAB1F /* ShaderBase.h */,
 				8A78569317E5B35E001EAB1F /* ShaderBase.m */,
+				8A78569517E5C7C8001EAB1F /* MyShader.h */,
+				8A78569617E5C7C8001EAB1F /* MyShader.m */,
 			);
 			path = practiceOfGLKView;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 				8A78567C17E5B13A001EAB1F /* AppDelegate.m in Sources */,
 				8A78568917E5B13A001EAB1F /* ViewController.m in Sources */,
 				8A78569417E5B35E001EAB1F /* ShaderBase.m in Sources */,
+				8A78569717E5C7C8001EAB1F /* MyShader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
