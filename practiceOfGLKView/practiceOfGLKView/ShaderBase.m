@@ -124,6 +124,7 @@
 			glDetachShader(_programId, fragShader);
 			glDeleteShader(fragShader);
 		}
+		result = YES;
 	}
 	@catch (NSException *exception) {
 		
