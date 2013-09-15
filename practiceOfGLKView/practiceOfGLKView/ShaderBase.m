@@ -73,6 +73,9 @@
 		
 		// Attach fragment shader to program.
 		glAttachShader(_programId, fragShader);
+#warning -TODO
+		// TODO "position"などの名前は固定にしない。
+		// 呼び出し側からのテーブル設定か、シェーダーの解析にする
 		// Bind attribute locations.
 		// This needs to be done prior to linking.
 		glBindAttribLocation(_programId, ATTRIB_VERTEX, "position");
