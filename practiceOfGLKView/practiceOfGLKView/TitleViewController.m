@@ -35,4 +35,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onPushButton:(id)sender
+{
+	NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
 @end

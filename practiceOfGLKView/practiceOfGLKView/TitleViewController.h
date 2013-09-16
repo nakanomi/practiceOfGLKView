@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface TitleViewController : UIViewController
+{
+	
+}
+- (IBAction)onPushButton:(id)sender;
 
 @end
