@@ -12,7 +12,6 @@
 #import "TestVArray.h"
 
 @interface GameViewController () {
-    //GLuint _program;
 	MyShader* _shader;
     
     GLKMatrix4 _modelViewProjectionMatrix;
@@ -154,7 +153,7 @@
     // Render the object with GLKit
     [self.effect prepareToDraw];
     // こちらはシェーダーを使わない側
-    //glDrawArrays(GL_TRIANGLES, 0, 36);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
     
 	assert(_shader != nil);
     // Render the object again with ES2
@@ -166,6 +165,5 @@
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
-#pragma mark -  OpenGL ES 2 shader compilation
 
 @end
