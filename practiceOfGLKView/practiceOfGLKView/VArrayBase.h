@@ -9,5 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface VArrayBase : NSObject
+{
+	
+}
+@property (readonly) GLuint vertexArray;
+
+-(id)init;
+-(BOOL)loadResourceWithName:(NSString*)strNameOfResource;
 
 @end

@@ -109,7 +109,7 @@
 		8A78567117E5B13A001EAB1F /* practiceOfGLKView */ = {
 			isa = PBXGroup;
 			children = (
-				8AD13D8217E6BDDA00FB0A46 /* shader */,
+				8AD13D8217E6BDDA00FB0A46 /* shaderAndBuffer */,
 				8AD13D8117E6BDBB00FB0A46 /* viewAndController */,
 				8A78567A17E5B13A001EAB1F /* AppDelegate.h */,
 				8A78567B17E5B13A001EAB1F /* AppDelegate.m */,
@@ -141,13 +141,11 @@
 				8A97E18B17E6C47700B5B4E8 /* TitleViewController.h */,
 				8A97E18C17E6C47700B5B4E8 /* TitleViewController.m */,
 				8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */,
-				8A97E1CB17E6E85300B5B4E8 /* VArrayBase.h */,
-				8A97E1CC17E6E85300B5B4E8 /* VArrayBase.m */,
 			);
 			name = viewAndController;
 			sourceTree = "<group>";
 		};
-		8AD13D8217E6BDDA00FB0A46 /* shader */ = {
+		8AD13D8217E6BDDA00FB0A46 /* shaderAndBuffer */ = {
 			isa = PBXGroup;
 			children = (
 				8A78569217E5B35E001EAB1F /* ShaderBase.h */,
@@ -156,8 +154,10 @@
 				8A78569617E5C7C8001EAB1F /* MyShader.m */,
 				8A78568317E5B13A001EAB1F /* Shader.fsh */,
 				8A78568517E5B13A001EAB1F /* Shader.vsh */,
+				8A97E1CB17E6E85300B5B4E8 /* VArrayBase.h */,
+				8A97E1CC17E6E85300B5B4E8 /* VArrayBase.m */,
 			);
-			name = shader;
+			name = shaderAndBuffer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

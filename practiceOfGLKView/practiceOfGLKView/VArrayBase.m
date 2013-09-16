@@ -8,6 +8,44 @@
 
 #import "VArrayBase.h"
 
+@interface VArrayBase()
+{
+	GLuint _vertexBuffer;
+}
+
+@end
+
+
 @implementation VArrayBase
+@synthesize vertexArray = _vertexArray;
+
+-(id)init
+{
+	self = [super init];
+	if (self != nil) {
+		_vertexArray = 0;
+		_vertexBuffer = 0;
+	}
+	return self;
+}
+
+- (void)dealloc
+{
+	if (_vertexBuffer != 0) {
+		glDeleteBuffers(1, &_vertexBuffer);
+	}
+	if (_vertexArray != 0) {
+		glDeleteVertexArraysOES(1, &_vertexArray);
+	}
+	[super dealloc];
+}
+
+-(BOOL)loadResourceWithName:(NSString*)strNameOfResource
+{
+	//派生クラスで実装する
+	assert(NO);
+	return NO;
+}
+
 
 @end
