@@ -10,7 +10,8 @@
 
 @interface VArrayBase : NSObject
 {
-	
+	GLuint _vertexArray;
+	GLuint _vertexBuffer;
 }
 @property (readonly) GLuint vertexArray;
 

@@ -10,7 +10,6 @@
 
 @interface VArrayBase()
 {
-	GLuint _vertexBuffer;
 }
 
 @end
@@ -31,6 +30,7 @@
 
 - (void)dealloc
 {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
 	if (_vertexBuffer != 0) {
 		glDeleteBuffers(1, &_vertexBuffer);
 	}

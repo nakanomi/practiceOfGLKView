@@ -10,4 +10,6 @@
 
 @interface TestVArray : VArrayBase
 
+-(BOOL)loadResourceWithName:(NSString*)strNameOfResource;
+
 @end
