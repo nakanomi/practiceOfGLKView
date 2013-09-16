@@ -8,7 +8,8 @@
 
 #import "AppDelegate.h"
 
-#import "GameViewController.h"
+//#import "GameViewController.h"
+#import "TitleViewController.h"
 @interface AppDelegate()
 {
 	//アプリケーションのナビゲーションコントローラー
@@ -31,7 +32,7 @@
 	//[_naviController setNavigationBarHidden:YES];
 	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 	// Override point for customization after application launch.
-	GameViewController *controller = [[[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil] autorelease];
+	TitleViewController *controller = [[[TitleViewController alloc] initWithNibName:@"TitleViewController" bundle:nil] autorelease];
 	[_naviController pushViewController:controller animated:NO];
 	[self.window addSubview:_naviController.view];
 	[self.window makeKeyAndVisible];

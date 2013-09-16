@@ -24,6 +24,8 @@
 		8A78568C17E5B13A001EAB1F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A78568A17E5B13A001EAB1F /* GameViewController.xib */; };
 		8A78569417E5B35E001EAB1F /* ShaderBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A78569317E5B35E001EAB1F /* ShaderBase.m */; };
 		8A78569717E5C7C8001EAB1F /* MyShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A78569617E5C7C8001EAB1F /* MyShader.m */; };
+		8A97E18E17E6C47700B5B4E8 /* TitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A97E18C17E6C47700B5B4E8 /* TitleViewController.m */; };
+		8A97E18F17E6C47700B5B4E8 /* TitleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,9 @@
 		8A78569317E5B35E001EAB1F /* ShaderBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShaderBase.m; sourceTree = "<group>"; };
 		8A78569517E5C7C8001EAB1F /* MyShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyShader.h; sourceTree = "<group>"; };
 		8A78569617E5C7C8001EAB1F /* MyShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyShader.m; sourceTree = "<group>"; };
+		8A97E18B17E6C47700B5B4E8 /* TitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleViewController.h; sourceTree = "<group>"; };
+		8A97E18C17E6C47700B5B4E8 /* TitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleViewController.m; sourceTree = "<group>"; };
+		8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +135,9 @@
 				8A78568717E5B13A001EAB1F /* GameViewController.h */,
 				8A78568817E5B13A001EAB1F /* GameViewController.m */,
 				8A78568A17E5B13A001EAB1F /* GameViewController.xib */,
+				8A97E18B17E6C47700B5B4E8 /* TitleViewController.h */,
+				8A97E18C17E6C47700B5B4E8 /* TitleViewController.m */,
+				8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */,
 			);
 			name = viewAndController;
 			sourceTree = "<group>";
@@ -205,6 +213,7 @@
 				8A78568417E5B13A001EAB1F /* Shader.fsh in Resources */,
 				8A78568617E5B13A001EAB1F /* Shader.vsh in Resources */,
 				8A78568C17E5B13A001EAB1F /* GameViewController.xib in Resources */,
+				8A97E18F17E6C47700B5B4E8 /* TitleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +229,7 @@
 				8A78568917E5B13A001EAB1F /* GameViewController.m in Sources */,
 				8A78569417E5B35E001EAB1F /* ShaderBase.m in Sources */,
 				8A78569717E5C7C8001EAB1F /* MyShader.m in Sources */,
+				8A97E18E17E6C47700B5B4E8 /* TitleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
