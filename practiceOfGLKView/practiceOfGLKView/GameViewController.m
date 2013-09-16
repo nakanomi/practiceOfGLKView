@@ -12,13 +12,13 @@
 #import "TestVArray.h"
 
 @interface GameViewController () {
-	TestShader* _shader;
+	ShaderBase* _shader;
     
     GLKMatrix4 _modelViewProjectionMatrix;
     GLKMatrix3 _normalMatrix;
     float _rotation;
 
-	TestVArray *_vArray;
+	VArrayBase *_vArray;
 }
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
