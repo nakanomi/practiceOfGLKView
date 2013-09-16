@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 nakano_michiharu. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "GameViewController.h"
 #import "ShaderBase.h"
 #import "MyShader.h"
 
@@ -60,7 +60,7 @@ GLfloat gCubeVertexData[216] =
     -0.5f, 0.5f, -0.5f,        0.0f, 0.0f, -1.0f
 };
 
-@interface ViewController () {
+@interface GameViewController () {
     //GLuint _program;
 	MyShader* _shader;
     
@@ -79,7 +79,7 @@ GLfloat gCubeVertexData[216] =
 
 @end
 
-@implementation ViewController
+@implementation GameViewController
 
 - (void)dealloc
 {
