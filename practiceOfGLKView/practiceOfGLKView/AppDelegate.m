@@ -9,7 +9,12 @@
 #import "AppDelegate.h"
 
 #import "GameViewController.h"
-
+@interface AppDelegate()
+{
+	//アプリケーションのナビゲーションコントローラー
+	UINavigationController *_naviController;
+}
+@end
 @implementation AppDelegate
 
 - (void)dealloc
@@ -21,11 +26,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-	self.viewController = [[[GameViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-	self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
+	//ナビゲーションコントローラー
+	_naviController = [[UINavigationController alloc] init];
+	//[_naviController setNavigationBarHidden:YES];
+	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+	// Override point for customization after application launch.
+	GameViewController *controller = [[[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil] autorelease];
+	[_naviController pushViewController:controller animated:NO];
+	[self.window addSubview:_naviController.view];
+	[self.window makeKeyAndVisible];
     return YES;
 }
 
