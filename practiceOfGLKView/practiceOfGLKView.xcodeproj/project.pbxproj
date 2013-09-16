@@ -26,6 +26,7 @@
 		8A78569717E5C7C8001EAB1F /* MyShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A78569617E5C7C8001EAB1F /* MyShader.m */; };
 		8A97E18E17E6C47700B5B4E8 /* TitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A97E18C17E6C47700B5B4E8 /* TitleViewController.m */; };
 		8A97E18F17E6C47700B5B4E8 /* TitleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */; };
+		8A97E1CD17E6E85300B5B4E8 /* VArrayBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A97E1CC17E6E85300B5B4E8 /* VArrayBase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		8A97E18B17E6C47700B5B4E8 /* TitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleViewController.h; sourceTree = "<group>"; };
 		8A97E18C17E6C47700B5B4E8 /* TitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleViewController.m; sourceTree = "<group>"; };
 		8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleViewController.xib; sourceTree = "<group>"; };
+		8A97E1CB17E6E85300B5B4E8 /* VArrayBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VArrayBase.h; sourceTree = "<group>"; };
+		8A97E1CC17E6E85300B5B4E8 /* VArrayBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VArrayBase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,8 @@
 				8A97E18B17E6C47700B5B4E8 /* TitleViewController.h */,
 				8A97E18C17E6C47700B5B4E8 /* TitleViewController.m */,
 				8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */,
+				8A97E1CB17E6E85300B5B4E8 /* VArrayBase.h */,
+				8A97E1CC17E6E85300B5B4E8 /* VArrayBase.m */,
 			);
 			name = viewAndController;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 				8A78569417E5B35E001EAB1F /* ShaderBase.m in Sources */,
 				8A78569717E5C7C8001EAB1F /* MyShader.m in Sources */,
 				8A97E18E17E6C47700B5B4E8 /* TitleViewController.m in Sources */,
+				8A97E1CD17E6E85300B5B4E8 /* VArrayBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
