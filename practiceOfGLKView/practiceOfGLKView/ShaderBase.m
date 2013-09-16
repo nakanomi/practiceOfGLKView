@@ -77,6 +77,7 @@
 		glAttachShader(_programId, fragShader);
 		// Bind attribute locations.
 		// This needs to be done prior to linking.
+		// アトリビュート変数のロケーション設定。実装クラスのものが呼ばれる。
 		[self setupAttributes];
 		
 		// Link program.
@@ -100,6 +101,7 @@
 		}
 		
 		// Get uniform locations.
+		// ユニフォーム変数のロケーション設定。実装クラスのものが呼ばれる。
 		[self setupUniforms];
 		
 		// Release vertex and fragment shaders.
