@@ -153,16 +153,17 @@
     // Render the object with GLKit
     [self.effect prepareToDraw];
     // こちらはシェーダーを使わない側
-    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
     
 	assert(_shader != nil);
     // Render the object again with ES2
+	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
-    
+    // シェーダーのユニフォーム変数をセット
     glUniformMatrix4fv([_shader getUniformIndex:UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, 0, _modelViewProjectionMatrix.m);
     glUniformMatrix3fv([_shader getUniformIndex: UNIFORM_NORMAL_MATRIX], 1, 0, _normalMatrix.m);
     
-    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
 }
 
 

@@ -7,13 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GLKit/GLKit.h>
 
 @interface VArrayBase : NSObject
 {
 	GLuint _vertexArray;
 	GLuint _vertexBuffer;
+	GLsizei _count;
 }
 @property (readonly) GLuint vertexArray;
+@property (readonly) GLsizei count;
 
 -(id)init;
 -(BOOL)loadResourceWithName:(NSString*)strNameOfResource;

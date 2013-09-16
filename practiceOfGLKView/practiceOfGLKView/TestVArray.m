@@ -81,6 +81,8 @@ static GLfloat sCubeVertexData[216] =
 		// 定義ブロックの終了宣言？
 		glBindVertexArrayOES(0);
 		
+		_count = 36;
+		
 	}
 	@catch (NSException *exception) {
 		NSLog(@"%@, %@", exception.name, exception.reason);

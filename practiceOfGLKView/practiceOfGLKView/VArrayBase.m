@@ -17,6 +17,7 @@
 
 @implementation VArrayBase
 @synthesize vertexArray = _vertexArray;
+@synthesize count = _count;
 
 -(id)init
 {
@@ -24,6 +25,7 @@
 	if (self != nil) {
 		_vertexArray = 0;
 		_vertexBuffer = 0;
+		_count = 0;
 	}
 	return self;
 }
