@@ -101,18 +101,11 @@
 		8A78567117E5B13A001EAB1F /* practiceOfGLKView */ = {
 			isa = PBXGroup;
 			children = (
+				8AD13D8217E6BDDA00FB0A46 /* shader */,
+				8AD13D8117E6BDBB00FB0A46 /* viewAndController */,
 				8A78567A17E5B13A001EAB1F /* AppDelegate.h */,
 				8A78567B17E5B13A001EAB1F /* AppDelegate.m */,
-				8A78568317E5B13A001EAB1F /* Shader.fsh */,
-				8A78568517E5B13A001EAB1F /* Shader.vsh */,
-				8A78568717E5B13A001EAB1F /* GameViewController.h */,
-				8A78568817E5B13A001EAB1F /* GameViewController.m */,
-				8A78568A17E5B13A001EAB1F /* GameViewController.xib */,
 				8A78567217E5B13A001EAB1F /* Supporting Files */,
-				8A78569217E5B35E001EAB1F /* ShaderBase.h */,
-				8A78569317E5B35E001EAB1F /* ShaderBase.m */,
-				8A78569517E5C7C8001EAB1F /* MyShader.h */,
-				8A78569617E5C7C8001EAB1F /* MyShader.m */,
 			);
 			path = practiceOfGLKView;
 			sourceTree = "<group>";
@@ -129,6 +122,29 @@
 				8A78568117E5B13A001EAB1F /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8AD13D8117E6BDBB00FB0A46 /* viewAndController */ = {
+			isa = PBXGroup;
+			children = (
+				8A78568717E5B13A001EAB1F /* GameViewController.h */,
+				8A78568817E5B13A001EAB1F /* GameViewController.m */,
+				8A78568A17E5B13A001EAB1F /* GameViewController.xib */,
+			);
+			name = viewAndController;
+			sourceTree = "<group>";
+		};
+		8AD13D8217E6BDDA00FB0A46 /* shader */ = {
+			isa = PBXGroup;
+			children = (
+				8A78569217E5B35E001EAB1F /* ShaderBase.h */,
+				8A78569317E5B35E001EAB1F /* ShaderBase.m */,
+				8A78569517E5C7C8001EAB1F /* MyShader.h */,
+				8A78569617E5C7C8001EAB1F /* MyShader.m */,
+				8A78568317E5B13A001EAB1F /* Shader.fsh */,
+				8A78568517E5B13A001EAB1F /* Shader.vsh */,
+			);
+			name = shader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
