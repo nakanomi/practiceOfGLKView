@@ -8,11 +8,11 @@
 
 #import "GameViewController.h"
 #import "ShaderBase.h"
-#import "MyShader.h"
+#import "TestShader.h"
 #import "TestVArray.h"
 
 @interface GameViewController () {
-	MyShader* _shader;
+	TestShader* _shader;
     
     GLKMatrix4 _modelViewProjectionMatrix;
     GLKMatrix3 _normalMatrix;
@@ -82,7 +82,7 @@
 {
     [EAGLContext setCurrentContext:self.context];
     
-	_shader = [[MyShader alloc] init];
+	_shader = [[TestShader alloc] init];
 	[_shader loadShaderWithVsh:@"Shader" withFsh:@"Shader"];
     
     self.effect = [[[GLKBaseEffect alloc] init] autorelease];

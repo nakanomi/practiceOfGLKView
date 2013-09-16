@@ -23,7 +23,7 @@ enum
 
 
 
-@interface MyShader : ShaderBase
+@interface TestShader : ShaderBase
 {
 	
 }

@@ -6,8 +6,8 @@
 //  Copyright (c) 2013年 nakano_michiharu. All rights reserved.
 //
 
-#import "MyShader.h"
-@interface MyShader()
+#import "TestShader.h"
+@interface TestShader()
 {
 	GLint _uniforms[NUM_UNIFORMS];	
 }
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation MyShader
+@implementation TestShader
 
 - (GLint) getUniformIndex: (int) index
 {
