@@ -12,6 +12,7 @@
 {
 	
 }
+@property (retain, nonatomic) IBOutlet UIButton *btnGame;
 - (IBAction)onPushButton:(id)sender;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "TitleViewController.h"
+#import "GameViewController.h"
 
 @interface TitleViewController ()
 
@@ -38,6 +39,19 @@
 - (IBAction)onPushButton:(id)sender
 {
 	NSLog(@"%s", __PRETTY_FUNCTION__);
+	if ([sender isEqual:self.btnGame]) {
+		GameViewController *controller = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
+		[self.navigationController pushViewController:controller animated:YES];
+		[controller release];
+	}
 }
 
+- (void)dealloc {
+	[_btnGame release];
+	[super dealloc];
+}
+- (void)viewDidUnload {
+	[self setBtnGame:nil];
+	[super viewDidUnload];
+}
 @end
