@@ -144,6 +144,39 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8AB6448817E83B1400F32580 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				8A78569217E5B35E001EAB1F /* ShaderBase.h */,
+				8A78569317E5B35E001EAB1F /* ShaderBase.m */,
+				8A97E1CB17E6E85300B5B4E8 /* VArrayBase.h */,
+				8A97E1CC17E6E85300B5B4E8 /* VArrayBase.m */,
+			);
+			name = base;
+			sourceTree = "<group>";
+		};
+		8AB6448917E83B3600F32580 /* testUseMyClass */ = {
+			isa = PBXGroup;
+			children = (
+				8A78569517E5C7C8001EAB1F /* TestShader.h */,
+				8A78569617E5C7C8001EAB1F /* TestShader.m */,
+				8AA9341A17E7018D00C3B34D /* TestVArray.h */,
+				8AA9341B17E7018D00C3B34D /* TestVArray.m */,
+			);
+			name = testUseMyClass;
+			sourceTree = "<group>";
+		};
+		8AB6448A17E83B7100F32580 /* testSimpleTriangle */ = {
+			isa = PBXGroup;
+			children = (
+				8AB6448117E8327600F32580 /* SimpleTriangleShader.h */,
+				8AB6448217E8327600F32580 /* SimpleTriangleShader.m */,
+				8AB6448517E8364100F32580 /* SimpleTriangleBuffer.h */,
+				8AB6448617E8364100F32580 /* SimpleTriangleBuffer.m */,
+			);
+			name = testSimpleTriangle;
+			sourceTree = "<group>";
+		};
 		8AD13D8117E6BDBB00FB0A46 /* viewAndController */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,21 +193,12 @@
 		8AD13D8217E6BDDA00FB0A46 /* shaderAndBuffer */ = {
 			isa = PBXGroup;
 			children = (
+				8AB6448A17E83B7100F32580 /* testSimpleTriangle */,
+				8AB6448917E83B3600F32580 /* testUseMyClass */,
+				8AB6448817E83B1400F32580 /* base */,
 				8AB6447F17E831D700F32580 /* ShaderSimpleTriangle.vsh */,
-				8A78569217E5B35E001EAB1F /* ShaderBase.h */,
-				8A78569317E5B35E001EAB1F /* ShaderBase.m */,
-				8A78569517E5C7C8001EAB1F /* TestShader.h */,
-				8A78569617E5C7C8001EAB1F /* TestShader.m */,
 				8A78568317E5B13A001EAB1F /* Shader.fsh */,
 				8A78568517E5B13A001EAB1F /* Shader.vsh */,
-				8A97E1CB17E6E85300B5B4E8 /* VArrayBase.h */,
-				8A97E1CC17E6E85300B5B4E8 /* VArrayBase.m */,
-				8AA9341A17E7018D00C3B34D /* TestVArray.h */,
-				8AA9341B17E7018D00C3B34D /* TestVArray.m */,
-				8AB6448117E8327600F32580 /* SimpleTriangleShader.h */,
-				8AB6448217E8327600F32580 /* SimpleTriangleShader.m */,
-				8AB6448517E8364100F32580 /* SimpleTriangleBuffer.h */,
-				8AB6448617E8364100F32580 /* SimpleTriangleBuffer.m */,
 			);
 			name = shaderAndBuffer;
 			sourceTree = "<group>";
