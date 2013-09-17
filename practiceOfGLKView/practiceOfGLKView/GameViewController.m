@@ -9,8 +9,9 @@
 #import "GameViewController.h"
 #import "ShaderBase.h"
 //#import "TestShader.h"
-#import "TestVArray.h"
+//#import "TestVArray.h"
 #import "SimpleTriangleShader.h"
+#import "SimpleTriangleBuffer.h"
 
 @interface GameViewController () {
 	ShaderBase* _shader;
@@ -92,7 +93,7 @@
     
     glEnable(GL_DEPTH_TEST);
 	
-	_vArray = [[TestVArray alloc] init];
+	_vArray = [[SimpleTriangleBuffer alloc] init];
     [_vArray loadResourceWithName:nil];
 
 }
@@ -117,6 +118,7 @@
 
 - (void)update
 {
+	/*
     float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
     GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
     
@@ -142,6 +144,7 @@
     _modelViewProjectionMatrix = GLKMatrix4Multiply(projectionMatrix, modelViewMatrix);
     
     _rotation += self.timeSinceLastUpdate * 0.5f;
+	 */
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
