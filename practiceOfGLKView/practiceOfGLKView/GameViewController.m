@@ -19,6 +19,8 @@
     GLKMatrix4 _modelViewProjectionMatrix;
     GLKMatrix3 _normalMatrix;
     float _rotation;
+	
+	GLKVector4 _vTrance;
 
 	VArrayBase *_vArray;
 }
@@ -96,6 +98,12 @@
 	_vArray = [[SimpleTriangleBuffer alloc] init];
     [_vArray loadResourceWithName:nil];
 
+	{
+		for (int i = 0; i < 4; i++) {
+			_vTrance.v[i] = 0.0f;
+		}
+		_vTrance.y = 1.0f;
+	}
 }
 
 - (void)tearDownGL
@@ -136,6 +144,9 @@
     // Render the object again with ES2
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
+    // シェーダーのユニフォーム変数をセット
+	glUniform4fv([_shader getUniformIndex:SIMPLE_TRIANGLE_UNI_TRANCE],
+				 1, &_vTrance.x);
     
     glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
 }

@@ -9,10 +9,10 @@
 attribute vec4 position;
 
 varying lowp vec4 colorVarying;
-
+uniform vec4 uniTrance;
 void main()
 {
     colorVarying = vec4(1.0, 0.0, 0.0, 1.0);
     
-    gl_Position = position;
+    gl_Position = position + uniTrance;
 }

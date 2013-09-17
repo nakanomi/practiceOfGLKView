@@ -10,13 +10,26 @@
 
 @interface SimpleTriangleShader()
 {
-	
+	GLint _uniforms[NUM_SIMPLE_TRIANGLE_UNI_];
 }
 - (BOOL)setupAttributes;
+- (BOOL)setupUniforms;
+- (void)initUniforms;
 
 @end
 
 @implementation SimpleTriangleShader
+
+- (GLint) getUniformIndex: (int) index
+{
+	int result = -1;
+	if ((index >= 0) && (index < (sizeof(_uniforms) / sizeof(_uniforms[0])))) {
+		result = _uniforms[index];
+	}
+	return result;
+}
+
+
 - (BOOL)setupAttributes
 {
 	BOOL result = NO;
@@ -27,6 +40,24 @@
 	@catch (NSException *exception) {
 	}
 	return result;
+}
+
+- (BOOL)setupUniforms
+{
+	BOOL result = NO;
+	@try {
+		_uniforms[SIMPLE_TRIANGLE_UNI_TRANCE] = glGetUniformLocation(self.programId, "uniTrance");
+	}
+	@catch (NSException *exception) {
+		
+	}
+	return result;
+}
+- (void)initUniforms
+{
+	for (int index = 0; index < (sizeof(_uniforms) / sizeof(_uniforms[0])); index++) {
+		_uniforms[index] = -1;
+	}
 }
 
 
