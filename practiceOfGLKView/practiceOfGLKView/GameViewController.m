@@ -10,8 +10,10 @@
 #import "ShaderBase.h"
 //#import "TestShader.h"
 //#import "TestVArray.h"
-#import "SimpleTriangleShader.h"
+//#import "SimpleTriangleShader.h"
 #import "SimpleTriangleBuffer.h"
+
+#import "SimpleTextureShader.h"
 
 @interface GameViewController () {
 	ShaderBase* _shader;
@@ -86,8 +88,8 @@
 {
     [EAGLContext setCurrentContext:self.context];
     
-	_shader = [[SimpleTriangleShader alloc] init];
-	[_shader loadShaderWithVsh:@"ShaderSimpleTriangle" withFsh:@"Shader"];
+	_shader = [[SimpleTextureShader alloc] init];
+	[_shader loadShaderWithVsh:@"ShaderSimpleTexture" withFsh:@"ShaderSimpleTexture"];
     
     self.effect = [[[GLKBaseEffect alloc] init] autorelease];
     self.effect.light0.enabled = GL_TRUE;
@@ -145,7 +147,7 @@
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
     // シェーダーのユニフォーム変数をセット
-	glUniform4fv([_shader getUniformIndex:SIMPLE_TRIANGLE_UNI_TRANCE],
+	glUniform4fv([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_TRANS],
 				 1, &_vTrance.x);
     
     glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
