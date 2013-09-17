@@ -24,8 +24,9 @@
     float _rotation;
 	
 	GLKVector4 _vTrance;
-
+	
 	VArrayBase *_vArray;
+	GLuint _textureId;
 }
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
@@ -107,6 +108,21 @@
 		}
 		_vTrance.y = 0.0f;
 	}
+	{
+		_textureId = 0;
+		NSString* filePath = [[NSBundle mainBundle] pathForResource:@"BG001" ofType:@"png"];
+		{
+			GLKTextureInfo *texInfo0 = [GLKTextureLoader textureWithContentsOfFile:filePath options:nil error:nil];
+			if (texInfo0 != nil) {
+				NSLog(@"Texture loaded successfully. name = %d size = (%d x %d)",
+					  
+					  texInfo0.name, texInfo0.width, texInfo0.height);
+				
+				_textureId = texInfo0.name;
+			}
+		}
+		
+	}
 }
 
 - (void)tearDownGL
@@ -147,6 +163,8 @@
     // Render the object again with ES2
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, _textureId);
     // シェーダーのユニフォーム変数をセット
 	glUniform4fv([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_TRANS],
 				 1, &_vTrance.x);

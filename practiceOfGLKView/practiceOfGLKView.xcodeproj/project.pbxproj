@@ -35,6 +35,7 @@
 		8AB6449717E84A8500F32580 /* ShaderSimpleTexture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449317E84A6100F32580 /* ShaderSimpleTexture.fsh */; };
 		8AB6449817E84A8500F32580 /* ShaderSimpleTexture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449417E84A6100F32580 /* ShaderSimpleTexture.vsh */; };
 		8AB6449B17E84CD500F32580 /* SimpleTextureBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6449A17E84CD500F32580 /* SimpleTextureBuffer.m */; };
+		8AB644A017E8501700F32580 /* BG001.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449F17E8501700F32580 /* BG001.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		8AB6449417E84A6100F32580 /* ShaderSimpleTexture.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderSimpleTexture.vsh; path = Shaders/ShaderSimpleTexture.vsh; sourceTree = "<group>"; };
 		8AB6449917E84CD500F32580 /* SimpleTextureBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTextureBuffer.h; sourceTree = "<group>"; };
 		8AB6449A17E84CD500F32580 /* SimpleTextureBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTextureBuffer.m; sourceTree = "<group>"; };
+		8AB6449F17E8501700F32580 /* BG001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG001.png; path = resource/graphics/texture/BG001.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				8AD13D8117E6BDBB00FB0A46 /* viewAndController */,
 				8A78567A17E5B13A001EAB1F /* AppDelegate.h */,
 				8A78567B17E5B13A001EAB1F /* AppDelegate.m */,
+				8AB6449C17E84F9B00F32580 /* resource */,
 				8A78567217E5B13A001EAB1F /* Supporting Files */,
 			);
 			path = practiceOfGLKView;
@@ -198,6 +201,30 @@
 				8AB6449A17E84CD500F32580 /* SimpleTextureBuffer.m */,
 			);
 			name = testSimpleTexture;
+			sourceTree = "<group>";
+		};
+		8AB6449C17E84F9B00F32580 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				8AB6449D17E84FAE00F32580 /* graphics */,
+			);
+			name = resource;
+			sourceTree = "<group>";
+		};
+		8AB6449D17E84FAE00F32580 /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+				8AB6449E17E84FB700F32580 /* textures */,
+			);
+			name = graphics;
+			sourceTree = "<group>";
+		};
+		8AB6449E17E84FB700F32580 /* textures */ = {
+			isa = PBXGroup;
+			children = (
+				8AB6449F17E8501700F32580 /* BG001.png */,
+			);
+			name = textures;
 			sourceTree = "<group>";
 		};
 		8AD13D8117E6BDBB00FB0A46 /* viewAndController */ = {
@@ -288,6 +315,7 @@
 				8A78568617E5B13A001EAB1F /* Shader.vsh in Resources */,
 				8A78568C17E5B13A001EAB1F /* GameViewController.xib in Resources */,
 				8A97E18F17E6C47700B5B4E8 /* TitleViewController.xib in Resources */,
+				8AB644A017E8501700F32580 /* BG001.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
