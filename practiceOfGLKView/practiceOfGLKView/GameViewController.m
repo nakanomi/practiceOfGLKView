@@ -149,20 +149,27 @@
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
+	{
+		static BOOL bLogRect = NO;
+		if (!bLogRect) {
+			bLogRect = YES;
+			NSLog(@"width = %f, height = %f", rect.size.width, rect.size.height);
+		}
+	}
     glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-	glBindVertexArrayOES(_vArray.vertexArray);
-    
     // Render the object with GLKit
-    [self.effect prepareToDraw];
-    // こちらはシェーダーを使わない側
-    //glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
+	// 必須では無い？
+    //[self.effect prepareToDraw];
     
 	assert(_shader != nil);
-    // Render the object again with ES2
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	// 頂点バッファを選択
+	glBindVertexArrayOES(_vArray.vertexArray);
+    
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
 	glActiveTexture(GL_TEXTURE0);
