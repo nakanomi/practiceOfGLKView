@@ -8,8 +8,9 @@
 
 #import "GameViewController.h"
 #import "ShaderBase.h"
-#import "TestShader.h"
+//#import "TestShader.h"
 #import "TestVArray.h"
+#import "SimpleTriangleShader.h"
 
 @interface GameViewController () {
 	ShaderBase* _shader;
@@ -82,8 +83,8 @@
 {
     [EAGLContext setCurrentContext:self.context];
     
-	_shader = [[TestShader alloc] init];
-	[_shader loadShaderWithVsh:@"Shader" withFsh:@"Shader"];
+	_shader = [[SimpleTriangleShader alloc] init];
+	[_shader loadShaderWithVsh:@"ShaderSimpleTriangle" withFsh:@"Shader"];
     
     self.effect = [[[GLKBaseEffect alloc] init] autorelease];
     self.effect.light0.enabled = GL_TRUE;
@@ -159,9 +160,6 @@
     // Render the object again with ES2
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
-    // シェーダーのユニフォーム変数をセット
-    glUniformMatrix4fv([_shader getUniformIndex:UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, 0, _modelViewProjectionMatrix.m);
-    glUniformMatrix3fv([_shader getUniformIndex: UNIFORM_NORMAL_MATRIX], 1, 0, _normalMatrix.m);
     
     glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
 }

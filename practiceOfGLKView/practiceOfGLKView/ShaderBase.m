@@ -219,12 +219,12 @@
 }
 - (BOOL)setupUniforms
 {
-	assert(NO);
+	NSLog(@"%s このシェーダーはユニフォーム変数を持ちません", __PRETTY_FUNCTION__);
 	return NO;
 }
 - (void)initUniforms
 {
-	assert(NO);
+	NSLog(@"%s このシェーダーはユニフォーム変数を持ちません", __PRETTY_FUNCTION__);
 }
 
 
