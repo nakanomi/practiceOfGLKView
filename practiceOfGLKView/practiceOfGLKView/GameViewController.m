@@ -11,9 +11,10 @@
 //#import "TestShader.h"
 //#import "TestVArray.h"
 //#import "SimpleTriangleShader.h"
-#import "SimpleTriangleBuffer.h"
+//#import "SimpleTriangleBuffer.h"
 
 #import "SimpleTextureShader.h"
+#import "SimpleTextureBuffer.h"
 
 @interface GameViewController () {
 	ShaderBase* _shader;
@@ -97,14 +98,14 @@
     
     glEnable(GL_DEPTH_TEST);
 	
-	_vArray = [[SimpleTriangleBuffer alloc] init];
+	_vArray = [[SimpleTextureBuffer alloc] init];
     [_vArray loadResourceWithName:nil];
 
 	{
 		for (int i = 0; i < 4; i++) {
 			_vTrance.v[i] = 0.0f;
 		}
-		_vTrance.y = 1.0f;
+		_vTrance.y = 0.0f;
 	}
 }
 
@@ -150,7 +151,8 @@
 	glUniform4fv([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_TRANS],
 				 1, &_vTrance.x);
     
-    glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
+    //glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, _vArray.count);
 }
 
 

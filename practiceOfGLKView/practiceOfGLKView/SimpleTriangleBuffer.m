@@ -8,7 +8,6 @@
 
 #import <GLKit/GLKit.h>
 #import "SimpleTriangleBuffer.h"
-#define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
 
 static GLfloat sTriangleVertexData[9] =
