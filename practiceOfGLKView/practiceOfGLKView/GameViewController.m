@@ -161,6 +161,8 @@
     
 	assert(_shader != nil);
     // Render the object again with ES2
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
 	glActiveTexture(GL_TEXTURE0);
