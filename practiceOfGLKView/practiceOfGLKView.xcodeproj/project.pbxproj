@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A65F59A17E9B3EE00A5AD35 /* TextureBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65F59917E9B3EE00A5AD35 /* TextureBase.m */; };
 		8A78566817E5B13A001EAB1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566717E5B13A001EAB1F /* UIKit.framework */; };
 		8A78566A17E5B13A001EAB1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566917E5B13A001EAB1F /* Foundation.framework */; };
 		8A78566C17E5B13A001EAB1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566B17E5B13A001EAB1F /* CoreGraphics.framework */; };
@@ -39,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A65F59817E9B3EE00A5AD35 /* TextureBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureBase.h; sourceTree = "<group>"; };
+		8A65F59917E9B3EE00A5AD35 /* TextureBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureBase.m; sourceTree = "<group>"; };
 		8A78566417E5B13A001EAB1F /* practiceOfGLKView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practiceOfGLKView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A78566717E5B13A001EAB1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A78566917E5B13A001EAB1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -249,6 +252,8 @@
 				8AB6448817E83B1400F32580 /* base */,
 				8A78568317E5B13A001EAB1F /* Shader.fsh */,
 				8A78568517E5B13A001EAB1F /* Shader.vsh */,
+				8A65F59817E9B3EE00A5AD35 /* TextureBase.h */,
+				8A65F59917E9B3EE00A5AD35 /* TextureBase.m */,
 			);
 			name = shaderAndBuffer;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 				8AB6448717E8364100F32580 /* SimpleTriangleBuffer.m in Sources */,
 				8AB6449217E8451F00F32580 /* SimpleTexture.m in Sources */,
 				8AB6449B17E84CD500F32580 /* SimpleTextureBuffer.m in Sources */,
+				8A65F59A17E9B3EE00A5AD35 /* TextureBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
