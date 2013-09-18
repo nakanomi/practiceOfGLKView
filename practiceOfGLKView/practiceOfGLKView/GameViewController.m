@@ -33,6 +33,7 @@
 
 - (void)setupGL;
 - (void)tearDownGL;
+- (void)checkHeightOfScreen;
 
 @end
 
@@ -65,6 +66,20 @@
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     
+	{
+		NSLog(@"%s", __PRETTY_FUNCTION__);
+		// OS6.0の場合、この段階だと正しい値を得られないようだ（3.5インチデバイスでも4インチの値になる）。
+		[self checkHeightOfScreen];
+	}
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	{
+		NSLog(@"%s", __PRETTY_FUNCTION__);
+		[self checkHeightOfScreen];
+	}
     [self setupGL];
 }
 
@@ -85,6 +100,17 @@
 
     // Dispose of any resources that can be recreated.
 }
+
+- (void)checkHeightOfScreen
+{
+	{
+		NSLog(@"view height = %f", self.view.frame.size.height);
+		float scale = [[UIScreen mainScreen]scale];
+		float height = self.view.frame.size.height * scale;
+		NSLog(@"dot = %f", height);
+	}
+}
+
 
 - (void)setupGL
 {
