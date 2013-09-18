@@ -70,7 +70,11 @@
 		NSLog(@"%s", __PRETTY_FUNCTION__);
 		// OS6.0の場合、この段階だと正しい値を得られないようだ（3.5インチデバイスでも4インチの値になる）。
 		[self checkHeightOfScreen];
+		NSLog(@"%d", self.preferredFramesPerSecond);
+		// 60FPSにする
+		self.preferredFramesPerSecond = 60;
 	}
+	// [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -200,6 +204,11 @@
 
 	// 頂点バッファを選択
 	glBindVertexArrayOES(_vArray.vertexArray);
+	// テクスチャの補間をしない
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);

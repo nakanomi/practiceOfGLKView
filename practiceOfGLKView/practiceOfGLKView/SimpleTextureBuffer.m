@@ -15,6 +15,7 @@ static GLfloat sTexSquare[] =
 	-0.5f,-0.5f, 0.0f,			0.0f, 1.0f,
 	0.5f, -0.5f, 0.0f,			1.0f, 1.0f,
 };
+static const int _sizeOfVertex = 5;
 
 enum {
 	_VERTEX_ATTRIB_POSITION = 0,
@@ -23,11 +24,37 @@ enum {
 
 
 @implementation SimpleTextureBuffer
+- (void)setX:(float)valueX ofVertex:(int)indexOfVertex
+{
+	sTexSquare[_sizeOfVertex * indexOfVertex] = valueX;
+}
+
+- (void)setY:(float)valueY ofVertex:(int)indexOfVertex
+{
+	sTexSquare[(_sizeOfVertex * indexOfVertex) + 1] = valueY;
+}
 
 -(BOOL)loadResourceWithName:(NSString*)strNameOfResource
 {
 	BOOL result = NO;
 	@try {
+		CGSize screenSize = [VArrayBase getScreenSize];
+		const float textureSize = 16.0f;
+		float width = textureSize / screenSize.width;
+		float height = textureSize / screenSize.height;
+		{
+			// 頂点座標をテクスチャサイズにあわせる
+			[self setX:-width ofVertex:0];
+			[self setY:height ofVertex:0];
+			
+			[self setX:width ofVertex:1];
+			[self setY:height ofVertex:1];
+			
+			[self setX:-width ofVertex:2];
+			[self setY:-height ofVertex:2];
+			[self setX:width ofVertex:3];
+			[self setY:-height ofVertex:3];
+		}
 		glGenVertexArraysOES(1, &_vertexArray);
 		glBindVertexArrayOES(_vertexArray);
 		{
