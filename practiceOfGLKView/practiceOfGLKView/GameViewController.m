@@ -16,7 +16,7 @@
 #import "SimpleTextureShader.h"
 #import "SimpleTextureBuffer.h"
 
-#define _LOOP_NUM	812
+#define _LOOP_NUM	800
 
 @interface GameViewController () {
 	ShaderBase* _shader;

@@ -60,7 +60,7 @@ enum {
 		{
 			glGenBuffers(1, &_vertexBuffer);
 			glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(sTexSquare), sTexSquare, GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(sTexSquare), sTexSquare, GL_DYNAMIC_DRAW);
 			glEnableVertexAttribArray(_VERTEX_ATTRIB_POSITION);
 			glEnableVertexAttribArray(_VERTEX_ATTRIB_TEXCOORD);
 			glVertexAttribPointer(_VERTEX_ATTRIB_POSITION, 3, GL_FLOAT, GL_FALSE, 20, BUFFER_OFFSET(0));
