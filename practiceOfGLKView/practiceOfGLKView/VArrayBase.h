@@ -21,5 +21,7 @@
 
 -(id)init;
 -(BOOL)loadResourceWithName:(NSString*)strNameOfResource;
++(CGSize)getScreenSize;
++(void)setScreenSize:(CGSize)screenSize;
 
 @end

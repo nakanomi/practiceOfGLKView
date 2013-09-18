@@ -14,7 +14,7 @@
 
 @end
 
-
+static CGSize sVarrayScreenSize = {0, 0};
 @implementation VArrayBase
 @synthesize vertexArray = _vertexArray;
 @synthesize count = _count;
@@ -49,5 +49,17 @@
 	return NO;
 }
 
+
++(CGSize)getScreenSize
+{
+	if (sVarrayScreenSize.height == 0.0f) {
+		assert(NO);
+	}
+	return sVarrayScreenSize;
+}
++(void)setScreenSize:(CGSize)screenSize
+{
+	sVarrayScreenSize = screenSize;
+}
 
 @end

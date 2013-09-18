@@ -79,6 +79,11 @@
 	{
 		NSLog(@"%s", __PRETTY_FUNCTION__);
 		[self checkHeightOfScreen];
+		CGSize screenSize;
+		float scale = [[UIScreen mainScreen]scale];
+		screenSize.width = self.view.frame.size.width * scale;
+		screenSize.height = self.view.frame.size.height * scale;
+		[VArrayBase setScreenSize:screenSize];
 	}
     [self setupGL];
 }
