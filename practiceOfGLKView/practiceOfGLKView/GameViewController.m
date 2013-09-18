@@ -16,14 +16,16 @@
 #import "SimpleTextureShader.h"
 #import "SimpleTextureBuffer.h"
 
+#define _LOOP_NUM	812
+
 @interface GameViewController () {
 	ShaderBase* _shader;
     
     GLKMatrix4 _modelViewProjectionMatrix;
     GLKMatrix3 _normalMatrix;
     float _rotation;
-	
-	GLKVector4 _vTrance;
+	// ユニフォーム変数として設定する位置情報。独立させていないと正常に表示されない？
+	GLKVector4 _vTrance[_LOOP_NUM];
 	
 	VArrayBase *_vArray;
 	GLuint _textureId;
@@ -138,10 +140,12 @@
     [_vArray loadResourceWithName:nil];
 
 	{
-		for (int i = 0; i < 4; i++) {
-			_vTrance.v[i] = 0.0f;
+		for (int index = 0; index < _LOOP_NUM; index++) {
+			for (int i = 0; i < 4; i++) {
+				_vTrance[index].v[i] = 0.0f;
+			}
+			_vTrance[index].y = 0.0f;
 		}
-		_vTrance.y = 0.0f;
 	}
 	{
 		_textureId = 0;
@@ -214,12 +218,20 @@
     glUseProgram(_shader.programId);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, _textureId);
-    // シェーダーのユニフォーム変数をセット
-	glUniform4fv([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_TRANS],
-				 1, &_vTrance.x);
-    
-    //glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, _vArray.count);
+	
+	_vTrance[0].x = -1.0f;
+	for (int i = 1; i < _LOOP_NUM; i++) {
+		_vTrance[i].x = _vTrance[i - 1].x + (2.0f / (float)_LOOP_NUM);
+	}
+
+	for (int i = 0; i < _LOOP_NUM; i++) {
+		// シェーダーのユニフォーム変数をセット
+		glUniform4fv([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_TRANS],
+					 1, &_vTrance[i].x);
+		
+		//glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, _vArray.count);
+	}
 }
 
 
