@@ -16,6 +16,8 @@
 #import "SimpleTextureShader.h"
 #import "SimpleTextureBuffer.h"
 
+#import "TextureBase.h"
+
 #define _LOOP_NUM	800
 
 @interface GameViewController () {
@@ -28,7 +30,8 @@
 	GLKVector4 _vTrance[_LOOP_NUM];
 	
 	VArrayBase *_vArray;
-	GLuint _textureId;
+//	GLuint _textureId;
+	TextureBase *_texture;
 }
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
@@ -148,18 +151,9 @@
 		}
 	}
 	{
-		_textureId = 0;
-		NSString* filePath = [[NSBundle mainBundle] pathForResource:@"BG001" ofType:@"png"];
-		{
-			GLKTextureInfo *texInfo0 = [GLKTextureLoader textureWithContentsOfFile:filePath options:nil error:nil];
-			if (texInfo0 != nil) {
-				NSLog(@"Texture loaded successfully. name = %d size = (%d x %d)",
-					  
-					  texInfo0.name, texInfo0.width, texInfo0.height);
-				
-				_textureId = texInfo0.name;
-			}
-		}
+		_texture = [[TextureBase alloc] init];
+		BOOL loadResult = [_texture loadTextureFromName:@"BG001"ofType:@"png"];
+		assert(loadResult);
 		
 	}
 }
@@ -178,6 +172,10 @@
 		[_shader release];
 		_shader = nil;
     }
+	if (_texture != nil) {
+		[_texture release];
+		_texture = nil;
+	}
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods
@@ -217,7 +215,7 @@
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, _textureId);
+	glBindTexture(GL_TEXTURE_2D, _texture.textureId);
 	
 	_vTrance[0].x = -1.0f;
 	for (int i = 1; i < _LOOP_NUM; i++) {

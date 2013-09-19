@@ -14,6 +14,8 @@
 }
 @property (readonly)GLuint textureId;
 @property (readonly)CGSize textureSize;
+@property (readonly)NSString* nameOfTexture;
 
 - (id)init;
+- (BOOL)loadTextureFromName:(NSString*)nameOfTexture ofType:(NSString*)nameOfType;
 @end
