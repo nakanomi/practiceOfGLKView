@@ -39,6 +39,7 @@
 		8AB644A017E8501700F32580 /* BG001.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449F17E8501700F32580 /* BG001.png */; };
 		8AD3592C17EAF59F00BE0B1F /* GameViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3592A17EAF59F00BE0B1F /* GameViewController2.m */; };
 		8AD3592D17EAF59F00BE0B1F /* GameViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD3592B17EAF59F00BE0B1F /* GameViewController2.xib */; };
+		8AD3592F17EB054E00BE0B1F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD3592E17EB054E00BE0B1F /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		8AD3592917EAF59F00BE0B1F /* GameViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController2.h; sourceTree = "<group>"; };
 		8AD3592A17EAF59F00BE0B1F /* GameViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController2.m; sourceTree = "<group>"; };
 		8AD3592B17EAF59F00BE0B1F /* GameViewController2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController2.xib; sourceTree = "<group>"; };
+		8AD3592E17EB054E00BE0B1F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AD3592F17EB054E00BE0B1F /* QuartzCore.framework in Frameworks */,
 				8A78566817E5B13A001EAB1F /* UIKit.framework in Frameworks */,
 				8A78566A17E5B13A001EAB1F /* Foundation.framework in Frameworks */,
 				8A78566C17E5B13A001EAB1F /* CoreGraphics.framework in Frameworks */,
@@ -111,6 +114,7 @@
 		8A78565B17E5B13A001EAB1F = {
 			isa = PBXGroup;
 			children = (
+				8AD3592E17EB054E00BE0B1F /* QuartzCore.framework */,
 				8A78567117E5B13A001EAB1F /* practiceOfGLKView */,
 				8A78566617E5B13A001EAB1F /* Frameworks */,
 				8A78566517E5B13A001EAB1F /* Products */,

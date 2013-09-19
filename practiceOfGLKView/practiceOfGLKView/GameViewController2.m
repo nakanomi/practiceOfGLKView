@@ -5,6 +5,7 @@
 //  Created by nakano_michiharu on 9/19/13.
 //  Copyright (c) 2013 nakano_michiharu. All rights reserved.
 //
+#import <QuartzCore/QuartzCore.h>
 
 #import "GameViewController2.h"
 #import "ShaderBase.h"
@@ -33,12 +34,20 @@
 	VArrayBase *_vArray;
 	//	GLuint _textureId;
 	TextureBase *_texture;
+	
+    CADisplayLink *_displayLink;
+	BOOL _animating;
+	int _animationFrameInterval;
 }
 @property (strong, nonatomic) EAGLContext *context;
 
 - (void)setupGL;
 - (void)tearDownGL;
 - (void)checkHeightOfScreen;
+
+- (void)startAnimation;
+- (void)endAnimation;
+- (void)drawFrame;
 @end
 
 @implementation GameViewController2
@@ -78,6 +87,7 @@
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+	view.delegate = self;
     
 	{
 		NSLog(@"%s", __PRETTY_FUNCTION__);
@@ -90,7 +100,26 @@
 		 */
 	}
 	// [self.navigationController setNavigationBarHidden:YES];
+	_displayLink = nil;
+	_animating = NO;
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	{
+		NSLog(@"%s", __PRETTY_FUNCTION__);
+		[self checkHeightOfScreen];
+		CGSize screenSize;
+		float scale = [[UIScreen mainScreen]scale];
+		screenSize.width = self.view.frame.size.width * scale;
+		screenSize.height = self.view.frame.size.height * scale;
+		[VArrayBase setScreenSize:screenSize];
+	}
+    [self setupGL];
+	[self startAnimation];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -145,6 +174,13 @@
 		assert(loadResult);
 		
 	}
+	{
+		GLKView *view = (GLKView*)(self.view);
+		BOOL en = view.enableSetNeedsDisplay;
+		NSLog(@"%d", en);
+		en = view.enableSetNeedsDisplay;
+		NSLog(@"%d", en);
+	}
 }
 
 - (void)tearDownGL
@@ -164,7 +200,32 @@
 		_texture = nil;
 	}
 }
-
+#pragma mark -DisplayLink
+- (void)startAnimation
+{
+	NSLog(@"%s", __PRETTY_FUNCTION__);
+	if (!_animating) {
+        CADisplayLink *aDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(drawFrame)];
+        [aDisplayLink setFrameInterval:_animationFrameInterval];
+        [aDisplayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+		_displayLink = aDisplayLink;
+		_animating =YES;
+	}
+}
+- (void)endAnimation
+{
+	NSLog(@"%s", __PRETTY_FUNCTION__);
+	if (_animating) {
+		[_displayLink invalidate];
+		_displayLink = nil;
+		_animating = NO;
+	}
+}
+- (void)drawFrame
+{
+	GLKView *view = (GLKView*)(self.view);
+	[view display];
+}
 
 
 #pragma mark -GLKView delegate
