@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GLKit/GLKView.h>
 
-@interface GameViewController2 : UIViewController
+
+@interface GameViewController2 : UIViewController<GLKViewDelegate>
 
 @end
