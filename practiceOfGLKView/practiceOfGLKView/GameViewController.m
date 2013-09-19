@@ -34,7 +34,6 @@
 	TextureBase *_texture;
 }
 @property (strong, nonatomic) EAGLContext *context;
-@property (strong, nonatomic) GLKBaseEffect *effect;
 
 - (void)setupGL;
 - (void)tearDownGL;
@@ -53,7 +52,6 @@
     }
     
     [_context release];
-    [_effect release];
     [super dealloc];
 }
 
@@ -133,10 +131,6 @@
 	_shader = [[SimpleTextureShader alloc] init];
 	[_shader loadShaderWithVsh:@"ShaderSimpleTexture" withFsh:@"ShaderSimpleTexture"];
     
-    self.effect = [[[GLKBaseEffect alloc] init] autorelease];
-    self.effect.light0.enabled = GL_TRUE;
-    self.effect.light0.diffuseColor = GLKVector4Make(1.0f, 0.4f, 0.4f, 1.0f);
-    
     glEnable(GL_DEPTH_TEST);
 	
 	_vArray = [[SimpleTextureBuffer alloc] init];
@@ -165,8 +159,6 @@
 	if (_vArray != nil) {
 		[_vArray release];
 	}
-    
-    self.effect = nil;
     
     if (_shader != nil) {
 		[_shader release];
@@ -197,8 +189,6 @@
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     // Render the object with GLKit
-	// 必須では無い？
-    //[self.effect prepareToDraw];
     
 	assert(_shader != nil);
 	glEnable(GL_BLEND);
