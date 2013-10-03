@@ -170,6 +170,8 @@
 				8A78569317E5B35E001EAB1F /* ShaderBase.m */,
 				8A97E1CB17E6E85300B5B4E8 /* VArrayBase.h */,
 				8A97E1CC17E6E85300B5B4E8 /* VArrayBase.m */,
+				8A65F59817E9B3EE00A5AD35 /* TextureBase.h */,
+				8A65F59917E9B3EE00A5AD35 /* TextureBase.m */,
 			);
 			name = base;
 			sourceTree = "<group>";
@@ -256,8 +258,6 @@
 				8AB6448817E83B1400F32580 /* base */,
 				8A78568317E5B13A001EAB1F /* Shader.fsh */,
 				8A78568517E5B13A001EAB1F /* Shader.vsh */,
-				8A65F59817E9B3EE00A5AD35 /* TextureBase.h */,
-				8A65F59917E9B3EE00A5AD35 /* TextureBase.m */,
 			);
 			name = shaderAndBuffer;
 			sourceTree = "<group>";
