@@ -12,7 +12,20 @@
 
 int main(int argc, char *argv[])
 {
+	/*
 	@autoreleasepool {
 	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
 	}
+	 */
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	int retVal;
+	@try {
+		retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+	} @catch (NSException *exception) {
+		NSLog(@"%@", [exception callStackSymbols]);
+		@throw exception;
+	} @finally {
+		[pool release];
+	}
+	return retVal;
 }

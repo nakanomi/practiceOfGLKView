@@ -19,7 +19,7 @@
 
 #import "TextureBase.h"
 
-#define _LOOP_NUM	800
+#define _LOOP_NUM	8
 
 @interface GameViewController2 ()
 {
@@ -54,8 +54,8 @@
 
 - (void)dealloc
 {
+	[self endAnimation];
     [self tearDownGL];
-    
     if ([EAGLContext currentContext] == self.context) {
         [EAGLContext setCurrentContext:nil];
     }
@@ -78,7 +78,7 @@
 {
     [super viewDidLoad];
     
-    self.context = [[[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2] autorelease];
+    self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 	
     if (!self.context) {
         NSLog(@"Failed to create ES context");
