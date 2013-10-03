@@ -7,7 +7,7 @@
 //
 #import <QuartzCore/QuartzCore.h>
 
-#import "GameViewController2.h"
+#import "GameViewController.h"
 #import "ShaderBase.h"
 //#import "TestShader.h"
 //#import "TestVArray.h"
@@ -21,7 +21,7 @@
 
 #define _LOOP_NUM	8
 
-@interface GameViewController2 ()
+@interface GameViewController ()
 {
 	ShaderBase* _shader;
     
@@ -50,7 +50,7 @@
 - (void)drawFrame;
 @end
 
-@implementation GameViewController2
+@implementation GameViewController
 
 - (void)dealloc
 {

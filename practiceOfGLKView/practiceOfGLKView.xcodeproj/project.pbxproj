@@ -35,8 +35,8 @@
 		8AB6449817E84A8500F32580 /* ShaderSimpleTexture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449417E84A6100F32580 /* ShaderSimpleTexture.vsh */; };
 		8AB6449B17E84CD500F32580 /* SimpleTextureBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6449A17E84CD500F32580 /* SimpleTextureBuffer.m */; };
 		8AB644A017E8501700F32580 /* BG001.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449F17E8501700F32580 /* BG001.png */; };
-		8AD3592C17EAF59F00BE0B1F /* GameViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3592A17EAF59F00BE0B1F /* GameViewController2.m */; };
-		8AD3592D17EAF59F00BE0B1F /* GameViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD3592B17EAF59F00BE0B1F /* GameViewController2.xib */; };
+		8AD3592C17EAF59F00BE0B1F /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3592A17EAF59F00BE0B1F /* GameViewController.m */; };
+		8AD3592D17EAF59F00BE0B1F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */; };
 		8AD3592F17EB054E00BE0B1F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD3592E17EB054E00BE0B1F /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,9 +83,9 @@
 		8AB6449917E84CD500F32580 /* SimpleTextureBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTextureBuffer.h; sourceTree = "<group>"; };
 		8AB6449A17E84CD500F32580 /* SimpleTextureBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTextureBuffer.m; sourceTree = "<group>"; };
 		8AB6449F17E8501700F32580 /* BG001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG001.png; path = resource/graphics/texture/BG001.png; sourceTree = SOURCE_ROOT; };
-		8AD3592917EAF59F00BE0B1F /* GameViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController2.h; sourceTree = "<group>"; };
-		8AD3592A17EAF59F00BE0B1F /* GameViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController2.m; sourceTree = "<group>"; };
-		8AD3592B17EAF59F00BE0B1F /* GameViewController2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController2.xib; sourceTree = "<group>"; };
+		8AD3592917EAF59F00BE0B1F /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		8AD3592A17EAF59F00BE0B1F /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		8AD3592E17EB054E00BE0B1F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -242,9 +242,9 @@
 				8A97E18B17E6C47700B5B4E8 /* TitleViewController.h */,
 				8A97E18C17E6C47700B5B4E8 /* TitleViewController.m */,
 				8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */,
-				8AD3592917EAF59F00BE0B1F /* GameViewController2.h */,
-				8AD3592A17EAF59F00BE0B1F /* GameViewController2.m */,
-				8AD3592B17EAF59F00BE0B1F /* GameViewController2.xib */,
+				8AD3592917EAF59F00BE0B1F /* GameViewController.h */,
+				8AD3592A17EAF59F00BE0B1F /* GameViewController.m */,
+				8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */,
 			);
 			name = viewAndController;
 			sourceTree = "<group>";
@@ -324,7 +324,7 @@
 				8A78568617E5B13A001EAB1F /* Shader.vsh in Resources */,
 				8A97E18F17E6C47700B5B4E8 /* TitleViewController.xib in Resources */,
 				8AB644A017E8501700F32580 /* BG001.png in Resources */,
-				8AD3592D17EAF59F00BE0B1F /* GameViewController2.xib in Resources */,
+				8AD3592D17EAF59F00BE0B1F /* GameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +347,7 @@
 				8AB6449217E8451F00F32580 /* SimpleTexture.m in Sources */,
 				8AB6449B17E84CD500F32580 /* SimpleTextureBuffer.m in Sources */,
 				8A65F59A17E9B3EE00A5AD35 /* TextureBase.m in Sources */,
-				8AD3592C17EAF59F00BE0B1F /* GameViewController2.m in Sources */,
+				8AD3592C17EAF59F00BE0B1F /* GameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

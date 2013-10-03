@@ -10,6 +10,6 @@
 #import <GLKit/GLKView.h>
 
 
-@interface GameViewController2 : UIViewController<GLKViewDelegate>
+@interface GameViewController : UIViewController<GLKViewDelegate>
 
 @end
