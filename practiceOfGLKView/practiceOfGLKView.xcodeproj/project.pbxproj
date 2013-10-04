@@ -35,6 +35,7 @@
 		8AB6449817E84A8500F32580 /* ShaderSimpleTexture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449417E84A6100F32580 /* ShaderSimpleTexture.vsh */; };
 		8AB6449B17E84CD500F32580 /* SimpleTextureBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6449A17E84CD500F32580 /* SimpleTextureBuffer.m */; };
 		8AB644A017E8501700F32580 /* BG001.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449F17E8501700F32580 /* BG001.png */; };
+		8AC75BAF17FEC32700CE96DE /* FboTextureBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC75BAE17FEC32700CE96DE /* FboTextureBuffer.m */; };
 		8AD3592C17EAF59F00BE0B1F /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3592A17EAF59F00BE0B1F /* GameViewController.m */; };
 		8AD3592D17EAF59F00BE0B1F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */; };
 		8AD3592F17EB054E00BE0B1F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD3592E17EB054E00BE0B1F /* QuartzCore.framework */; };
@@ -83,6 +84,8 @@
 		8AB6449917E84CD500F32580 /* SimpleTextureBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTextureBuffer.h; sourceTree = "<group>"; };
 		8AB6449A17E84CD500F32580 /* SimpleTextureBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTextureBuffer.m; sourceTree = "<group>"; };
 		8AB6449F17E8501700F32580 /* BG001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG001.png; path = resource/graphics/texture/BG001.png; sourceTree = SOURCE_ROOT; };
+		8AC75BAD17FEC32700CE96DE /* FboTextureBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FboTextureBuffer.h; sourceTree = "<group>"; };
+		8AC75BAE17FEC32700CE96DE /* FboTextureBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FboTextureBuffer.m; sourceTree = "<group>"; };
 		8AD3592917EAF59F00BE0B1F /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		8AD3592A17EAF59F00BE0B1F /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
@@ -236,6 +239,15 @@
 			name = textures;
 			sourceTree = "<group>";
 		};
+		8AC75BAC17FEC2BB00CE96DE /* fboRender */ = {
+			isa = PBXGroup;
+			children = (
+				8AC75BAD17FEC32700CE96DE /* FboTextureBuffer.h */,
+				8AC75BAE17FEC32700CE96DE /* FboTextureBuffer.m */,
+			);
+			name = fboRender;
+			sourceTree = "<group>";
+		};
 		8AD13D8117E6BDBB00FB0A46 /* viewAndController */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +264,7 @@
 		8AD13D8217E6BDDA00FB0A46 /* shaderAndBuffer */ = {
 			isa = PBXGroup;
 			children = (
+				8AC75BAC17FEC2BB00CE96DE /* fboRender */,
 				8AB6448F17E843E100F32580 /* testSimpleTexture */,
 				8AB6448A17E83B7100F32580 /* testSimpleTriangle */,
 				8AB6448917E83B3600F32580 /* testUseMyClass */,
@@ -348,6 +361,7 @@
 				8AB6449B17E84CD500F32580 /* SimpleTextureBuffer.m in Sources */,
 				8A65F59A17E9B3EE00A5AD35 /* TextureBase.m in Sources */,
 				8AD3592C17EAF59F00BE0B1F /* GameViewController.m in Sources */,
+				8AC75BAF17FEC32700CE96DE /* FboTextureBuffer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

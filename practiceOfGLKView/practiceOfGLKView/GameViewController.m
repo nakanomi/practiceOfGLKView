@@ -17,6 +17,8 @@
 #import "SimpleTextureShader.h"
 #import "SimpleTextureBuffer.h"
 
+#import "FboTextureBuffer.h"
+
 #import "TextureBase.h"
 
 #define _LOOP_NUM	8
@@ -40,6 +42,7 @@
 	int _animationFrameInterval;
 	
 	// FBO
+	FboTextureBuffer *_fboVArray;
 	int _fboWidth;
 	int _fboHeight;
 	GLint _defaultFBO;
@@ -56,6 +59,8 @@
 - (void)startAnimation;
 - (void)endAnimation;
 - (void)drawFrame;
+- (void)changeRenderTargetToFBO;
+- (void)renderObjects;
 
 - (void)setupFBO;
 @end
@@ -192,6 +197,8 @@
 		NSLog(@"%d", en);
 	}
 	[self setupFBO];
+	_fboVArray = [[FboTextureBuffer alloc] init];
+	[_fboVArray loadResourceWithName:nil];
 }
 
 - (void)setupFBO
@@ -247,6 +254,13 @@
 - (void)tearDownGL
 {
     [EAGLContext setCurrentContext:self.context];
+
+	glDeleteTextures(1, &_fboTexId);
+	glDeleteBuffers(1, &_fboDepthBuffer);
+	glDeleteBuffers(1, &_fboHandle);
+	if (_fboVArray != nil) {
+		[_fboVArray release];
+	}
     
 	if (_vArray != nil) {
 		[_vArray release];
@@ -288,25 +302,22 @@
 	[view display];
 }
 
-
-#pragma mark -GLKView delegate
-- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
+- (void)changeRenderTargetToFBO
 {
-	{
-		static BOOL bLogRect = NO;
-		if (!bLogRect) {
-			bLogRect = YES;
-			NSLog(@"width = %f, height = %f", rect.size.width, rect.size.height);
-		}
-	}
-    glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
+	glBindTexture(GL_TEXTURE_2D, 0);
+	glEnable(GL_TEXTURE_2D);
+	glBindFramebuffer(GL_FRAMEBUFFER, _fboHandle);
+	glViewport(0, 0, _fboWidth, _fboHeight);
+	glClearColor(1.0, 1.0, 1.0, 1.0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+}
+
+- (void)renderObjects
+{
     // Render the object with GLKit
     
 	assert(_shader != nil);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
 	// 頂点バッファを選択
 	glBindVertexArrayOES(_vArray.vertexArray);
@@ -334,6 +345,45 @@
 		//glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, _vArray.count);
 	}
+	
+	//render objects
+}
+
+
+#pragma mark -GLKView delegate
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
+{
+	{
+		static BOOL bLogRect = NO;
+		if (!bLogRect) {
+			bLogRect = YES;
+			NSLog(@"width = %f, height = %f", rect.size.width, rect.size.height);
+		}
+	}
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	// レンダリングターゲットをFBOに変更
+	[self changeRenderTargetToFBO];
+	// オブジェクトをレンダリング
+	[self renderObjects];
+	
+	// レンダリングターゲットを通常のフレームバッファに変更
+	glBindFramebuffer(GL_FRAMEBUFFER, _defaultFBO);
+	[view bindDrawable];
+	// ビューポートを設定
+	CGSize viewSize = [VArrayBase getScreenSize];
+	glViewport(0, 0, viewSize.width, viewSize.height);
+	
+	// レンダリングバッファをクリア
+    glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	glBindVertexArrayOES(_fboVArray.vertexArray);
+	glBindTexture(GL_TEXTURE_2D, _fboTexId);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, _fboVArray.count);
+	
+    
 }
 
 @end
