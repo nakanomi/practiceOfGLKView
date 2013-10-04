@@ -30,7 +30,7 @@
 		8AB6448317E8327600F32580 /* SimpleTriangleShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6448217E8327600F32580 /* SimpleTriangleShader.m */; };
 		8AB6448417E8350E00F32580 /* ShaderSimpleTriangle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6447F17E831D700F32580 /* ShaderSimpleTriangle.vsh */; };
 		8AB6448717E8364100F32580 /* SimpleTriangleBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6448617E8364100F32580 /* SimpleTriangleBuffer.m */; };
-		8AB6449217E8451F00F32580 /* SimpleTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6449117E8451F00F32580 /* SimpleTexture.m */; };
+		8AB6449217E8451F00F32580 /* SimpleTextureShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6449117E8451F00F32580 /* SimpleTextureShader.m */; };
 		8AB6449717E84A8500F32580 /* ShaderSimpleTexture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449317E84A6100F32580 /* ShaderSimpleTexture.fsh */; };
 		8AB6449817E84A8500F32580 /* ShaderSimpleTexture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449417E84A6100F32580 /* ShaderSimpleTexture.vsh */; };
 		8AB6449B17E84CD500F32580 /* SimpleTextureBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6449A17E84CD500F32580 /* SimpleTextureBuffer.m */; };
@@ -77,7 +77,7 @@
 		8AB6448517E8364100F32580 /* SimpleTriangleBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTriangleBuffer.h; sourceTree = "<group>"; };
 		8AB6448617E8364100F32580 /* SimpleTriangleBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTriangleBuffer.m; sourceTree = "<group>"; };
 		8AB6449017E8451F00F32580 /* SimpleTextureShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTextureShader.h; sourceTree = "<group>"; };
-		8AB6449117E8451F00F32580 /* SimpleTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTexture.m; sourceTree = "<group>"; };
+		8AB6449117E8451F00F32580 /* SimpleTextureShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTextureShader.m; sourceTree = "<group>"; };
 		8AB6449317E84A6100F32580 /* ShaderSimpleTexture.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderSimpleTexture.fsh; path = Shaders/ShaderSimpleTexture.fsh; sourceTree = "<group>"; };
 		8AB6449417E84A6100F32580 /* ShaderSimpleTexture.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShaderSimpleTexture.vsh; path = Shaders/ShaderSimpleTexture.vsh; sourceTree = "<group>"; };
 		8AB6449917E84CD500F32580 /* SimpleTextureBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTextureBuffer.h; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 				8AB6449317E84A6100F32580 /* ShaderSimpleTexture.fsh */,
 				8AB6449417E84A6100F32580 /* ShaderSimpleTexture.vsh */,
 				8AB6449017E8451F00F32580 /* SimpleTextureShader.h */,
-				8AB6449117E8451F00F32580 /* SimpleTexture.m */,
+				8AB6449117E8451F00F32580 /* SimpleTextureShader.m */,
 				8AB6449917E84CD500F32580 /* SimpleTextureBuffer.h */,
 				8AB6449A17E84CD500F32580 /* SimpleTextureBuffer.m */,
 			);
@@ -344,7 +344,7 @@
 				8AA9341C17E7018D00C3B34D /* TestVArray.m in Sources */,
 				8AB6448317E8327600F32580 /* SimpleTriangleShader.m in Sources */,
 				8AB6448717E8364100F32580 /* SimpleTriangleBuffer.m in Sources */,
-				8AB6449217E8451F00F32580 /* SimpleTexture.m in Sources */,
+				8AB6449217E8451F00F32580 /* SimpleTextureShader.m in Sources */,
 				8AB6449B17E84CD500F32580 /* SimpleTextureBuffer.m in Sources */,
 				8A65F59A17E9B3EE00A5AD35 /* TextureBase.m in Sources */,
 				8AD3592C17EAF59F00BE0B1F /* GameViewController.m in Sources */,
