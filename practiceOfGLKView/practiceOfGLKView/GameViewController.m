@@ -43,6 +43,7 @@
 	
 	// FBO
 	FboTextureBuffer *_fboVArray;
+	GLKVector4 _vTranceFbo;
 	int _fboWidth;
 	int _fboHeight;
 	GLint _defaultFBO;
@@ -381,6 +382,12 @@
 	
 	glBindVertexArrayOES(_fboVArray.vertexArray);
 	glBindTexture(GL_TEXTURE_2D, _fboTexId);
+	_vTranceFbo.x = 0.0f;
+	_vTranceFbo.y = 0.0f;
+	// シェーダーのユニフォーム変数をセット
+	glUniform4fv([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_TRANS],
+				 1, &_vTranceFbo.x);
+	
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, _fboVArray.count);
 	
     
