@@ -18,6 +18,7 @@
 #import "SimpleTextureBuffer.h"
 
 #import "FboTextureBuffer.h"
+#import "SimpleFboShader.h"
 
 #import "TextureBase.h"
 
@@ -42,6 +43,7 @@
 	int _animationFrameInterval;
 	
 	// FBO
+	SimpleFboShader* _fboShader;
 	FboTextureBuffer *_fboVArray;
 	GLKVector4 _vTranceFbo;
 	int _fboWidth;
@@ -249,6 +251,9 @@
             break;
     }
 	glBindFramebuffer(GL_FRAMEBUFFER, _defaultFBO);
+	
+	_fboShader = [[SimpleFboShader alloc] init];
+	[_fboShader loadShaderWithVsh:@"ShaderSimpleFbo" withFsh:@"ShaderSimpleTexture"];
 }
 
 
@@ -380,13 +385,9 @@
     glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
+	glUseProgram(_fboShader.programId);
 	glBindVertexArrayOES(_fboVArray.vertexArray);
 	glBindTexture(GL_TEXTURE_2D, _fboTexId);
-	_vTranceFbo.x = 0.0f;
-	_vTranceFbo.y = 0.0f;
-	// シェーダーのユニフォーム変数をセット
-	glUniform4fv([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_TRANS],
-				 1, &_vTranceFbo.x);
 	
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, _fboVArray.count);
 	
