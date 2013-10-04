@@ -38,6 +38,14 @@
     CADisplayLink *_displayLink;
 	BOOL _animating;
 	int _animationFrameInterval;
+	
+	// FBO
+	int _fboWidth;
+	int _fboHeight;
+	GLint _defaultFBO;
+	GLuint _fboHandle;
+	GLuint _fboTexId;
+	GLuint _fboDepthBuffer;
 }
 @property (strong, nonatomic) EAGLContext *context;
 
@@ -48,6 +56,8 @@
 - (void)startAnimation;
 - (void)endAnimation;
 - (void)drawFrame;
+
+- (void)setupFBO;
 @end
 
 @implementation GameViewController
@@ -181,7 +191,58 @@
 		en = view.enableSetNeedsDisplay;
 		NSLog(@"%d", en);
 	}
+	[self setupFBO];
 }
+
+- (void)setupFBO
+{
+	_fboWidth = 512;
+	_fboHeight = 512;
+	glGetIntegerv(GL_FRAMEBUFFER_BINDING, &_defaultFBO);
+	
+	glGenFramebuffers(1, &_fboHandle);
+	glGenTextures(1, &_fboTexId);
+	glGenRenderbuffers(1, &_fboDepthBuffer);
+	
+	glBindFramebuffer(GL_FRAMEBUFFER, _fboHandle);
+	glBindTexture(GL_TEXTURE_2D, _fboTexId);
+	glTexImage2D(GL_TEXTURE_2D,
+				 0,
+				 GL_RGBA,
+				 _fboWidth, _fboHeight,
+				 0,
+				 GL_RGBA,
+				 GL_UNSIGNED_BYTE,
+				 NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+						   GL_TEXTURE_2D, _fboTexId, 0);
+	glBindRenderbuffer(GL_RENDERBUFFER, _fboDepthBuffer);
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16_OES, _fboWidth, _fboHeight);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _fboDepthBuffer);
+	GLenum status;
+	status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+    switch(status) {
+        case GL_FRAMEBUFFER_COMPLETE:
+            NSLog(@"fbo complete");
+            break;
+            
+        case GL_FRAMEBUFFER_UNSUPPORTED:
+            NSLog(@"fbo unsupported");
+            break;
+            
+        default:
+            /* programming error; will fail on all hardware */
+            NSLog(@"Framebuffer Error");
+            break;
+    }
+	glBindFramebuffer(GL_FRAMEBUFFER, _defaultFBO);
+}
+
 
 - (void)tearDownGL
 {
