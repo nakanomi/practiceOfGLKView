@@ -15,7 +15,8 @@ static GLfloat sTexSquare[] =
 	-0.5f,-0.5f, 0.0f,			0.0f, 1.0f,
 	0.5f, -0.5f, 0.0f,			1.0f, 1.0f,
 };
-static const int _sizeOfVertex = 5;
+
+#define _SIZE_OF_VERTEX	5
 
 enum {
 	_VERTEX_ATTRIB_POSITION = 0,
@@ -26,12 +27,12 @@ enum {
 @implementation SimpleTextureBuffer
 - (void)setX:(float)valueX ofVertex:(int)indexOfVertex
 {
-	sTexSquare[_sizeOfVertex * indexOfVertex] = valueX;
+	sTexSquare[self.sizeOfVertex * indexOfVertex] = valueX;
 }
 
 - (void)setY:(float)valueY ofVertex:(int)indexOfVertex
 {
-	sTexSquare[(_sizeOfVertex * indexOfVertex) + 1] = valueY;
+	sTexSquare[(self.sizeOfVertex * indexOfVertex) + 1] = valueY;
 }
 
 -(BOOL)loadResourceWithName:(NSString*)strNameOfResource
@@ -74,6 +75,11 @@ enum {
 	@catch (NSException *exception) {
 	}
 	return result;
+}
+
+- (int)getSizeOfVertex
+{
+	return _SIZE_OF_VERTEX;
 }
 
 @end

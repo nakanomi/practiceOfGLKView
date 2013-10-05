@@ -24,6 +24,8 @@ enum {
 
 @implementation FboTextureBuffer
 
+
+
 -(BOOL)loadResourceWithName:(NSString*)strNameOfResource
 {
 	BOOL result = NO;
@@ -48,5 +50,11 @@ enum {
 	}
 	return result;
 }
+
+-(void)setupForDotByDotRenderSize:(CGSize)sizeRender texSize:(CGSize)sizeTexture
+{
+	
+}
+
 
 @end

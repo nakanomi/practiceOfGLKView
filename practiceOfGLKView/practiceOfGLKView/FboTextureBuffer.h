@@ -10,5 +10,6 @@
 
 @interface FboTextureBuffer : VArrayBase
 -(BOOL)loadResourceWithName:(NSString*)strNameOfResource;
+-(void)setupForDotByDotRenderSize:(CGSize)sizeRender texSize:(CGSize)sizeTexture;
 
 @end

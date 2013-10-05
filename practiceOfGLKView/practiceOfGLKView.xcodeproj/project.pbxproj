@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A65F59A17E9B3EE00A5AD35 /* TextureBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65F59917E9B3EE00A5AD35 /* TextureBase.m */; };
+		8A7620CC180000D90074E85C /* FboBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7620CB180000D90074E85C /* FboBase.m */; };
 		8A78566817E5B13A001EAB1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566717E5B13A001EAB1F /* UIKit.framework */; };
 		8A78566A17E5B13A001EAB1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566917E5B13A001EAB1F /* Foundation.framework */; };
 		8A78566C17E5B13A001EAB1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566B17E5B13A001EAB1F /* CoreGraphics.framework */; };
@@ -47,6 +48,8 @@
 /* Begin PBXFileReference section */
 		8A65F59817E9B3EE00A5AD35 /* TextureBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureBase.h; sourceTree = "<group>"; };
 		8A65F59917E9B3EE00A5AD35 /* TextureBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureBase.m; sourceTree = "<group>"; };
+		8A7620CA180000D90074E85C /* FboBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FboBase.h; sourceTree = "<group>"; };
+		8A7620CB180000D90074E85C /* FboBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FboBase.m; sourceTree = "<group>"; };
 		8A78566417E5B13A001EAB1F /* practiceOfGLKView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practiceOfGLKView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A78566717E5B13A001EAB1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A78566917E5B13A001EAB1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -181,6 +184,8 @@
 				8A97E1CC17E6E85300B5B4E8 /* VArrayBase.m */,
 				8A65F59817E9B3EE00A5AD35 /* TextureBase.h */,
 				8A65F59917E9B3EE00A5AD35 /* TextureBase.m */,
+				8A7620CA180000D90074E85C /* FboBase.h */,
+				8A7620CB180000D90074E85C /* FboBase.m */,
 			);
 			name = base;
 			sourceTree = "<group>";
@@ -363,6 +368,7 @@
 				8A78569417E5B35E001EAB1F /* ShaderBase.m in Sources */,
 				8A78569717E5C7C8001EAB1F /* TestShader.m in Sources */,
 				8A97E18E17E6C47700B5B4E8 /* TitleViewController.m in Sources */,
+				8A7620CC180000D90074E85C /* FboBase.m in Sources */,
 				8A97E1CD17E6E85300B5B4E8 /* VArrayBase.m in Sources */,
 				8AA9341C17E7018D00C3B34D /* TestVArray.m in Sources */,
 				8AB6448317E8327600F32580 /* SimpleTriangleShader.m in Sources */,
