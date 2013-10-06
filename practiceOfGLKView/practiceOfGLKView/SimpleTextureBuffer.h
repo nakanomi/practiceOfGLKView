@@ -7,6 +7,10 @@
 //
 
 #import "VArrayBase.h"
+typedef struct {
+	float x, y, z;
+	float s, t;
+}SIMPLE_TEXTURE_VERTEX;
 
 @interface SimpleTextureBuffer : VArrayBase
 @property (readonly, getter = getSizeOfVertex)int sizeOfVertex;

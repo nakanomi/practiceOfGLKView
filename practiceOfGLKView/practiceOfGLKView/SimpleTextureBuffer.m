@@ -7,9 +7,17 @@
 //
 
 #import "SimpleTextureBuffer.h"
-
+/*
 static GLfloat sTexSquare[] =
 {
+	-0.5f, 0.5f, 0.0f,			0.0f, 0.0f,
+	0.5f,  0.5f, 0.0f,			1.0f, 0.0f,
+	-0.5f,-0.5f, 0.0f,			0.0f, 1.0f,
+	0.5f, -0.5f, 0.0f,			1.0f, 1.0f,
+};
+ */
+
+static SIMPLE_TEXTURE_VERTEX texSquare[4] = {
 	-0.5f, 0.5f, 0.0f,			0.0f, 0.0f,
 	0.5f,  0.5f, 0.0f,			1.0f, 0.0f,
 	-0.5f,-0.5f, 0.0f,			0.0f, 1.0f,
@@ -23,17 +31,12 @@ enum {
 	_VERTEX_ATTRIB_TEXCOORD,
 };
 
+@interface SimpleTextureBuffer()
+{
+}
+@end
 
 @implementation SimpleTextureBuffer
-- (void)setX:(float)valueX ofVertex:(int)indexOfVertex
-{
-	sTexSquare[self.sizeOfVertex * indexOfVertex] = valueX;
-}
-
-- (void)setY:(float)valueY ofVertex:(int)indexOfVertex
-{
-	sTexSquare[(self.sizeOfVertex * indexOfVertex) + 1] = valueY;
-}
 
 -(BOOL)loadResourceWithName:(NSString*)strNameOfResource
 {
@@ -45,23 +48,26 @@ enum {
 		float height = textureSize / screenSize.height;
 		{
 			// 頂点座標をテクスチャサイズにあわせる
-			[self setX:-width ofVertex:0];
-			[self setY:height ofVertex:0];
+			texSquare[0].x = -width;
+			texSquare[0].y = height;
 			
-			[self setX:width ofVertex:1];
-			[self setY:height ofVertex:1];
+			texSquare[1].x = width;
+			texSquare[1].y = height;
 			
-			[self setX:-width ofVertex:2];
-			[self setY:-height ofVertex:2];
-			[self setX:width ofVertex:3];
-			[self setY:-height ofVertex:3];
+			texSquare[2].x = -width;
+			texSquare[2].y = -height;
+			
+			texSquare[3].x = width;
+			texSquare[3].y = -height;
 		}
+		// 構造体サイズが20バイトでない場合はこのコードを使えません
+		assert((sizeof(texSquare[0]) == 20));
 		glGenVertexArraysOES(1, &_vertexArray);
 		glBindVertexArrayOES(_vertexArray);
 		{
 			glGenBuffers(1, &_vertexBuffer);
 			glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(sTexSquare), sTexSquare, GL_DYNAMIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(texSquare), texSquare, GL_DYNAMIC_DRAW);
 			glEnableVertexAttribArray(_VERTEX_ATTRIB_POSITION);
 			glEnableVertexAttribArray(_VERTEX_ATTRIB_TEXCOORD);
 			glVertexAttribPointer(_VERTEX_ATTRIB_POSITION, 3, GL_FLOAT, GL_FALSE, 20, BUFFER_OFFSET(0));
