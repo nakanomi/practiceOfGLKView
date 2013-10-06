@@ -7,8 +7,10 @@
 //
 
 #import "VArrayBase.h"
+#import "SimpleTextureBuffer.h"
 
-@interface FboTextureBuffer : VArrayBase
+
+@interface FboTextureBuffer : SimpleTextureBuffer
 -(BOOL)loadResourceWithName:(NSString*)strNameOfResource;
 -(void)setupForDotByDotRenderSize:(CGSize)sizeRender texSize:(CGSize)sizeTexture;
 

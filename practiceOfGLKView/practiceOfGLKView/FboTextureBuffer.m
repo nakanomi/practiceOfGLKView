@@ -7,13 +7,7 @@
 //
 
 #import "FboTextureBuffer.h"
-static GLfloat sFboTexSquare[] =
-{
-	-1.0f, 1.0f, 0.0f,			0.0f, 0.0f,
-	1.0f,  1.0f, 0.0f,			1.0f, 0.0f,
-	-1.0f,-1.0f, 0.0f,			0.0f, 1.0f,
-	1.0f, -1.0f, 0.0f,			1.0f, 1.0f,
-};
+
 static const int _sizeOfVertex = 5;
 
 enum {
@@ -30,21 +24,12 @@ enum {
 {
 	BOOL result = NO;
 	@try {
-		glGenVertexArraysOES(1, &_vertexArray);
-		glBindVertexArrayOES(_vertexArray);
 		{
-			glGenBuffers(1, &_vertexBuffer);
-			glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(sFboTexSquare), sFboTexSquare, GL_DYNAMIC_DRAW);
-			glEnableVertexAttribArray(_VERTEX_ATTRIB_POSITION);
-			glEnableVertexAttribArray(_VERTEX_ATTRIB_TEXCOORD);
-			glVertexAttribPointer(_VERTEX_ATTRIB_POSITION, 3, GL_FLOAT, GL_FALSE, 20, BUFFER_OFFSET(0));
-			glVertexAttribPointer(_VERTEX_ATTRIB_TEXCOORD, 2, GL_FLOAT, GL_FALSE, 20, BUFFER_OFFSET(12));
-			
+			CGSize sizeTexture = CGSizeMake(512.0f, 512.0f);
+			CGSize sizeRenderBuffer = [VArrayBase getScreenSize];
+			[self setupVerticesByTexSize:sizeTexture withRenderBufferSize:sizeRenderBuffer];
 		}
-		glBindVertexArrayOES(0);
-		
-		_count = 4;
+		result = [super loadResourceWithName:strNameOfResource];
 	}
 	@catch (NSException *exception) {
 	}
