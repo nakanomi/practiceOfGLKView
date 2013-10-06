@@ -16,5 +16,7 @@
 @property (readwrite) GLint height;
 
 -(id)init;
+- (void)changeRenderTargetToFBO;
+
 
 @end
