@@ -13,7 +13,10 @@ typedef struct {
 }SIMPLE_TEXTURE_VERTEX;
 
 @interface SimpleTextureBuffer : VArrayBase
-@property (readonly, getter = getSizeOfVertex)int sizeOfVertex;
+
+- (id)init;
 -(BOOL)loadResourceWithName:(NSString*)strNameOfResource;
+-(void)setParamOfVertex:(SIMPLE_TEXTURE_VERTEX*)vertex ofX:(float)x ofY:(float)y
+					ofZ:(float)z ofS:(float)s ofT:(float)t;
 
 @end

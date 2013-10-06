@@ -7,25 +7,6 @@
 //
 
 #import "SimpleTextureBuffer.h"
-/*
-static GLfloat sTexSquare[] =
-{
-	-0.5f, 0.5f, 0.0f,			0.0f, 0.0f,
-	0.5f,  0.5f, 0.0f,			1.0f, 0.0f,
-	-0.5f,-0.5f, 0.0f,			0.0f, 1.0f,
-	0.5f, -0.5f, 0.0f,			1.0f, 1.0f,
-};
- */
-
-static SIMPLE_TEXTURE_VERTEX texSquare[4] = {
-	-0.5f, 0.5f, 0.0f,			0.0f, 0.0f,
-	0.5f,  0.5f, 0.0f,			1.0f, 0.0f,
-	-0.5f,-0.5f, 0.0f,			0.0f, 1.0f,
-	0.5f, -0.5f, 0.0f,			1.0f, 1.0f,
-};
-
-#define _SIZE_OF_VERTEX	5
-
 enum {
 	_VERTEX_ATTRIB_POSITION = 0,
 	_VERTEX_ATTRIB_TEXCOORD,
@@ -33,41 +14,63 @@ enum {
 
 @interface SimpleTextureBuffer()
 {
+	SIMPLE_TEXTURE_VERTEX _texSquare[4];
 }
 @end
 
 @implementation SimpleTextureBuffer
 
--(BOOL)loadResourceWithName:(NSString*)strNameOfResource
+-(void)setParamOfVertex:(SIMPLE_TEXTURE_VERTEX*)vertex ofX:(float)x ofY:(float)y
+					ofZ:(float)z ofS:(float)s ofT:(float)t
 {
-	BOOL result = NO;
-	@try {
+	vertex->x = x;
+	vertex->y = y;
+	vertex->z = z;
+	vertex->s = s;
+	vertex->t = t;
+}
+
+
+- (id)init
+{
+	self = [super init];
+	if (self != nil) {
 		CGSize screenSize = [VArrayBase getScreenSize];
 		const float textureSize = 16.0f;
 		float width = textureSize / screenSize.width;
 		float height = textureSize / screenSize.height;
 		{
 			// 頂点座標をテクスチャサイズにあわせる
-			texSquare[0].x = -width;
-			texSquare[0].y = height;
+			[self setParamOfVertex:&_texSquare[0] ofX:-width ofY:height ofZ:0.0f
+							   ofS:0.0f ofT:0.0f];
 			
-			texSquare[1].x = width;
-			texSquare[1].y = height;
+			[self setParamOfVertex:&_texSquare[1] ofX:width ofY:height ofZ:0.0f
+							   ofS:1.0f ofT:0.0f];
 			
-			texSquare[2].x = -width;
-			texSquare[2].y = -height;
+			[self setParamOfVertex:&_texSquare[2] ofX:-width ofY:-height ofZ:0.0f
+							   ofS:0.0f ofT:1.0f];
 			
-			texSquare[3].x = width;
-			texSquare[3].y = -height;
+			[self setParamOfVertex:&_texSquare[3] ofX:width ofY:-height ofZ:0.0f
+							   ofS:1.0f ofT:1.0f];
 		}
+		
+	}
+	return self;
+}
+
+
+-(BOOL)loadResourceWithName:(NSString*)strNameOfResource
+{
+	BOOL result = NO;
+	@try {
 		// 構造体サイズが20バイトでない場合はこのコードを使えません
-		assert((sizeof(texSquare[0]) == 20));
+		assert((sizeof(_texSquare[0]) == 20));
 		glGenVertexArraysOES(1, &_vertexArray);
 		glBindVertexArrayOES(_vertexArray);
 		{
 			glGenBuffers(1, &_vertexBuffer);
 			glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(texSquare), texSquare, GL_DYNAMIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(_texSquare), _texSquare, GL_DYNAMIC_DRAW);
 			glEnableVertexAttribArray(_VERTEX_ATTRIB_POSITION);
 			glEnableVertexAttribArray(_VERTEX_ATTRIB_TEXCOORD);
 			glVertexAttribPointer(_VERTEX_ATTRIB_POSITION, 3, GL_FLOAT, GL_FALSE, 20, BUFFER_OFFSET(0));
@@ -81,11 +84,6 @@ enum {
 	@catch (NSException *exception) {
 	}
 	return result;
-}
-
-- (int)getSizeOfVertex
-{
-	return _SIZE_OF_VERTEX;
 }
 
 @end
