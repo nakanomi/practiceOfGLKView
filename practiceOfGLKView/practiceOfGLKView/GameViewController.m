@@ -176,6 +176,13 @@
     glEnable(GL_DEPTH_TEST);
 	
 	_vArray = [[SimpleTextureBuffer alloc] init];
+	{
+		CGSize sizeTexture = CGSizeMake(16.0f, 16.0f);
+		CGSize sizeRenderBuffer = CGSizeMake(512.0f, 512.0f);
+		SimpleTextureBuffer *simpleVArray = (SimpleTextureBuffer*)_vArray;
+		[simpleVArray setupVerticesByTexSize:sizeTexture withRenderBufferSize:sizeRenderBuffer];
+	}
+
     [_vArray loadResourceWithName:nil];
 	
 	{
@@ -224,8 +231,9 @@
 				 GL_RGBA,
 				 GL_UNSIGNED_BYTE,
 				 NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	// テクスチャの補間をしない
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	
@@ -368,17 +376,17 @@
 	}
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	BOOL bUseFbo = NO;
+	
+	BOOL bUseFbo = YES;
 
 	if (bUseFbo) {
-	// レンダリングターゲットをFBOに変更
-	[self changeRenderTargetToFBO];
-	// オブジェクトをレンダリング
-	[self renderObjects];
-	// レンダリングターゲットを通常のフレームバッファに変更
-	glBindFramebuffer(GL_FRAMEBUFFER, _defaultFBO);
-	[view bindDrawable];
+		// レンダリングターゲットをFBOに変更
+		[self changeRenderTargetToFBO];
+		// オブジェクトをレンダリング
+		[self renderObjects];
+		// レンダリングターゲットを通常のフレームバッファに変更
+		glBindFramebuffer(GL_FRAMEBUFFER, _defaultFBO);
+		[view bindDrawable];
 	}
 	// ビューポートを設定
 	CGSize viewSize = [VArrayBase getScreenSize];
@@ -390,11 +398,11 @@
 	
 	
 	if (bUseFbo) {
-	glUseProgram(_fboShader.programId);
-	glBindVertexArrayOES(_fboVArray.vertexArray);
-	glBindTexture(GL_TEXTURE_2D, _fboTexId);
-	
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, _fboVArray.count);
+		glUseProgram(_fboShader.programId);
+		glBindVertexArrayOES(_fboVArray.vertexArray);
+		glBindTexture(GL_TEXTURE_2D, _fboTexId);
+		
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, _fboVArray.count);
 	}
 	else {
 		[self renderObjects];

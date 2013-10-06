@@ -12,9 +12,11 @@ enum {
 	_VERTEX_ATTRIB_TEXCOORD,
 };
 
+#define _NUM_VERTICES 4
+
 @interface SimpleTextureBuffer()
 {
-	SIMPLE_TEXTURE_VERTEX _texSquare[4];
+	SIMPLE_TEXTURE_VERTEX _texSquare[_NUM_VERTICES];
 }
 @end
 
@@ -58,6 +60,25 @@ enum {
 	return self;
 }
 
+-(void)setupVerticesByTexSize:(CGSize)sizeTexture withRenderBufferSize:(CGSize)sizeRenderBuf
+{
+	float width = sizeTexture.width / sizeRenderBuf.width;
+	float height = sizeTexture.height / sizeRenderBuf.height;
+	// 頂点座標をテクスチャサイズにあわせる
+	[self setParamOfVertex:&_texSquare[0] ofX:-width ofY:height ofZ:0.0f
+					   ofS:0.0f ofT:0.0f];
+	
+	[self setParamOfVertex:&_texSquare[1] ofX:width ofY:height ofZ:0.0f
+					   ofS:1.0f ofT:0.0f];
+	
+	[self setParamOfVertex:&_texSquare[2] ofX:-width ofY:-height ofZ:0.0f
+					   ofS:0.0f ofT:1.0f];
+	
+	[self setParamOfVertex:&_texSquare[3] ofX:width ofY:-height ofZ:0.0f
+					   ofS:1.0f ofT:1.0f];
+}
+
+
 
 -(BOOL)loadResourceWithName:(NSString*)strNameOfResource
 {
@@ -79,7 +100,7 @@ enum {
 		}
 		glBindVertexArrayOES(0);
 		
-		_count = 4;
+		_count = _NUM_VERTICES;
 	}
 	@catch (NSException *exception) {
 	}
