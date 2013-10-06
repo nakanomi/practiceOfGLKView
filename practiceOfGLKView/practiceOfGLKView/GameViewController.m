@@ -46,19 +46,7 @@
 	int _animationFrameInterval;
 	
 	// FBO
-#if _USE_CONTROLER_FBO
-	SimpleFboShader* _fboShader;
-	FboTextureBuffer *_fboVArray;
-	//GLKVector4 _vTranceFbo;
-	int _fboWidth;
-	int _fboHeight;
-	GLint _defaultFBO;
-	GLuint _fboHandle;
-	GLuint _fboTexId;
-	GLuint _fboDepthBuffer;
-#else
 	FboBase *_fboBase;
-#endif
 	 
 }
 @property (strong, nonatomic) EAGLContext *context;
@@ -215,84 +203,19 @@
 		NSLog(@"%d", en);
 	}
 	[self setupFBO];
-#if _USE_CONTROLER_FBO
-	_fboVArray = [[FboTextureBuffer alloc] init];
-	[_fboVArray loadResourceWithName:nil];
-#endif
 }
 
 - (void)setupFBO
 {
-#if _USE_CONTROLER_FBO
-	_fboWidth = 512;
-	_fboHeight = 512;
-	glGetIntegerv(GL_FRAMEBUFFER_BINDING, &_defaultFBO);
-	
-	glGenFramebuffers(1, &_fboHandle);
-	glGenTextures(1, &_fboTexId);
-	glGenRenderbuffers(1, &_fboDepthBuffer);
-	
-	glBindFramebuffer(GL_FRAMEBUFFER, _fboHandle);
-	glBindTexture(GL_TEXTURE_2D, _fboTexId);
-	glTexImage2D(GL_TEXTURE_2D,
-				 0,
-				 GL_RGBA,
-				 _fboWidth, _fboHeight,
-				 0,
-				 GL_RGBA,
-				 GL_UNSIGNED_BYTE,
-				 NULL);
-	// テクスチャの補間をしない
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
-						   GL_TEXTURE_2D, _fboTexId, 0);
-	glBindRenderbuffer(GL_RENDERBUFFER, _fboDepthBuffer);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16_OES, _fboWidth, _fboHeight);
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _fboDepthBuffer);
-	GLenum status;
-	status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
-    switch(status) {
-        case GL_FRAMEBUFFER_COMPLETE:
-            NSLog(@"fbo complete");
-            break;
-            
-        case GL_FRAMEBUFFER_UNSUPPORTED:
-            NSLog(@"fbo unsupported");
-            break;
-            
-        default:
-            /* programming error; will fail on all hardware */
-            NSLog(@"Framebuffer Error");
-            break;
-    }
-	glBindFramebuffer(GL_FRAMEBUFFER, _defaultFBO);
-	
-	_fboShader = [[SimpleFboShader alloc] init];
-	[_fboShader loadShaderWithVsh:@"ShaderSimpleFbo" withFsh:@"ShaderSimpleTexture"];
-#else
 	_fboBase = [[FboBase alloc] init];
 	[_fboBase setupFBO];
-#endif
 }
 
 
 - (void)tearDownGL
 {
     [EAGLContext setCurrentContext:self.context];
-#if _USE_CONTROLER_FBO
-	glDeleteTextures(1, &_fboTexId);
-	glDeleteBuffers(1, &_fboDepthBuffer);
-	glDeleteBuffers(1, &_fboHandle);
-	if (_fboVArray != nil) {
-		[_fboVArray release];
-	}
-#else
 	[_fboBase release];
-#endif
     
 	if (_vArray != nil) {
 		[_vArray release];
@@ -336,16 +259,7 @@
 
 - (void)changeRenderTargetToFBO
 {
-#if _USE_CONTROLER_FBO
-	glBindTexture(GL_TEXTURE_2D, 0);
-	glEnable(GL_TEXTURE_2D);
-	glBindFramebuffer(GL_FRAMEBUFFER, _fboHandle);
-	glViewport(0, 0, _fboWidth, _fboHeight);
-	glClearColor(1.0, 1.0, 1.0, 1.0);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-#else
 	[_fboBase changeRenderTargetToFBO];
-#endif
 	
 }
 
@@ -407,11 +321,7 @@
 		// オブジェクトをレンダリング
 		[self renderObjects];
 		// レンダリングターゲットを通常のフレームバッファに変更
-#if _USE_CONTROLER_FBO
-		glBindFramebuffer(GL_FRAMEBUFFER, _defaultFBO);
-#else
 		[_fboBase setDefaultFbo];
-#endif
 		[view bindDrawable];
 	}
 	// ビューポートを設定
@@ -424,15 +334,7 @@
 	
 	
 	if (bUseFbo) {
-#if _USE_CONTROLER_FBO
-		glUseProgram(_fboShader.programId);
-		glBindVertexArrayOES(_fboVArray.vertexArray);
-		glBindTexture(GL_TEXTURE_2D, _fboTexId);
-		
-		glDrawArrays(GL_TRIANGLE_STRIP, 0, _fboVArray.count);
-#else
 		[_fboBase render];
-#endif
 	}
 	else {
 		[self renderObjects];

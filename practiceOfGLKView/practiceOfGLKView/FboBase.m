@@ -43,6 +43,13 @@ static GLint sDefaultFbo = -1;
 
 - (void)dealloc
 {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
+	glDeleteTextures(1, &_fboTexId);
+	glDeleteBuffers(1, &_fboDepthBuffer);
+	glDeleteBuffers(1, &_fboHandle);
+	if (_fboVArray != nil) {
+		[_fboVArray release];
+	}
 	[super dealloc];
 }
 
