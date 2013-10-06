@@ -369,14 +369,17 @@
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	BOOL bUseFbo = NO;
+
+	if (bUseFbo) {
 	// レンダリングターゲットをFBOに変更
 	[self changeRenderTargetToFBO];
 	// オブジェクトをレンダリング
 	[self renderObjects];
-	
 	// レンダリングターゲットを通常のフレームバッファに変更
 	glBindFramebuffer(GL_FRAMEBUFFER, _defaultFBO);
 	[view bindDrawable];
+	}
 	// ビューポートを設定
 	CGSize viewSize = [VArrayBase getScreenSize];
 	glViewport(0, 0, viewSize.width, viewSize.height);
@@ -385,11 +388,17 @@
     glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
+	
+	if (bUseFbo) {
 	glUseProgram(_fboShader.programId);
 	glBindVertexArrayOES(_fboVArray.vertexArray);
 	glBindTexture(GL_TEXTURE_2D, _fboTexId);
 	
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, _fboVArray.count);
+	}
+	else {
+		[self renderObjects];
+	}
 	
     
 }
