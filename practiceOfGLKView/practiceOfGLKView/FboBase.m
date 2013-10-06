@@ -113,6 +113,20 @@ static GLint sDefaultFbo = -1;
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
+- (void)setDefaultFbo
+{
+	// レンダリングターゲットを通常のフレームバッファに変更
+	glBindFramebuffer(GL_FRAMEBUFFER, sDefaultFbo);
+}
+- (void)render
+{
+	glUseProgram(_fboShader.programId);
+	glBindVertexArrayOES(_fboVArray.vertexArray);
+	glBindTexture(GL_TEXTURE_2D, _fboTexId);
+	
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, _fboVArray.count);
+}
+
 
 
 @end

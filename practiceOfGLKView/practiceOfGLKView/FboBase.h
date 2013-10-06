@@ -17,6 +17,8 @@
 
 -(id)init;
 - (void)changeRenderTargetToFBO;
-
+- (void)setupFBO;
+- (void)setDefaultFbo;
+- (void)render;
 
 @end

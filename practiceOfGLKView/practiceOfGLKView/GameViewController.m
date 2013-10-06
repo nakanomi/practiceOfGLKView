@@ -21,8 +21,11 @@
 #import "SimpleFboShader.h"
 
 #import "TextureBase.h"
+#import "FboBase.h"
 
 #define _LOOP_NUM	8
+
+#define _USE_CONTROLER_FBO	0
 
 @interface GameViewController ()
 {
@@ -43,15 +46,20 @@
 	int _animationFrameInterval;
 	
 	// FBO
+#if _USE_CONTROLER_FBO
 	SimpleFboShader* _fboShader;
 	FboTextureBuffer *_fboVArray;
-	GLKVector4 _vTranceFbo;
+	//GLKVector4 _vTranceFbo;
 	int _fboWidth;
 	int _fboHeight;
 	GLint _defaultFBO;
 	GLuint _fboHandle;
 	GLuint _fboTexId;
 	GLuint _fboDepthBuffer;
+#else
+	FboBase *_fboBase;
+#endif
+	 
 }
 @property (strong, nonatomic) EAGLContext *context;
 
@@ -207,12 +215,15 @@
 		NSLog(@"%d", en);
 	}
 	[self setupFBO];
+#if _USE_CONTROLER_FBO
 	_fboVArray = [[FboTextureBuffer alloc] init];
 	[_fboVArray loadResourceWithName:nil];
+#endif
 }
 
 - (void)setupFBO
 {
+#if _USE_CONTROLER_FBO
 	_fboWidth = 512;
 	_fboHeight = 512;
 	glGetIntegerv(GL_FRAMEBUFFER_BINDING, &_defaultFBO);
@@ -262,19 +273,26 @@
 	
 	_fboShader = [[SimpleFboShader alloc] init];
 	[_fboShader loadShaderWithVsh:@"ShaderSimpleFbo" withFsh:@"ShaderSimpleTexture"];
+#else
+	_fboBase = [[FboBase alloc] init];
+	[_fboBase setupFBO];
+#endif
 }
 
 
 - (void)tearDownGL
 {
     [EAGLContext setCurrentContext:self.context];
-
+#if _USE_CONTROLER_FBO
 	glDeleteTextures(1, &_fboTexId);
 	glDeleteBuffers(1, &_fboDepthBuffer);
 	glDeleteBuffers(1, &_fboHandle);
 	if (_fboVArray != nil) {
 		[_fboVArray release];
 	}
+#else
+	[_fboBase release];
+#endif
     
 	if (_vArray != nil) {
 		[_vArray release];
@@ -318,12 +336,16 @@
 
 - (void)changeRenderTargetToFBO
 {
+#if _USE_CONTROLER_FBO
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glEnable(GL_TEXTURE_2D);
 	glBindFramebuffer(GL_FRAMEBUFFER, _fboHandle);
 	glViewport(0, 0, _fboWidth, _fboHeight);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+#else
+	[_fboBase changeRenderTargetToFBO];
+#endif
 	
 }
 
@@ -385,7 +407,11 @@
 		// オブジェクトをレンダリング
 		[self renderObjects];
 		// レンダリングターゲットを通常のフレームバッファに変更
+#if _USE_CONTROLER_FBO
 		glBindFramebuffer(GL_FRAMEBUFFER, _defaultFBO);
+#else
+		[_fboBase setDefaultFbo];
+#endif
 		[view bindDrawable];
 	}
 	// ビューポートを設定
@@ -398,11 +424,15 @@
 	
 	
 	if (bUseFbo) {
+#if _USE_CONTROLER_FBO
 		glUseProgram(_fboShader.programId);
 		glBindVertexArrayOES(_fboVArray.vertexArray);
 		glBindTexture(GL_TEXTURE_2D, _fboTexId);
 		
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, _fboVArray.count);
+#else
+		[_fboBase render];
+#endif
 	}
 	else {
 		[self renderObjects];
