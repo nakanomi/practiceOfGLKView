@@ -170,6 +170,7 @@
 	[_shader loadShaderWithVsh:@"ShaderSimpleTexture" withFsh:@"ShaderSimpleTexture"];
     
     glEnable(GL_DEPTH_TEST);
+	CGSize sizeScreen = [VArrayBase getScreenSize];
 	
 	_vArray = [[SimpleTextureBuffer alloc] init];
 	{
@@ -208,7 +209,8 @@
 - (void)setupFBO
 {
 	_fboBase = [[FboBase alloc] init];
-	[_fboBase setupFBO];
+	CGSize size = CGSizeMake(512.0f, 512.0f);
+	[_fboBase setupFboWithSize:size];
 }
 
 

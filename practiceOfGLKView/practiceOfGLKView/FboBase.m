@@ -23,9 +23,9 @@ static GLint sDefaultFbo = -1;
 	GLuint _fboTexId;
 	GLuint _fboDepthBuffer;
 	
-	CGSize sizeFbo;
+	CGSize _sizeFbo;
 }
-- (void)setupFBO;
+- (void)setupFboWithSize;
 @end
 
 
@@ -54,10 +54,10 @@ static GLint sDefaultFbo = -1;
 }
 
 
-- (void)setupFBO
+- (void)setupFboWithSize:(CGSize)size
 {
-	sizeFbo.width = 512;
-	sizeFbo.height = 512;
+	_sizeFbo.width = size.width;
+	_sizeFbo.height = size.height;
 	if (sDefaultFbo < 0) {
 		glGetIntegerv(GL_FRAMEBUFFER_BINDING, &sDefaultFbo);
 	}
@@ -71,7 +71,7 @@ static GLint sDefaultFbo = -1;
 	glTexImage2D(GL_TEXTURE_2D,
 				 0,
 				 GL_RGBA,
-				 sizeFbo.width, sizeFbo.height,
+				 _sizeFbo.width, _sizeFbo.height,
 				 0,
 				 GL_RGBA,
 				 GL_UNSIGNED_BYTE,
@@ -85,7 +85,7 @@ static GLint sDefaultFbo = -1;
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
 						   GL_TEXTURE_2D, _fboTexId, 0);
 	glBindRenderbuffer(GL_RENDERBUFFER, _fboDepthBuffer);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16_OES, sizeFbo.width, sizeFbo.height);
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16_OES, _sizeFbo.width, _sizeFbo.height);
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _fboDepthBuffer);
 	GLenum status;
 	status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
@@ -116,7 +116,7 @@ static GLint sDefaultFbo = -1;
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glEnable(GL_TEXTURE_2D);
 	glBindFramebuffer(GL_FRAMEBUFFER, _fboHandle);
-	glViewport(0, 0, sizeFbo.width, sizeFbo.height);
+	glViewport(0, 0, _sizeFbo.width, _sizeFbo.height);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }

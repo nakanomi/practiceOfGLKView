@@ -17,7 +17,7 @@
 
 -(id)init;
 - (void)changeRenderTargetToFBO;
-- (void)setupFBO;
+- (void)setupFboWithSize:(CGSize)size;
 - (void)setDefaultFbo;
 - (void)render;
 
