@@ -118,6 +118,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A38C3231802C43800DB435F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8A38C3241802C43800DB435F /* shaders */,
+			);
+			name = src;
+			path = resource/src;
+			sourceTree = SOURCE_ROOT;
+		};
+		8A38C3241802C43800DB435F /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
 		8A78565B17E5B13A001EAB1F = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +245,7 @@
 		8AB6449C17E84F9B00F32580 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				8A38C3231802C43800DB435F /* src */,
 				8AB6449D17E84FAE00F32580 /* graphics */,
 			);
 			name = resource;
