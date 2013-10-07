@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A38C32B1802C52300DB435F /* Shader.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 8A38C3251802C52300DB435F /* Shader.fsh */; };
-		8A38C32C1802C52300DB435F /* Shader.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 8A38C3261802C52300DB435F /* Shader.vsh */; };
-		8A38C32D1802C52300DB435F /* ShaderSimpleFbo.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 8A38C3271802C52300DB435F /* ShaderSimpleFbo.vsh */; };
-		8A38C32E1802C52300DB435F /* ShaderSimpleTexture.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 8A38C3281802C52300DB435F /* ShaderSimpleTexture.fsh */; };
-		8A38C32F1802C52300DB435F /* ShaderSimpleTexture.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 8A38C3291802C52300DB435F /* ShaderSimpleTexture.vsh */; };
-		8A38C3301802C52300DB435F /* ShaderSimpleTriangle.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 8A38C32A1802C52300DB435F /* ShaderSimpleTriangle.vsh */; };
+		8A38C3491802CA3C00DB435F /* Shader.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C33D1802C97600DB435F /* Shader.fragsh */; };
+		8A38C34A1802CA3C00DB435F /* Shader.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C33E1802C97600DB435F /* Shader.vertsh */; };
+		8A38C34B1802CA3C00DB435F /* ShaderSimpleFbo.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C33F1802C97600DB435F /* ShaderSimpleFbo.vertsh */; };
+		8A38C34C1802CA3C00DB435F /* ShaderSimpleTexture.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C3401802C97600DB435F /* ShaderSimpleTexture.fragsh */; };
+		8A38C34D1802CA3C00DB435F /* ShaderSimpleTexture.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C3411802C97600DB435F /* ShaderSimpleTexture.vertsh */; };
+		8A38C34E1802CA3C00DB435F /* ShaderSimpleTriangle.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C3421802C97600DB435F /* ShaderSimpleTriangle.vertsh */; };
 		8A65F59A17E9B3EE00A5AD35 /* TextureBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A65F59917E9B3EE00A5AD35 /* TextureBase.m */; };
 		8A7620CC180000D90074E85C /* FboBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7620CB180000D90074E85C /* FboBase.m */; };
 		8A78566817E5B13A001EAB1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566717E5B13A001EAB1F /* UIKit.framework */; };
@@ -45,12 +45,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8A38C3251802C52300DB435F /* Shader.fsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Shader.fsh; sourceTree = "<group>"; };
-		8A38C3261802C52300DB435F /* Shader.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Shader.vsh; sourceTree = "<group>"; };
-		8A38C3271802C52300DB435F /* ShaderSimpleFbo.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = ShaderSimpleFbo.vsh; sourceTree = "<group>"; };
-		8A38C3281802C52300DB435F /* ShaderSimpleTexture.fsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = ShaderSimpleTexture.fsh; sourceTree = "<group>"; };
-		8A38C3291802C52300DB435F /* ShaderSimpleTexture.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = ShaderSimpleTexture.vsh; sourceTree = "<group>"; };
-		8A38C32A1802C52300DB435F /* ShaderSimpleTriangle.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = ShaderSimpleTriangle.vsh; sourceTree = "<group>"; };
+		8A38C33D1802C97600DB435F /* Shader.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shader.fragsh; sourceTree = "<group>"; };
+		8A38C33E1802C97600DB435F /* Shader.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shader.vertsh; sourceTree = "<group>"; };
+		8A38C33F1802C97600DB435F /* ShaderSimpleFbo.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleFbo.vertsh; sourceTree = "<group>"; };
+		8A38C3401802C97600DB435F /* ShaderSimpleTexture.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleTexture.fragsh; sourceTree = "<group>"; };
+		8A38C3411802C97600DB435F /* ShaderSimpleTexture.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleTexture.vertsh; sourceTree = "<group>"; };
+		8A38C3421802C97600DB435F /* ShaderSimpleTriangle.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleTriangle.vertsh; sourceTree = "<group>"; };
 		8A65F59817E9B3EE00A5AD35 /* TextureBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureBase.h; sourceTree = "<group>"; };
 		8A65F59917E9B3EE00A5AD35 /* TextureBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureBase.m; sourceTree = "<group>"; };
 		8A7620CA180000D90074E85C /* FboBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FboBase.h; sourceTree = "<group>"; };
@@ -129,12 +129,12 @@
 		8A38C3241802C43800DB435F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				8A38C3251802C52300DB435F /* Shader.fsh */,
-				8A38C3261802C52300DB435F /* Shader.vsh */,
-				8A38C3271802C52300DB435F /* ShaderSimpleFbo.vsh */,
-				8A38C3281802C52300DB435F /* ShaderSimpleTexture.fsh */,
-				8A38C3291802C52300DB435F /* ShaderSimpleTexture.vsh */,
-				8A38C32A1802C52300DB435F /* ShaderSimpleTriangle.vsh */,
+				8A38C33D1802C97600DB435F /* Shader.fragsh */,
+				8A38C33E1802C97600DB435F /* Shader.vertsh */,
+				8A38C33F1802C97600DB435F /* ShaderSimpleFbo.vertsh */,
+				8A38C3401802C97600DB435F /* ShaderSimpleTexture.fragsh */,
+				8A38C3411802C97600DB435F /* ShaderSimpleTexture.vertsh */,
+				8A38C3421802C97600DB435F /* ShaderSimpleTriangle.vertsh */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -356,6 +356,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A38C3491802CA3C00DB435F /* Shader.fragsh in Resources */,
+				8A38C34A1802CA3C00DB435F /* Shader.vertsh in Resources */,
+				8A38C34B1802CA3C00DB435F /* ShaderSimpleFbo.vertsh in Resources */,
+				8A38C34C1802CA3C00DB435F /* ShaderSimpleTexture.fragsh in Resources */,
+				8A38C34D1802CA3C00DB435F /* ShaderSimpleTexture.vertsh in Resources */,
+				8A38C34E1802CA3C00DB435F /* ShaderSimpleTriangle.vertsh in Resources */,
 				8A78567617E5B13A001EAB1F /* InfoPlist.strings in Resources */,
 				8A78567E17E5B13A001EAB1F /* Default.png in Resources */,
 				8A78568017E5B13A001EAB1F /* Default@2x.png in Resources */,
@@ -389,12 +395,6 @@
 				8AD3592C17EAF59F00BE0B1F /* GameViewController.m in Sources */,
 				8AC75BAF17FEC32700CE96DE /* FboTextureBuffer.m in Sources */,
 				8AC75BB217FECBDC00CE96DE /* SimpleFboShader.m in Sources */,
-				8A38C32B1802C52300DB435F /* Shader.fsh in Sources */,
-				8A38C32C1802C52300DB435F /* Shader.vsh in Sources */,
-				8A38C32D1802C52300DB435F /* ShaderSimpleFbo.vsh in Sources */,
-				8A38C32E1802C52300DB435F /* ShaderSimpleTexture.fsh in Sources */,
-				8A38C32F1802C52300DB435F /* ShaderSimpleTexture.vsh in Sources */,
-				8A38C3301802C52300DB435F /* ShaderSimpleTriangle.vsh in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
