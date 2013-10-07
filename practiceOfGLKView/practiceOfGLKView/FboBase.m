@@ -25,7 +25,6 @@ static GLint sDefaultFbo = -1;
 	
 	CGSize _sizeFbo;
 }
-- (void)setupFboWithSize;
 @end
 
 
