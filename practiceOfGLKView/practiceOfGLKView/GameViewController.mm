@@ -192,7 +192,7 @@
 	}
 	{
 		_texture = [[TextureBase alloc] init];
-		BOOL loadResult = [_texture loadTextureFromName:@"BG001"ofType:@"png"];
+		BOOL loadResult = [_texture loadTextureFromName:@"BG001" ofType:@"png"];
 		assert(loadResult);
 		
 	}
