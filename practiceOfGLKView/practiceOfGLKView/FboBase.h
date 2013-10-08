@@ -12,9 +12,7 @@
 {
 	
 }
-@property (readwrite) GLint width;
-@property (readwrite) GLint height;
-
+@property (readonly)CGSize sizeFbo;
 -(id)init;
 - (void)changeRenderTargetToFBO;
 - (void)setupFboWithSize:(CGSize)size;

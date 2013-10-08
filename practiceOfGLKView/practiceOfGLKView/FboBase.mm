@@ -16,8 +16,6 @@ static GLint sDefaultFbo = -1;
 
 @interface FboBase()
 {
-	GLint _width;
-	GLint _height;
 	SimpleFboShader* _fboShader;
 	SimpleFboVBuffer* _fboVArray;
 
@@ -31,9 +29,7 @@ static GLint sDefaultFbo = -1;
 
 
 @implementation FboBase
-@synthesize width = _width;
-@synthesize height = _height;
-
+@synthesize sizeFbo = _sizeFbo;
 -(id)init
 {
 	self = [super init];
