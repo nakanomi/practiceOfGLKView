@@ -34,6 +34,10 @@ static GLint sDefaultFbo = -1;
 {
 	self = [super init];
 	if (self != nil) {
+		_clearColor.r =
+		_clearColor.g =
+		_clearColor.b =
+		_clearColor.a = 0.0f;
 	}
 	return self;
 }
@@ -118,7 +122,7 @@ static GLint sDefaultFbo = -1;
 	glEnable(GL_TEXTURE_2D);
 	glBindFramebuffer(GL_FRAMEBUFFER, _fboHandle);
 	glViewport(0, 0, _sizeFbo.width, _sizeFbo.height);
-	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glClearColor(self.clearColor.r, self.clearColor.g, self.clearColor.b, self.clearColor.a);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 - (void)render

@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GLKit/GLKit.h>
 
 @interface FboBase : NSObject
 {
-	
+	GLKVector4 _clearColor;
 }
 @property (readonly)CGSize sizeFbo;
+@property (readwrite)GLKVector4 clearColor;
 -(id)init;
 - (void)changeRenderTargetToFBO;
 - (void)setupFboWithSize:(CGSize)sizeFbo withRenderTarget:(CGSize)sizeRenderTarget;
