@@ -165,17 +165,18 @@
 - (void)setupGL
 {
     [EAGLContext setCurrentContext:self.context];
+
+	[self setupFBO];
     
 	_shader = [[SimpleTextureShader alloc] init];
 	[_shader loadShaderWithVsh:@"ShaderSimpleTexture" withFsh:@"ShaderSimpleTexture"];
     
     glEnable(GL_DEPTH_TEST);
-	CGSize sizeScreen = [VArrayBase getScreenSize];
 	
 	_vArray = [[SimpleTextureVBuffer alloc] init];
 	{
 		CGSize sizeTexture = CGSizeMake(16.0f, 16.0f);
-		CGSize sizeRenderBuffer = CGSizeMake(512.0f, 512.0f);
+		CGSize sizeRenderBuffer = _fboBase.sizeFbo;
 		SimpleTextureVBuffer *simpleVArray = (SimpleTextureVBuffer*)_vArray;
 		[simpleVArray setupVerticesByTexSize:sizeTexture withRenderBufferSize:sizeRenderBuffer];
 	}
@@ -203,7 +204,6 @@
 		en = view.enableSetNeedsDisplay;
 		NSLog(@"%d", en);
 	}
-	[self setupFBO];
 }
 
 - (void)setupFBO

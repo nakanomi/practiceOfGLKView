@@ -120,7 +120,7 @@ static GLint sDefaultFbo = -1;
 	glEnable(GL_TEXTURE_2D);
 	glBindFramebuffer(GL_FRAMEBUFFER, _fboHandle);
 	glViewport(0, 0, _sizeFbo.width, _sizeFbo.height);
-	glClearColor(1.0, 1.0, 1.0, 1.0);
+	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 - (void)setDefaultFbo
