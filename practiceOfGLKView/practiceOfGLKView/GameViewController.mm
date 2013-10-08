@@ -18,14 +18,19 @@
 #import "TextureBase.h"
 #import "FboBase.h"
 
-#define _LOOP_NUM	8
+#define _LOOP_NUM	3
+enum {
+	_FBO_FINAL = 0,
+	_FBO_PREVIOUS,
+	_FBO_NUM
+};
 
 @interface GameViewController ()
 {
 	ShaderBase* _shader;
     
 	// ユニフォーム変数として設定する位置情報。独立させていないと正常に表示されない？
-	GLKVector4 _vTrance[_LOOP_NUM];
+	GLKVector4 _vTrance[_FBO_NUM][_LOOP_NUM];
 	
 	VArrayBase *_vArray;
 	//	GLuint _textureId;
@@ -50,7 +55,7 @@
 - (void)endAnimation;
 - (void)drawFrame;
 - (void)changeRenderTargetToFBO:(FboBase*)targetFbo;
-- (void)renderObjects;
+- (void)renderObjectsForFboIndex:(int)fboIndex;
 
 - (void)setupFBO;
 @end
@@ -175,11 +180,13 @@
     [_vArray loadResourceWithName:nil];
 	
 	{
-		for (int index = 0; index < _LOOP_NUM; index++) {
-			for (int i = 0; i < 4; i++) {
-				_vTrance[index].v[i] = 0.0f;
+		for (int fboIndex = 0; fboIndex < _FBO_NUM; fboIndex++) {
+			for (int index = 0; index < _LOOP_NUM; index++) {
+				for (int i = 0; i < 4; i++) {
+					_vTrance[fboIndex][index].v[i] = 0.0f;
+				}
+				_vTrance[fboIndex][index].y = 0.0f;
 			}
-			_vTrance[index].y = 0.0f;
 		}
 	}
 	{
@@ -262,7 +269,7 @@
 	
 }
 
-- (void)renderObjects
+- (void)renderObjectsForFboIndex:(int)fboIndex;
 {
     // Render the object with GLKit
     
@@ -281,16 +288,27 @@
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, _texture.textureId);
 	
-	_vTrance[0].x = -1.0f;
+	_vTrance[fboIndex][0].x = -1.0f;
 	for (int i = 1; i < _LOOP_NUM; i++) {
-		_vTrance[i].x = _vTrance[i - 1].x + (2.0f / (float)_LOOP_NUM);
-		_vTrance[i].y = _vTrance[i - 1].y + (1.0f / (float)_LOOP_NUM);
+		_vTrance[fboIndex][i].x = _vTrance[fboIndex][i - 1].x + (2.0f / (float)_LOOP_NUM);
+		switch (fboIndex) {
+			case _FBO_PREVIOUS:
+				_vTrance[fboIndex][i].y = _vTrance[fboIndex][i - 1].y + (1.0f / (float)_LOOP_NUM);
+				break;
+			case _FBO_FINAL:
+				_vTrance[fboIndex][i].y = _vTrance[fboIndex][i - 1].y - (1.0f / (float)_LOOP_NUM);
+				break;
+				
+			default:
+				assert(false);
+				break;
+		}
 	}
 	
 	for (int i = 0; i < _LOOP_NUM; i++) {
 		// シェーダーのユニフォーム変数をセット
 		glUniform4fv([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_TRANS],
-					 1, &_vTrance[i].x);
+					 1, &_vTrance[fboIndex][i].x);
 		
 		//glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, _vArray.count);
@@ -319,10 +337,15 @@
 		// レンダリングターゲットをFBOに変更
 		[self changeRenderTargetToFBO:_fbo0];
 		// オブジェクトをレンダリング
-		[self renderObjects];
+		[self renderObjectsForFboIndex:_FBO_PREVIOUS];
 		// 最終Fboに、それ以前用のFBOをレンダリング
 		[self changeRenderTargetToFBO:_fboFinal];
 		[_fbo0 render];
+		// 最終Fbo全画面にFbo0を描き込んでいるため、デプステストが有効だと描き込めないので
+		// 最終Fboにオブジェクトをレンダリングする前にデプステストを無効にする。
+		glDisable(GL_DEPTH_TEST);
+		[self renderObjectsForFboIndex:_FBO_FINAL];
+		glEnable(GL_DEPTH_TEST);
 		// レンダリングターゲットを通常のフレームバッファに変更
 		[FboBase setDefaultFbo];
 		[view bindDrawable];
@@ -340,7 +363,7 @@
 		[_fboFinal render];
 	}
 	else {
-		[self renderObjects];
+		[self renderObjectsForFboIndex:0];
 	}
 	
     
