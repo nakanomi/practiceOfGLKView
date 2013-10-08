@@ -15,8 +15,9 @@
 @property (readonly)CGSize sizeFbo;
 -(id)init;
 - (void)changeRenderTargetToFBO;
-- (void)setupFboWithSize:(CGSize)size;
-- (void)setDefaultFbo;
+- (void)setupFboWithSize:(CGSize)sizeFbo withRenderTarget:(CGSize)sizeRenderTarget;
 - (void)render;
+
++ (void)setDefaultFbo;
 
 @end

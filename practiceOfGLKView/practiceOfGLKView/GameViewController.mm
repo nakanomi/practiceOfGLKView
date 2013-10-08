@@ -211,7 +211,10 @@
 {
 	_fboFinal = [[FboBase alloc] init];
 	CGSize size = CGSizeMake(512.0f, 512.0f);
-	[_fboFinal setupFboWithSize:size];
+	[_fboFinal setupFboWithSize:size withRenderTarget:[VArrayBase getScreenSize]];
+	
+	_fbo0 = [[FboBase alloc] init];
+	[_fbo0 setupFboWithSize:size withRenderTarget:size];
 }
 
 
@@ -219,6 +222,7 @@
 {
     [EAGLContext setCurrentContext:self.context];
 	[_fboFinal release];
+	[_fbo0 release];
     
 	if (_vArray != nil) {
 		[_vArray release];
@@ -321,11 +325,14 @@
 
 	if (bUseFbo) {
 		// レンダリングターゲットをFBOに変更
-		[self changeRenderTargetToFBO:_fboFinal];
+		[self changeRenderTargetToFBO:_fbo0];
 		// オブジェクトをレンダリング
 		[self renderObjects];
+		// 最終Fboに、それ以前用のFBOをレンダリング
+		[self changeRenderTargetToFBO:_fboFinal];
+		[_fbo0 render];
 		// レンダリングターゲットを通常のフレームバッファに変更
-		[_fboFinal setDefaultFbo];
+		[FboBase setDefaultFbo];
 		[view bindDrawable];
 	}
 	// ビューポートを設定

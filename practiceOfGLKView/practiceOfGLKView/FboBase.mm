@@ -51,10 +51,10 @@ static GLint sDefaultFbo = -1;
 }
 
 
-- (void)setupFboWithSize:(CGSize)size
+- (void)setupFboWithSize:(CGSize)sizeFbo withRenderTarget:(CGSize)sizeRenderTarget;
 {
-	_sizeFbo.width = size.width;
-	_sizeFbo.height = size.height;
+	_sizeFbo.width = sizeFbo.width;
+	_sizeFbo.height = sizeFbo.height;
 	if (sDefaultFbo < 0) {
 		glGetIntegerv(GL_FRAMEBUFFER_BINDING, &sDefaultFbo);
 	}
@@ -106,9 +106,7 @@ static GLint sDefaultFbo = -1;
 	[_fboShader loadShaderWithVsh:@"ShaderSimpleFbo" withFsh:@"ShaderSimpleTexture"];
 	_fboVArray = [[SimpleFboVBuffer alloc] init];
 	{
-		// レンダリング先は通常のフレームバッファで、そこにドットバイドット表示とする
-		CGSize sizeRenderBuffer = [VArrayBase getScreenSize];
-		[_fboVArray setupVerticesByTexSize:_sizeFbo withRenderBufferSize:sizeRenderBuffer];
+		[_fboVArray setupVerticesByTexSize:_sizeFbo withRenderBufferSize:sizeRenderTarget];
 		[_fboVArray loadResourceWithName:nil];
 	}
 	//[_fboVArray loadResourceWithName:nil];
@@ -123,11 +121,6 @@ static GLint sDefaultFbo = -1;
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
-- (void)setDefaultFbo
-{
-	// レンダリングターゲットを通常のフレームバッファに変更
-	glBindFramebuffer(GL_FRAMEBUFFER, sDefaultFbo);
-}
 - (void)render
 {
 	glUseProgram(_fboShader.programId);
@@ -135,6 +128,12 @@ static GLint sDefaultFbo = -1;
 	glBindTexture(GL_TEXTURE_2D, _fboTexId);
 	
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, _fboVArray.count);
+}
+
++ (void)setDefaultFbo
+{
+	// レンダリングターゲットを通常のフレームバッファに変更
+	glBindFramebuffer(GL_FRAMEBUFFER, sDefaultFbo);
 }
 
 
