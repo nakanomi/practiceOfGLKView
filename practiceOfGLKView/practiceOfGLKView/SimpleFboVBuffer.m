@@ -15,6 +15,7 @@
 	float width = sizeTexture.width / sizeRenderBuf.width;
 	float height = sizeTexture.height / sizeRenderBuf.height;
 	// 頂点座標をテクスチャサイズにあわせる
+	// FBOへレンダリングすると上下が逆になるようだ(opengl fbo upside downなどで検索)。それを考慮しt座標を逆の値にする
 	[self setParamOfVertex:&_texSquare[0] ofX:-width ofY:height ofZ:0.0f
 					   ofS:0.0f ofT:1.0f];
 	
