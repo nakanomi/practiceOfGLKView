@@ -277,11 +277,6 @@ enum {
 	
 	// 頂点バッファを選択
 	glBindVertexArrayOES(_vArray.vertexArray);
-	// テクスチャの補間をしない
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
@@ -310,6 +305,11 @@ enum {
 		glUniform4fv([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_TRANS],
 					 1, &_vTrance[fboIndex][i].x);
 		
+		// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 		//glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, _vArray.count);
 	}
