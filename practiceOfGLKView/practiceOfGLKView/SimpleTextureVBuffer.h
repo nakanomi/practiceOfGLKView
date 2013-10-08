@@ -12,7 +12,12 @@ typedef struct {
 	float s, t;
 }SIMPLE_TEXTURE_VERTEX;
 
+#define _SIMPLETEXTV_NUM_VERTICES 4
+
 @interface SimpleTextureVBuffer : VArrayBase
+{
+	SIMPLE_TEXTURE_VERTEX _texSquare[_SIMPLETEXTV_NUM_VERTICES];
+}
 
 - (id)init;
 -(BOOL)loadResourceWithName:(NSString*)strNameOfResource;

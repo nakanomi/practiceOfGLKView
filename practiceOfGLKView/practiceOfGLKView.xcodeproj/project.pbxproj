@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A16DD541803E0990056706B /* SimpleFboVBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A16DD531803E0980056706B /* SimpleFboVBuffer.m */; };
 		8A38C3491802CA3C00DB435F /* Shader.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C33D1802C97600DB435F /* Shader.fragsh */; };
 		8A38C34A1802CA3C00DB435F /* Shader.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C33E1802C97600DB435F /* Shader.vertsh */; };
 		8A38C34B1802CA3C00DB435F /* ShaderSimpleFbo.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C33F1802C97600DB435F /* ShaderSimpleFbo.vertsh */; };
@@ -44,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A16DD521803E0980056706B /* SimpleFboVBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFboVBuffer.h; sourceTree = "<group>"; };
+		8A16DD531803E0980056706B /* SimpleFboVBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleFboVBuffer.m; sourceTree = "<group>"; };
 		8A38C33D1802C97600DB435F /* Shader.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shader.fragsh; sourceTree = "<group>"; };
 		8A38C33E1802C97600DB435F /* Shader.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shader.vertsh; sourceTree = "<group>"; };
 		8A38C33F1802C97600DB435F /* ShaderSimpleFbo.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleFbo.vertsh; sourceTree = "<group>"; };
@@ -271,6 +274,8 @@
 			children = (
 				8AC75BB017FECBDC00CE96DE /* SimpleFboShader.h */,
 				8AC75BB117FECBDC00CE96DE /* SimpleFboShader.m */,
+				8A16DD521803E0980056706B /* SimpleFboVBuffer.h */,
+				8A16DD531803E0980056706B /* SimpleFboVBuffer.m */,
 			);
 			name = fboRender;
 			sourceTree = "<group>";
@@ -389,6 +394,7 @@
 				8A65F59A17E9B3EE00A5AD35 /* TextureBase.m in Sources */,
 				8AD3592C17EAF59F00BE0B1F /* GameViewController.m in Sources */,
 				8AC75BB217FECBDC00CE96DE /* SimpleFboShader.m in Sources */,
+				8A16DD541803E0990056706B /* SimpleFboVBuffer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

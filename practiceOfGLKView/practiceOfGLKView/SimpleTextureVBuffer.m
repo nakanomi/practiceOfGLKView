@@ -12,11 +12,9 @@ enum {
 	_VERTEX_ATTRIB_TEXCOORD,
 };
 
-#define _NUM_VERTICES 4
 
 @interface SimpleTextureVBuffer()
 {
-	SIMPLE_TEXTURE_VERTEX _texSquare[_NUM_VERTICES];
 }
 @end
 
@@ -100,7 +98,7 @@ enum {
 		}
 		glBindVertexArrayOES(0);
 		
-		_count = _NUM_VERTICES;
+		_count = _SIMPLETEXTV_NUM_VERTICES;
 	}
 	@catch (NSException *exception) {
 	}
