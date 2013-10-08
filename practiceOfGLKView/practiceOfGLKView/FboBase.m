@@ -109,6 +109,7 @@ static GLint sDefaultFbo = -1;
 	[_fboShader loadShaderWithVsh:@"ShaderSimpleFbo" withFsh:@"ShaderSimpleTexture"];
 	_fboVArray = [[SimpleTextureBuffer alloc] init];
 	{
+		// レンダリング先は通常のフレームバッファで、そこにドットバイドット表示とする
 		CGSize sizeRenderBuffer = [VArrayBase getScreenSize];
 		[_fboVArray setupVerticesByTexSize:_sizeFbo withRenderBufferSize:sizeRenderBuffer];
 		[_fboVArray loadResourceWithName:nil];

@@ -25,6 +25,7 @@
 {
 	BOOL result = NO;
 	@try {
+		// 原点にレンダリングされるものとする。ユニフォーム変数での移動をするなら別のシェーダーを用意する事
 		glBindAttribLocation(self.programId, ATTR_SIMPLE_FBO_POSITION, "position");
 		glBindAttribLocation(self.programId, ATTR_SIMPLE_FBO_TEXCOORD, "texcoord");
 		result =YES;
