@@ -9,15 +9,10 @@
 
 #import "GameViewController.h"
 #import "ShaderBase.h"
-//#import "TestShader.h"
-//#import "TestVArray.h"
-//#import "SimpleTriangleShader.h"
-//#import "SimpleTriangleBuffer.h"
 
 #import "SimpleTextureShader.h"
 #import "SimpleTextureVBuffer.h"
 
-//#import "FboTextureBuffer.h"
 #import "SimpleFboShader.h"
 
 #import "TextureBase.h"
@@ -25,15 +20,10 @@
 
 #define _LOOP_NUM	8
 
-#define _USE_CONTROLER_FBO	0
-
 @interface GameViewController ()
 {
 	ShaderBase* _shader;
     
-    GLKMatrix4 _modelViewProjectionMatrix;
-    GLKMatrix3 _normalMatrix;
-    float _rotation;
 	// ユニフォーム変数として設定する位置情報。独立させていないと正常に表示されない？
 	GLKVector4 _vTrance[_LOOP_NUM];
 	
