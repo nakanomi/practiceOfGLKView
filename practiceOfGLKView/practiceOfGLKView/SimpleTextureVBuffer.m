@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 nakano_michiharu. All rights reserved.
 //
 
-#import "SimpleTextureBuffer.h"
+#import "SimpleTextureVBuffer.h"
 enum {
 	_VERTEX_ATTRIB_POSITION = 0,
 	_VERTEX_ATTRIB_TEXCOORD,
@@ -14,13 +14,13 @@ enum {
 
 #define _NUM_VERTICES 4
 
-@interface SimpleTextureBuffer()
+@interface SimpleTextureVBuffer()
 {
 	SIMPLE_TEXTURE_VERTEX _texSquare[_NUM_VERTICES];
 }
 @end
 
-@implementation SimpleTextureBuffer
+@implementation SimpleTextureVBuffer
 
 -(void)setParamOfVertex:(SIMPLE_TEXTURE_VERTEX*)vertex ofX:(float)x ofY:(float)y
 					ofZ:(float)z ofS:(float)s ofT:(float)t

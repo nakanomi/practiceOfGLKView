@@ -9,7 +9,7 @@
 #import "FboBase.h"
 #import "SimpleFboShader.h"
 //#import "FboTextureBuffer.h"
-#import "SimpleTextureBuffer.h"
+#import "SimpleTextureVBuffer.h"
 
 static GLint sDefaultFbo = -1;
 
@@ -18,7 +18,7 @@ static GLint sDefaultFbo = -1;
 	GLint _width;
 	GLint _height;
 	SimpleFboShader* _fboShader;
-	SimpleTextureBuffer* _fboVArray;
+	SimpleTextureVBuffer* _fboVArray;
 
 	GLuint _fboHandle;
 	GLuint _fboTexId;
@@ -107,7 +107,7 @@ static GLint sDefaultFbo = -1;
 	
 	_fboShader = [[SimpleFboShader alloc] init];
 	[_fboShader loadShaderWithVsh:@"ShaderSimpleFbo" withFsh:@"ShaderSimpleTexture"];
-	_fboVArray = [[SimpleTextureBuffer alloc] init];
+	_fboVArray = [[SimpleTextureVBuffer alloc] init];
 	{
 		// レンダリング先は通常のフレームバッファで、そこにドットバイドット表示とする
 		CGSize sizeRenderBuffer = [VArrayBase getScreenSize];

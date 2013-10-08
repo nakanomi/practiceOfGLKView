@@ -15,7 +15,7 @@
 //#import "SimpleTriangleBuffer.h"
 
 #import "SimpleTextureShader.h"
-#import "SimpleTextureBuffer.h"
+#import "SimpleTextureVBuffer.h"
 
 //#import "FboTextureBuffer.h"
 #import "SimpleFboShader.h"
@@ -172,11 +172,11 @@
     glEnable(GL_DEPTH_TEST);
 	CGSize sizeScreen = [VArrayBase getScreenSize];
 	
-	_vArray = [[SimpleTextureBuffer alloc] init];
+	_vArray = [[SimpleTextureVBuffer alloc] init];
 	{
 		CGSize sizeTexture = CGSizeMake(16.0f, 16.0f);
 		CGSize sizeRenderBuffer = CGSizeMake(512.0f, 512.0f);
-		SimpleTextureBuffer *simpleVArray = (SimpleTextureBuffer*)_vArray;
+		SimpleTextureVBuffer *simpleVArray = (SimpleTextureVBuffer*)_vArray;
 		[simpleVArray setupVerticesByTexSize:sizeTexture withRenderBufferSize:sizeRenderBuffer];
 	}
 
@@ -287,6 +287,7 @@
 	_vTrance[0].x = -1.0f;
 	for (int i = 1; i < _LOOP_NUM; i++) {
 		_vTrance[i].x = _vTrance[i - 1].x + (2.0f / (float)_LOOP_NUM);
+		_vTrance[i].y = _vTrance[i - 1].y + (1.0f / (float)_LOOP_NUM);
 	}
 	
 	for (int i = 0; i < _LOOP_NUM; i++) {

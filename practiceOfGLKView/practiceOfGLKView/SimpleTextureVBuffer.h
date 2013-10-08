@@ -12,7 +12,7 @@ typedef struct {
 	float s, t;
 }SIMPLE_TEXTURE_VERTEX;
 
-@interface SimpleTextureBuffer : VArrayBase
+@interface SimpleTextureVBuffer : VArrayBase
 
 - (id)init;
 -(BOOL)loadResourceWithName:(NSString*)strNameOfResource;
