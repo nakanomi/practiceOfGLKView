@@ -17,7 +17,7 @@
 #import "SimpleTextureShader.h"
 #import "SimpleTextureBuffer.h"
 
-#import "FboTextureBuffer.h"
+//#import "FboTextureBuffer.h"
 #import "SimpleFboShader.h"
 
 #import "TextureBase.h"

@@ -37,7 +37,6 @@
 		8AB6449217E8451F00F32580 /* SimpleTextureShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6449117E8451F00F32580 /* SimpleTextureShader.m */; };
 		8AB6449B17E84CD500F32580 /* SimpleTextureBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6449A17E84CD500F32580 /* SimpleTextureBuffer.m */; };
 		8AB644A017E8501700F32580 /* BG001.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449F17E8501700F32580 /* BG001.png */; };
-		8AC75BAF17FEC32700CE96DE /* FboTextureBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC75BAE17FEC32700CE96DE /* FboTextureBuffer.m */; };
 		8AC75BB217FECBDC00CE96DE /* SimpleFboShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC75BB117FECBDC00CE96DE /* SimpleFboShader.m */; };
 		8AD3592C17EAF59F00BE0B1F /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3592A17EAF59F00BE0B1F /* GameViewController.m */; };
 		8AD3592D17EAF59F00BE0B1F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */; };
@@ -90,8 +89,6 @@
 		8AB6449917E84CD500F32580 /* SimpleTextureBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTextureBuffer.h; sourceTree = "<group>"; };
 		8AB6449A17E84CD500F32580 /* SimpleTextureBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTextureBuffer.m; sourceTree = "<group>"; };
 		8AB6449F17E8501700F32580 /* BG001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG001.png; path = resource/graphics/texture/BG001.png; sourceTree = SOURCE_ROOT; };
-		8AC75BAD17FEC32700CE96DE /* FboTextureBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FboTextureBuffer.h; sourceTree = "<group>"; };
-		8AC75BAE17FEC32700CE96DE /* FboTextureBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FboTextureBuffer.m; sourceTree = "<group>"; };
 		8AC75BB017FECBDC00CE96DE /* SimpleFboShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFboShader.h; sourceTree = "<group>"; };
 		8AC75BB117FECBDC00CE96DE /* SimpleFboShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleFboShader.m; sourceTree = "<group>"; };
 		8AD3592917EAF59F00BE0B1F /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
@@ -272,8 +269,6 @@
 		8AC75BAC17FEC2BB00CE96DE /* fboRender */ = {
 			isa = PBXGroup;
 			children = (
-				8AC75BAD17FEC32700CE96DE /* FboTextureBuffer.h */,
-				8AC75BAE17FEC32700CE96DE /* FboTextureBuffer.m */,
 				8AC75BB017FECBDC00CE96DE /* SimpleFboShader.h */,
 				8AC75BB117FECBDC00CE96DE /* SimpleFboShader.m */,
 			);
@@ -393,7 +388,6 @@
 				8AB6449B17E84CD500F32580 /* SimpleTextureBuffer.m in Sources */,
 				8A65F59A17E9B3EE00A5AD35 /* TextureBase.m in Sources */,
 				8AD3592C17EAF59F00BE0B1F /* GameViewController.m in Sources */,
-				8AC75BAF17FEC32700CE96DE /* FboTextureBuffer.m in Sources */,
 				8AC75BB217FECBDC00CE96DE /* SimpleFboShader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

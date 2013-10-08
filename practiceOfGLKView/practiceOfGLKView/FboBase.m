@@ -8,7 +8,8 @@
 
 #import "FboBase.h"
 #import "SimpleFboShader.h"
-#import "FboTextureBuffer.h"
+//#import "FboTextureBuffer.h"
+#import "SimpleTextureBuffer.h"
 
 static GLint sDefaultFbo = -1;
 
@@ -17,7 +18,7 @@ static GLint sDefaultFbo = -1;
 	GLint _width;
 	GLint _height;
 	SimpleFboShader* _fboShader;
-	FboTextureBuffer* _fboVArray;
+	SimpleTextureBuffer* _fboVArray;
 
 	GLuint _fboHandle;
 	GLuint _fboTexId;
@@ -106,8 +107,13 @@ static GLint sDefaultFbo = -1;
 	
 	_fboShader = [[SimpleFboShader alloc] init];
 	[_fboShader loadShaderWithVsh:@"ShaderSimpleFbo" withFsh:@"ShaderSimpleTexture"];
-	_fboVArray = [[FboTextureBuffer alloc] init];
-	[_fboVArray loadResourceWithName:nil];
+	_fboVArray = [[SimpleTextureBuffer alloc] init];
+	{
+		CGSize sizeRenderBuffer = [VArrayBase getScreenSize];
+		[_fboVArray setupVerticesByTexSize:_sizeFbo withRenderBufferSize:sizeRenderBuffer];
+		[_fboVArray loadResourceWithName:nil];
+	}
+	//[_fboVArray loadResourceWithName:nil];
 }
 
 - (void)changeRenderTargetToFBO
