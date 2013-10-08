@@ -28,11 +28,9 @@
 		8A78568017E5B13A001EAB1F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A78567F17E5B13A001EAB1F /* Default@2x.png */; };
 		8A78568217E5B13A001EAB1F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A78568117E5B13A001EAB1F /* Default-568h@2x.png */; };
 		8A78569417E5B35E001EAB1F /* ShaderBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A78569317E5B35E001EAB1F /* ShaderBase.mm */; };
-		8A78569717E5C7C8001EAB1F /* TestShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A78569617E5C7C8001EAB1F /* TestShader.m */; };
 		8A97E18E17E6C47700B5B4E8 /* TitleViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A97E18C17E6C47700B5B4E8 /* TitleViewController.mm */; };
 		8A97E18F17E6C47700B5B4E8 /* TitleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */; };
 		8A97E1CD17E6E85300B5B4E8 /* VArrayBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A97E1CC17E6E85300B5B4E8 /* VArrayBase.mm */; };
-		8AA9341C17E7018D00C3B34D /* TestVArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9341B17E7018D00C3B34D /* TestVArray.m */; };
 		8AB6448317E8327600F32580 /* SimpleTriangleShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6448217E8327600F32580 /* SimpleTriangleShader.mm */; };
 		8AB6448717E8364100F32580 /* SimpleTriangleBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6448617E8364100F32580 /* SimpleTriangleBuffer.mm */; };
 		8AB6449217E8451F00F32580 /* SimpleTextureShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6449117E8451F00F32580 /* SimpleTextureShader.mm */; };
@@ -74,15 +72,11 @@
 		8A78568117E5B13A001EAB1F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8A78569217E5B35E001EAB1F /* ShaderBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderBase.h; sourceTree = "<group>"; };
 		8A78569317E5B35E001EAB1F /* ShaderBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShaderBase.mm; sourceTree = "<group>"; };
-		8A78569517E5C7C8001EAB1F /* TestShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShader.h; sourceTree = "<group>"; };
-		8A78569617E5C7C8001EAB1F /* TestShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShader.m; sourceTree = "<group>"; };
 		8A97E18B17E6C47700B5B4E8 /* TitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleViewController.h; sourceTree = "<group>"; };
 		8A97E18C17E6C47700B5B4E8 /* TitleViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TitleViewController.mm; sourceTree = "<group>"; };
 		8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleViewController.xib; sourceTree = "<group>"; };
 		8A97E1CB17E6E85300B5B4E8 /* VArrayBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VArrayBase.h; sourceTree = "<group>"; };
 		8A97E1CC17E6E85300B5B4E8 /* VArrayBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VArrayBase.mm; sourceTree = "<group>"; };
-		8AA9341A17E7018D00C3B34D /* TestVArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestVArray.h; sourceTree = "<group>"; };
-		8AA9341B17E7018D00C3B34D /* TestVArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestVArray.m; sourceTree = "<group>"; };
 		8AB6448117E8327600F32580 /* SimpleTriangleShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTriangleShader.h; sourceTree = "<group>"; };
 		8AB6448217E8327600F32580 /* SimpleTriangleShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SimpleTriangleShader.mm; sourceTree = "<group>"; };
 		8AB6448517E8364100F32580 /* SimpleTriangleBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTriangleBuffer.h; sourceTree = "<group>"; };
@@ -211,17 +205,6 @@
 			name = base;
 			sourceTree = "<group>";
 		};
-		8AB6448917E83B3600F32580 /* testUseMyClass */ = {
-			isa = PBXGroup;
-			children = (
-				8A78569517E5C7C8001EAB1F /* TestShader.h */,
-				8A78569617E5C7C8001EAB1F /* TestShader.m */,
-				8AA9341A17E7018D00C3B34D /* TestVArray.h */,
-				8AA9341B17E7018D00C3B34D /* TestVArray.m */,
-			);
-			name = testUseMyClass;
-			sourceTree = "<group>";
-		};
 		8AB6448A17E83B7100F32580 /* testSimpleTriangle */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,7 +282,6 @@
 				8AC75BAC17FEC2BB00CE96DE /* fboRender */,
 				8AB6448F17E843E100F32580 /* testSimpleTexture */,
 				8AB6448A17E83B7100F32580 /* testSimpleTriangle */,
-				8AB6448917E83B3600F32580 /* testUseMyClass */,
 				8AB6448817E83B1400F32580 /* base */,
 			);
 			name = shaderAndBuffer;
@@ -382,11 +364,9 @@
 				8A78567817E5B13A001EAB1F /* main.m in Sources */,
 				8A78567C17E5B13A001EAB1F /* AppDelegate.mm in Sources */,
 				8A78569417E5B35E001EAB1F /* ShaderBase.mm in Sources */,
-				8A78569717E5C7C8001EAB1F /* TestShader.m in Sources */,
 				8A97E18E17E6C47700B5B4E8 /* TitleViewController.mm in Sources */,
 				8A7620CC180000D90074E85C /* FboBase.mm in Sources */,
 				8A97E1CD17E6E85300B5B4E8 /* VArrayBase.mm in Sources */,
-				8AA9341C17E7018D00C3B34D /* TestVArray.m in Sources */,
 				8AB6448317E8327600F32580 /* SimpleTriangleShader.mm in Sources */,
 				8AB6448717E8364100F32580 /* SimpleTriangleBuffer.mm in Sources */,
 				8AB6449217E8451F00F32580 /* SimpleTextureShader.mm in Sources */,
