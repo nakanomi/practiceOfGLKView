@@ -45,8 +45,9 @@
 	BOOL _animating;
 	int _animationFrameInterval;
 	
-	// FBO
-	FboBase *_fboBase;
+	// フレームバッファにレンダリングするためのFBO
+	FboBase *_fboFinal;
+	FboBase *_fbo0;
 	 
 }
 @property (strong, nonatomic) EAGLContext *context;
@@ -58,7 +59,7 @@
 - (void)startAnimation;
 - (void)endAnimation;
 - (void)drawFrame;
-- (void)changeRenderTargetToFBO;
+- (void)changeRenderTargetToFBO:(FboBase*)targetFbo;
 - (void)renderObjects;
 
 - (void)setupFBO;
@@ -176,7 +177,7 @@
 	_vArray = [[SimpleTextureVBuffer alloc] init];
 	{
 		CGSize sizeTexture = CGSizeMake(16.0f, 16.0f);
-		CGSize sizeRenderBuffer = _fboBase.sizeFbo;
+		CGSize sizeRenderBuffer = _fboFinal.sizeFbo;
 		SimpleTextureVBuffer *simpleVArray = (SimpleTextureVBuffer*)_vArray;
 		[simpleVArray setupVerticesByTexSize:sizeTexture withRenderBufferSize:sizeRenderBuffer];
 	}
@@ -208,16 +209,16 @@
 
 - (void)setupFBO
 {
-	_fboBase = [[FboBase alloc] init];
+	_fboFinal = [[FboBase alloc] init];
 	CGSize size = CGSizeMake(512.0f, 512.0f);
-	[_fboBase setupFboWithSize:size];
+	[_fboFinal setupFboWithSize:size];
 }
 
 
 - (void)tearDownGL
 {
     [EAGLContext setCurrentContext:self.context];
-	[_fboBase release];
+	[_fboFinal release];
     
 	if (_vArray != nil) {
 		[_vArray release];
@@ -259,9 +260,9 @@
 	[view display];
 }
 
-- (void)changeRenderTargetToFBO
+- (void)changeRenderTargetToFBO:(FboBase*)targetFbo;
 {
-	[_fboBase changeRenderTargetToFBO];
+	[targetFbo changeRenderTargetToFBO];
 	
 }
 
@@ -320,11 +321,11 @@
 
 	if (bUseFbo) {
 		// レンダリングターゲットをFBOに変更
-		[self changeRenderTargetToFBO];
+		[self changeRenderTargetToFBO:_fboFinal];
 		// オブジェクトをレンダリング
 		[self renderObjects];
 		// レンダリングターゲットを通常のフレームバッファに変更
-		[_fboBase setDefaultFbo];
+		[_fboFinal setDefaultFbo];
 		[view bindDrawable];
 	}
 	// ビューポートを設定
@@ -337,7 +338,7 @@
 	
 	
 	if (bUseFbo) {
-		[_fboBase render];
+		[_fboFinal render];
 	}
 	else {
 		[self renderObjects];
