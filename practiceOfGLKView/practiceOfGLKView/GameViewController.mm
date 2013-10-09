@@ -170,12 +170,18 @@ enum {
     
     glEnable(GL_DEPTH_TEST);
 	
-	_vArray = [[SimpleTextureVBuffer alloc] init];
 	{
-		CGSize sizeTexture = CGSizeMake(16.0f, 16.0f);
+		_texture = [[TextureBase alloc] init];
+		BOOL loadResult = [_texture loadTextureFromName:@"BG001" ofType:@"png"];
+		assert(loadResult);
+		
+	}
+	{
+		_vArray = [[SimpleTextureVBuffer alloc] init];
+		//CGSize sizeTexture = CGSizeMake(16.0f, 16.0f);
 		CGSize sizeRenderBuffer = _fboFinal.sizeFbo;
 		SimpleTextureVBuffer *simpleVArray = (SimpleTextureVBuffer*)_vArray;
-		[simpleVArray setupVerticesByTexSize:sizeTexture withRenderBufferSize:sizeRenderBuffer];
+		[simpleVArray setupVerticesByTexSize:_texture.textureSize withRenderBufferSize:sizeRenderBuffer];
 	}
 
     [_vArray loadResourceWithName:nil];
@@ -189,12 +195,6 @@ enum {
 				_vTrance[fboIndex][index].y = 0.0f;
 			}
 		}
-	}
-	{
-		_texture = [[TextureBase alloc] init];
-		BOOL loadResult = [_texture loadTextureFromName:@"BG001" ofType:@"png"];
-		assert(loadResult);
-		
 	}
 	{
 		GLKView *view = (GLKView*)(self.view);
