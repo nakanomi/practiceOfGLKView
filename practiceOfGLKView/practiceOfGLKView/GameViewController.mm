@@ -11,7 +11,8 @@
 #import "ShaderBase.h"
 
 #import "SimpleTextureShader.h"
-#import "SimpleTextureVBuffer.h"
+//#import "SimpleTextureVBuffer.h"
+#import "PartTextureVBuffer.h"
 
 #import "SimpleFboShader.h"
 
@@ -177,11 +178,13 @@ enum {
 		
 	}
 	{
-		_vArray = [[SimpleTextureVBuffer alloc] init];
+		_vArray = [[PartTextureVBuffer alloc] init];
 		//CGSize sizeTexture = CGSizeMake(16.0f, 16.0f);
-		CGSize sizeRenderBuffer = _fboFinal.sizeFbo;
-		SimpleTextureVBuffer *simpleVArray = (SimpleTextureVBuffer*)_vArray;
-		[simpleVArray setupVerticesByTexSize:_texture.textureSize withRenderBufferSize:sizeRenderBuffer];
+		//CGSize sizeRenderBuffer = _fboFinal.sizeFbo;
+		PartTextureVBuffer *vArrayBuffer = (PartTextureVBuffer*)_vArray;
+		//[simpleVArray setupVerticesByTexSize:_texture.textureSize withRenderBufferSize:sizeRenderBuffer];
+		CGRect rectPart = CGRectMake(80.0f, 94.0f, 16.0f, 16.0f);
+		[vArrayBuffer setupVerticesByTexPart:rectPart withTexSize:_texture.textureSize withRenderTargetSize:_fbo0.sizeFbo];
 	}
 
     [_vArray loadResourceWithName:nil];
@@ -210,11 +213,11 @@ enum {
 	_fboFinal = [[FboBase alloc] init];
 	CGSize size = CGSizeMake(512.0f, 512.0f);
 	[_fboFinal setupFboWithSize:size withRenderTarget:[VArrayBase getScreenSize]];
-	_fboFinal.clearColor = GLKVector4Make(1.0f, 0.0f, 0.0f, 0.5f);
+	_fboFinal.clearColor = GLKVector4Make(0.0f, 0.0f, 0.0f, 0.0f);
 	
 	_fbo0 = [[FboBase alloc] init];
 	[_fbo0 setupFboWithSize:size withRenderTarget:size];
-	_fbo0.clearColor = GLKVector4Make(0.0f, 1.0f, 0.0f, 0.5f);
+	_fbo0.clearColor = GLKVector4Make(0.0f, 0.0f, 0.0f, 0.0f);
 }
 
 
@@ -341,11 +344,14 @@ enum {
 		[self renderObjectsForFboIndex:_FBO_PREVIOUS];
 		// 最終Fboに、それ以前用のFBOをレンダリング
 		[self changeRenderTargetToFBO:_fboFinal];
+		glDisable(GL_DEPTH_TEST);
 		[_fbo0 render];
+		glEnable(GL_DEPTH_TEST);
 		[self renderObjectsForFboIndex:_FBO_FINAL];
 		// レンダリングターゲットを通常のフレームバッファに変更
 		[FboBase setDefaultFbo];
 		[view bindDrawable];
+		
 	}
 	// ビューポートを設定
 	CGSize viewSize = [VArrayBase getScreenSize];

@@ -107,7 +107,7 @@ static GLint sDefaultFbo = -1;
 	glBindFramebuffer(GL_FRAMEBUFFER, sDefaultFbo);
 	
 	_fboShader = [[SimpleFboShader alloc] init];
-	[_fboShader loadShaderWithVsh:@"ShaderSimpleFbo" withFsh:@"ShaderSimpleTexture"];
+	[_fboShader loadShaderWithVsh:@"ShaderSimpleFbo" withFsh:@"ShaderFastTexture"];
 	_fboVArray = [[SimpleFboVBuffer alloc] init];
 	{
 		[_fboVArray setupVerticesByTexSize:_sizeFbo withRenderBufferSize:sizeRenderTarget];
