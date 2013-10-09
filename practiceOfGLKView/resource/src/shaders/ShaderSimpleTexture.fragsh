@@ -10,5 +10,13 @@ varying mediump vec2 vTexcoord;
 
 void main()
 {
-    gl_FragColor = texture2D(uSampler, vTexcoord);
+	mediump vec4 vColor = texture2D(uSampler, vTexcoord);
+	// 1/64よりアルファが小さければ書き込まない
+	if (vColor.a < 0.015625) {
+		discard;
+	}
+	else
+	{
+		gl_FragColor = vColor;
+	}
 }

@@ -172,7 +172,7 @@ enum {
 	
 	{
 		_texture = [[TextureBase alloc] init];
-		BOOL loadResult = [_texture loadTextureFromName:@"BG001" ofType:@"png"];
+		BOOL loadResult = [_texture loadTextureFromName:@"BG002" ofType:@"png"];
 		assert(loadResult);
 		
 	}
@@ -342,11 +342,7 @@ enum {
 		// 最終Fboに、それ以前用のFBOをレンダリング
 		[self changeRenderTargetToFBO:_fboFinal];
 		[_fbo0 render];
-		// 最終Fbo全画面にFbo0を描き込んでいるため、デプステストが有効だと描き込めないので
-		// 最終Fboにオブジェクトをレンダリングする前にデプステストを無効にする。
-		glDisable(GL_DEPTH_TEST);
 		[self renderObjectsForFboIndex:_FBO_FINAL];
-		glEnable(GL_DEPTH_TEST);
 		// レンダリングターゲットを通常のフレームバッファに変更
 		[FboBase setDefaultFbo];
 		[view bindDrawable];
