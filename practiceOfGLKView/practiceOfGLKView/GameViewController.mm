@@ -18,6 +18,7 @@
 #import "TextureBase.h"
 #import "FboBase.h"
 
+//#define _LOOP_NUM	300
 #define _LOOP_NUM	3
 enum {
 	_FBO_FINAL = 0,

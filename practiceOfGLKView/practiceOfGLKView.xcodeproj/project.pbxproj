@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A001D9B18050B230058A0AB /* BG002.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A001D9A18050B230058A0AB /* BG002.png */; };
+		8A001D9E18050B5C0058A0AB /* PartTextureVBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A001D9D18050B5C0058A0AB /* PartTextureVBuffer.mm */; };
 		8A16DD541803E0990056706B /* SimpleFboVBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A16DD531803E0980056706B /* SimpleFboVBuffer.mm */; };
 		8A38C3491802CA3C00DB435F /* Shader.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C33D1802C97600DB435F /* Shader.fragsh */; };
 		8A38C34A1802CA3C00DB435F /* Shader.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C33E1802C97600DB435F /* Shader.vertsh */; };
@@ -43,6 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A001D9A18050B230058A0AB /* BG002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG002.png; path = resource/graphics/texture/BG002.png; sourceTree = SOURCE_ROOT; };
+		8A001D9C18050B5C0058A0AB /* PartTextureVBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartTextureVBuffer.h; sourceTree = "<group>"; };
+		8A001D9D18050B5C0058A0AB /* PartTextureVBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PartTextureVBuffer.mm; sourceTree = "<group>"; };
 		8A16DD521803E0980056706B /* SimpleFboVBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFboVBuffer.h; sourceTree = "<group>"; };
 		8A16DD531803E0980056706B /* SimpleFboVBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SimpleFboVBuffer.mm; sourceTree = "<group>"; };
 		8A38C33D1802C97600DB435F /* Shader.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shader.fragsh; sourceTree = "<group>"; };
@@ -111,6 +116,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A001D9F18050CF50058A0AB /* PartTexture */ = {
+			isa = PBXGroup;
+			children = (
+				8A001D9C18050B5C0058A0AB /* PartTextureVBuffer.h */,
+				8A001D9D18050B5C0058A0AB /* PartTextureVBuffer.mm */,
+			);
+			name = PartTexture;
+			sourceTree = "<group>";
+		};
 		8A38C3231802C43800DB435F /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +261,7 @@
 		8AB6449E17E84FB700F32580 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				8A001D9A18050B230058A0AB /* BG002.png */,
 				8AB6449F17E8501700F32580 /* BG001.png */,
 			);
 			name = textures;
@@ -279,6 +294,7 @@
 		8AD13D8217E6BDDA00FB0A46 /* shaderAndBuffer */ = {
 			isa = PBXGroup;
 			children = (
+				8A001D9F18050CF50058A0AB /* PartTexture */,
 				8AC75BAC17FEC2BB00CE96DE /* fboRender */,
 				8AB6448F17E843E100F32580 /* testSimpleTexture */,
 				8AB6448A17E83B7100F32580 /* testSimpleTriangle */,
@@ -339,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A38C3491802CA3C00DB435F /* Shader.fragsh in Resources */,
+				8A001D9B18050B230058A0AB /* BG002.png in Resources */,
 				8A38C34A1802CA3C00DB435F /* Shader.vertsh in Resources */,
 				8A38C34B1802CA3C00DB435F /* ShaderSimpleFbo.vertsh in Resources */,
 				8A38C34C1802CA3C00DB435F /* ShaderSimpleTexture.fragsh in Resources */,
@@ -361,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A001D9E18050B5C0058A0AB /* PartTextureVBuffer.mm in Sources */,
 				8A78567817E5B13A001EAB1F /* main.m in Sources */,
 				8A78567C17E5B13A001EAB1F /* AppDelegate.mm in Sources */,
 				8A78569417E5B35E001EAB1F /* ShaderBase.mm in Sources */,
