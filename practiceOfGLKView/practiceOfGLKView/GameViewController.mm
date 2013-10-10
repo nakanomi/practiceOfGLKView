@@ -75,8 +75,19 @@ enum {
     [_context release];
     [super dealloc];
 }
+#if 0
+-(id)retain
+{
+	NSLog(@"%@", [NSThread callStackSymbols]);
+	return ([super retain]);
+}
 
-
+-(oneway void)release
+{
+	NSLog(@"%@", [NSThread callStackSymbols]);
+	[super release];
+}
+#endif
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -130,6 +141,12 @@ enum {
 	}
     [self setupGL];
 	[self startAnimation];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+	[super viewDidDisappear:animated];
+	[self endAnimation];
 }
 
 
