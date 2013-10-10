@@ -51,6 +51,9 @@ static GLint sDefaultFbo = -1;
 	if (_fboVArray != nil) {
 		[_fboVArray release];
 	}
+	if (_fboShader != nil) {
+		[_fboShader release];
+	}
 	[super dealloc];
 }
 
