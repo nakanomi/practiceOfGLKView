@@ -48,6 +48,7 @@
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
 	view.delegate = self;
+	self.preferredFramesPerSecond = 60;
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,13 +61,19 @@
 
 - (void)update
 {
-	NSLog(@"%s", __PRETTY_FUNCTION__);
+	//NSLog(@"%s", __PRETTY_FUNCTION__);
 	
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-	NSLog(@"%s", __PRETTY_FUNCTION__);
+	//NSLog(@"%s", __PRETTY_FUNCTION__);
+	// ビューポートを設定
+	glViewport(0, 0, rect.size.width, rect.size.height);
+	
+	// レンダリングバッファをクリア
+    glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 @end
