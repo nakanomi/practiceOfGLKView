@@ -8,7 +8,8 @@
 
 #import "TitleViewController.h"
 //#import "GameViewController.h"
-#import "GameViewController.h"
+//#import "GameViewController.h"
+#import "GLKGameViewController.h"
 
 @interface TitleViewController ()
 
@@ -41,7 +42,7 @@
 {
 	NSLog(@"%s", __PRETTY_FUNCTION__);
 	if ([sender isEqual:self.btnGame]) {
-		 GameViewController *controller = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
+		 GLKGameViewController *controller = [[GLKGameViewController alloc] initWithNibName:@"GLKGameViewController" bundle:nil];
 		//GameViewController *controller = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
 		[self.navigationController pushViewController:controller animated:YES];
 		[controller release];
