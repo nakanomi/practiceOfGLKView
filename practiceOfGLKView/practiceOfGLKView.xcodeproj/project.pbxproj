@@ -30,6 +30,8 @@
 		8A78568017E5B13A001EAB1F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A78567F17E5B13A001EAB1F /* Default@2x.png */; };
 		8A78568217E5B13A001EAB1F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A78568117E5B13A001EAB1F /* Default-568h@2x.png */; };
 		8A78569417E5B35E001EAB1F /* ShaderBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A78569317E5B35E001EAB1F /* ShaderBase.mm */; };
+		8A8F2C531807F4CE00A2E974 /* GLKGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F2C511807F4CE00A2E974 /* GLKGameViewController.m */; };
+		8A8F2C541807F4CE00A2E974 /* GLKGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F2C521807F4CE00A2E974 /* GLKGameViewController.xib */; };
 		8A97E18E17E6C47700B5B4E8 /* TitleViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A97E18C17E6C47700B5B4E8 /* TitleViewController.mm */; };
 		8A97E18F17E6C47700B5B4E8 /* TitleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */; };
 		8A97E1CD17E6E85300B5B4E8 /* VArrayBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A97E1CC17E6E85300B5B4E8 /* VArrayBase.mm */; };
@@ -78,6 +80,9 @@
 		8A78568117E5B13A001EAB1F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8A78569217E5B35E001EAB1F /* ShaderBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderBase.h; sourceTree = "<group>"; };
 		8A78569317E5B35E001EAB1F /* ShaderBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShaderBase.mm; sourceTree = "<group>"; };
+		8A8F2C501807F4CE00A2E974 /* GLKGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLKGameViewController.h; sourceTree = "<group>"; };
+		8A8F2C511807F4CE00A2E974 /* GLKGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLKGameViewController.m; sourceTree = "<group>"; };
+		8A8F2C521807F4CE00A2E974 /* GLKGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLKGameViewController.xib; sourceTree = "<group>"; };
 		8A97E18B17E6C47700B5B4E8 /* TitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleViewController.h; sourceTree = "<group>"; };
 		8A97E18C17E6C47700B5B4E8 /* TitleViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TitleViewController.mm; sourceTree = "<group>"; };
 		8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleViewController.xib; sourceTree = "<group>"; };
@@ -290,6 +295,9 @@
 				8AD3592917EAF59F00BE0B1F /* GameViewController.h */,
 				8AD3592A17EAF59F00BE0B1F /* GameViewController.mm */,
 				8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */,
+				8A8F2C501807F4CE00A2E974 /* GLKGameViewController.h */,
+				8A8F2C511807F4CE00A2E974 /* GLKGameViewController.m */,
+				8A8F2C521807F4CE00A2E974 /* GLKGameViewController.xib */,
 			);
 			name = viewAndController;
 			sourceTree = "<group>";
@@ -358,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A38C3491802CA3C00DB435F /* Shader.fragsh in Resources */,
+				8A8F2C541807F4CE00A2E974 /* GLKGameViewController.xib in Resources */,
 				8A001D9B18050B230058A0AB /* BG002.png in Resources */,
 				8A38C34A1802CA3C00DB435F /* Shader.vertsh in Resources */,
 				8A38C34B1802CA3C00DB435F /* ShaderSimpleFbo.vertsh in Resources */,
@@ -391,6 +400,7 @@
 				8A97E1CD17E6E85300B5B4E8 /* VArrayBase.mm in Sources */,
 				8AB6448317E8327600F32580 /* SimpleTriangleShader.mm in Sources */,
 				8AB6448717E8364100F32580 /* SimpleTriangleBuffer.mm in Sources */,
+				8A8F2C531807F4CE00A2E974 /* GLKGameViewController.m in Sources */,
 				8AB6449217E8451F00F32580 /* SimpleTextureShader.mm in Sources */,
 				8AB6449B17E84CD500F32580 /* SimpleTextureVBuffer.mm in Sources */,
 				8A65F59A17E9B3EE00A5AD35 /* TextureBase.mm in Sources */,
