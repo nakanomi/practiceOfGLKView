@@ -49,6 +49,7 @@
 {
 	BOOL result = NO;
 	@try {
+		NSLog(@"GL Error = %u", glGetError());
 		NSString* filePath = [[NSBundle mainBundle] pathForResource:nameOfTexture ofType:nameOfType];
 		NSError* error;
 		GLKTextureInfo *texInfo0 = [GLKTextureLoader textureWithContentsOfFile:filePath options:nil error:&error];
