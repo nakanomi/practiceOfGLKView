@@ -45,6 +45,9 @@ enum {
 	// フレームバッファにレンダリングするためのFBO
 	FboBase *_fboFinal;
 	FboBase *_fbo0;
+	
+	// ランループの途中でテクスチャ読み込みをするためのカウンタ
+	int _testCount;
 	 
 }
 @property (strong, nonatomic) EAGLContext *context;
@@ -60,6 +63,7 @@ enum {
 - (void)renderObjectsForFboIndex:(int)fboIndex;
 
 - (void)setupFBO;
+- (void)setupDrawObjects;
 @end
 
 @implementation GameViewController
@@ -188,24 +192,7 @@ enum {
     
     glEnable(GL_DEPTH_TEST);
 	
-	{
-		_texture = [[TextureBase alloc] init];
-		BOOL loadResult = [_texture loadTextureFromName:@"BG002" ofType:@"png"];
-		assert(loadResult);
-		
-	}
-	{
-		_vArray = [[PartTextureVBuffer alloc] init];
-		//CGSize sizeTexture = CGSizeMake(16.0f, 16.0f);
-		//CGSize sizeRenderBuffer = _fboFinal.sizeFbo;
-		PartTextureVBuffer *vArrayBuffer = (PartTextureVBuffer*)_vArray;
-		//[simpleVArray setupVerticesByTexSize:_texture.textureSize withRenderBufferSize:sizeRenderBuffer];
-		CGRect rectPart = CGRectMake(80.0f, 94.0f, 16.0f, 16.0f);
-		[vArrayBuffer setupVerticesByTexPart:rectPart withTexSize:_texture.textureSize withRenderTargetSize:_fbo0.sizeFbo];
-	}
-
-    [_vArray loadResourceWithName:nil];
-	
+	//[self setupDrawObjects];
 	{
 		for (int fboIndex = 0; fboIndex < _FBO_NUM; fboIndex++) {
 			for (int index = 0; index < _LOOP_NUM; index++) {
@@ -223,7 +210,39 @@ enum {
 		en = view.enableSetNeedsDisplay;
 		NSLog(@"%d", en);
 	}
+	_testCount = 0;
 }
+
+- (void)setupDrawObjects
+{
+	if (_testCount > 100) {
+		static BOOL bDone = NO;
+		if (!bDone) {
+			bDone = YES;
+			{
+				_texture = [[TextureBase alloc] init];
+				BOOL loadResult = [_texture loadTextureFromName:@"BG002" ofType:@"png"];
+				assert(loadResult);
+				
+			}
+			{
+				_vArray = [[PartTextureVBuffer alloc] init];
+				//CGSize sizeTexture = CGSizeMake(16.0f, 16.0f);
+				//CGSize sizeRenderBuffer = _fboFinal.sizeFbo;
+				PartTextureVBuffer *vArrayBuffer = (PartTextureVBuffer*)_vArray;
+				//[simpleVArray setupVerticesByTexSize:_texture.textureSize withRenderBufferSize:sizeRenderBuffer];
+				CGRect rectPart = CGRectMake(80.0f, 94.0f, 16.0f, 16.0f);
+				[vArrayBuffer setupVerticesByTexPart:rectPart withTexSize:_texture.textureSize withRenderTargetSize:_fbo0.sizeFbo];
+			}
+			
+			[_vArray loadResourceWithName:nil];
+		}
+	}
+	else {
+		_testCount++;
+	}
+}
+
 
 - (void)setupFBO
 {
@@ -342,6 +361,7 @@ enum {
 #pragma mark -GLKView delegate
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
+	[self setupDrawObjects];
 	{
 		static BOOL bLogRect = NO;
 		if (!bLogRect) {
