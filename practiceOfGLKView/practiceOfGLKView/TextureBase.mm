@@ -50,7 +50,8 @@
 	BOOL result = NO;
 	@try {
 		NSString* filePath = [[NSBundle mainBundle] pathForResource:nameOfTexture ofType:nameOfType];
-		GLKTextureInfo *texInfo0 = [GLKTextureLoader textureWithContentsOfFile:filePath options:nil error:nil];
+		NSError* error;
+		GLKTextureInfo *texInfo0 = [GLKTextureLoader textureWithContentsOfFile:filePath options:nil error:&error];
 		if (texInfo0 != nil) {
 			NSLog(@"Texture loaded successfully. id = %d file = %@ size = (%d x %d)",
 				  
@@ -60,6 +61,15 @@
 			_textureSize.height = texInfo0.height;
 			_nameOfTexture = [[NSString alloc] initWithString:nameOfTexture];
 			result = YES;
+		}
+		else {
+			NSLog(@"%@", error);
+			@try {
+				@throw [[NSException alloc] initWithName:@"test" reason:@"test" userInfo:nil];
+			}
+			@catch (NSException *exception) {
+				NSLog(@"%@", exception.callStackSymbols);
+			}
 		}
 		
 	}
