@@ -92,7 +92,7 @@ enum {
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
 	view.delegate = self;
 	self.preferredFramesPerSecond = 60;
-
+	
 	// OS6.0の場合、この段階だと正しい値を得られないようだ（3.5インチデバイスでも4インチの値になる）。
 	[self checkHeightOfScreen];
 }
