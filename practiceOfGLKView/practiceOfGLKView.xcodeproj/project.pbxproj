@@ -43,8 +43,6 @@
 		8AD3592C17EAF59F00BE0B1F /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3592A17EAF59F00BE0B1F /* GameViewController.mm */; };
 		8AD3592D17EAF59F00BE0B1F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */; };
 		8AD3592F17EB054E00BE0B1F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD3592E17EB054E00BE0B1F /* QuartzCore.framework */; };
-		8AD76B8E1808EB6D005B5FBB /* GLKGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AD76B8C1808EB6D005B5FBB /* GLKGameViewController.mm */; };
-		8AD76B8F1808EB6D005B5FBB /* GLKGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD76B8D1808EB6D005B5FBB /* GLKGameViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,9 +99,6 @@
 		8AD3592A17EAF59F00BE0B1F /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameViewController.mm; sourceTree = "<group>"; };
 		8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		8AD3592E17EB054E00BE0B1F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		8AD76B8B1808EB6D005B5FBB /* GLKGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLKGameViewController.h; sourceTree = "<group>"; };
-		8AD76B8C1808EB6D005B5FBB /* GLKGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GLKGameViewController.mm; sourceTree = "<group>"; };
-		8AD76B8D1808EB6D005B5FBB /* GLKGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLKGameViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,9 +290,6 @@
 				8AD3592917EAF59F00BE0B1F /* GameViewController.h */,
 				8AD3592A17EAF59F00BE0B1F /* GameViewController.mm */,
 				8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */,
-				8AD76B8B1808EB6D005B5FBB /* GLKGameViewController.h */,
-				8AD76B8C1808EB6D005B5FBB /* GLKGameViewController.mm */,
-				8AD76B8D1808EB6D005B5FBB /* GLKGameViewController.xib */,
 			);
 			name = viewAndController;
 			sourceTree = "<group>";
@@ -366,7 +358,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A38C3491802CA3C00DB435F /* Shader.fragsh in Resources */,
-				8AD76B8F1808EB6D005B5FBB /* GLKGameViewController.xib in Resources */,
 				8A001D9B18050B230058A0AB /* BG002.png in Resources */,
 				8A38C34A1802CA3C00DB435F /* Shader.vertsh in Resources */,
 				8A38C34B1802CA3C00DB435F /* ShaderSimpleFbo.vertsh in Resources */,
@@ -400,7 +391,6 @@
 				8A97E1CD17E6E85300B5B4E8 /* VArrayBase.mm in Sources */,
 				8AB6448317E8327600F32580 /* SimpleTriangleShader.mm in Sources */,
 				8AB6448717E8364100F32580 /* SimpleTriangleBuffer.mm in Sources */,
-				8AD76B8E1808EB6D005B5FBB /* GLKGameViewController.mm in Sources */,
 				8AB6449217E8451F00F32580 /* SimpleTextureShader.mm in Sources */,
 				8AB6449B17E84CD500F32580 /* SimpleTextureVBuffer.mm in Sources */,
 				8A65F59A17E9B3EE00A5AD35 /* TextureBase.mm in Sources */,
