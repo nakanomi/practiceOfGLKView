@@ -10,9 +10,10 @@ attribute vec4 position;
 attribute vec2 texcoord;
 
 varying vec2 vTexcoord;
-uniform vec4 uniTrance;
+uniform mat4 affineMatrix;
+
 void main()
 {
-    gl_Position = position + uniTrance;
+    gl_Position = affineMatrix * position;
     vTexcoord = texcoord;
 }

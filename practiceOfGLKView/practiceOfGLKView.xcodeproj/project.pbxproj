@@ -45,6 +45,7 @@
 		8AD3592F17EB054E00BE0B1F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD3592E17EB054E00BE0B1F /* QuartzCore.framework */; };
 		8AD66816180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AD66814180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh */; };
 		8AD66817180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AD66815180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh */; };
+		8AD6681B180BDD8B0044B79B /* MatrixAndAlpha.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6681A180BDD8B0044B79B /* MatrixAndAlpha.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,8 @@
 		8AD3592E17EB054E00BE0B1F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8AD66814180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderMtrxAlphaTexture.fragsh; sourceTree = "<group>"; };
 		8AD66815180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderMtrxAlphaTexture.vertsh; sourceTree = "<group>"; };
+		8AD66819180BDD8B0044B79B /* MatrixAndAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixAndAlpha.h; sourceTree = "<group>"; };
+		8AD6681A180BDD8B0044B79B /* MatrixAndAlpha.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MatrixAndAlpha.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +308,7 @@
 		8AD13D8217E6BDDA00FB0A46 /* shaderAndBuffer */ = {
 			isa = PBXGroup;
 			children = (
+				8AD66818180BDD4A0044B79B /* matrixAndAlpha */,
 				8A001D9F18050CF50058A0AB /* PartTexture */,
 				8AC75BAC17FEC2BB00CE96DE /* fboRender */,
 				8AB6448F17E843E100F32580 /* testSimpleTexture */,
@@ -312,6 +316,15 @@
 				8AB6448817E83B1400F32580 /* base */,
 			);
 			name = shaderAndBuffer;
+			sourceTree = "<group>";
+		};
+		8AD66818180BDD4A0044B79B /* matrixAndAlpha */ = {
+			isa = PBXGroup;
+			children = (
+				8AD66819180BDD8B0044B79B /* MatrixAndAlpha.h */,
+				8AD6681A180BDD8B0044B79B /* MatrixAndAlpha.mm */,
+			);
+			name = matrixAndAlpha;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +420,7 @@
 				8AD3592C17EAF59F00BE0B1F /* GameViewController.mm in Sources */,
 				8AC75BB217FECBDC00CE96DE /* SimpleFboShader.mm in Sources */,
 				8A16DD541803E0990056706B /* SimpleFboVBuffer.mm in Sources */,
+				8AD6681B180BDD8B0044B79B /* MatrixAndAlpha.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

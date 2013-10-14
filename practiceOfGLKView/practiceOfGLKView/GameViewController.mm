@@ -10,8 +10,9 @@
 #import "GameViewController.h"
 #import "ShaderBase.h"
 
-#import "SimpleTextureShader.h"
+//#import "SimpleTextureShader.h"
 //#import "SimpleTextureVBuffer.h"
+#import "MatrixAndAlpha.h"
 #import "PartTextureVBuffer.h"
 
 #import "SimpleFboShader.h"
@@ -33,6 +34,7 @@ enum {
     
 	// ユニフォーム変数として設定する位置情報。独立させていないと正常に表示されない？
 	GLKVector4 _vTrance[_FBO_NUM][_LOOP_NUM];
+	GLKMatrix4 _matrix4[_FBO_NUM][_LOOP_NUM];
 	
 	VArrayBase *_vArray;
 	//	GLuint _textureId;
@@ -188,8 +190,8 @@ enum {
 
 	[self setupFBO];
     
-	_shader = [[SimpleTextureShader alloc] init];
-	[_shader loadShaderWithVsh:@"ShaderSimpleTexture" withFsh:@"ShaderSimpleTexture"];
+	_shader = [[MatrixAndAlpha alloc] init];
+	[_shader loadShaderWithVsh:@"ShaderMtrxAlphaTexture" withFsh:@"ShaderMtrxAlphaTexture"];
     
     glEnable(GL_DEPTH_TEST);
 	
@@ -201,6 +203,7 @@ enum {
 					_vTrance[fboIndex][index].v[i] = 0.0f;
 				}
 				_vTrance[fboIndex][index].y = 0.0f;
+				_matrix4[fboIndex][index] = GLKMatrix4Identity;
 			}
 		}
 	}
@@ -256,7 +259,7 @@ enum {
 	
 	_fbo0 = [[FboBase alloc] init];
 	[_fbo0 setupFboWithSize:size withRenderTarget:size];
-	_fbo0.clearColor = GLKVector4Make(0.0f, 0.0f, 0.0f, 0.0f);
+	_fbo0.clearColor = GLKVector4Make(0.0f, 0.0f, 1.0f, 1.0f);
 }
 
 
@@ -346,8 +349,13 @@ enum {
 	
 	for (int i = 0; i < _LOOP_NUM; i++) {
 		// シェーダーのユニフォーム変数をセット
+		glUniform1f([_shader getUniformIndex:UNI_MATRIX_AND_ALPHA_ALPHA], 1.0f);
+		_matrix4[fboIndex][i] = GLKMatrix4Translate(GLKMatrix4Identity, _vTrance[fboIndex][i].x, _vTrance[fboIndex][i].y, _vTrance[fboIndex][i].z);
+		glUniformMatrix4fv([_shader getUniformIndex:UNI_MATRIX_AND_ALPHA_MATRIX], 1, NO, &_matrix4[fboIndex][i].m00);
+		/*
 		glUniform4fv([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_TRANS],
 					 1, &_vTrance[fboIndex][i].x);
+		 */
 		
 		// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
