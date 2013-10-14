@@ -126,7 +126,7 @@ static GLint sDefaultFbo = -1;
 	glBindFramebuffer(GL_FRAMEBUFFER, sDefaultFbo);
 	
 	_fboShader = [[SimpleFboShader alloc] init];
-	[_fboShader loadShaderWithVsh:@"ShaderSimpleFbo" withFsh:@"ShaderFastTexture"];
+	[_fboShader loadShaderWithVsh:@"ShaderSimpleFbo" withFsh:@"ShaderAlphaCancelTexture"];
 	_fboVArray = [[SimpleFboVBuffer alloc] init];
 	{
 		[_fboVArray setupPartFboWithSize:sizeFbo withRenderTarget:sizeRenderTarget withRenderPart:rectRende withFboPart:rectFbo];
@@ -146,9 +146,17 @@ static GLint sDefaultFbo = -1;
 }
 - (void)render
 {
+	glEnable(GL_ALPHA);
+	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
 	glUseProgram(_fboShader.programId);
 	glBindVertexArrayOES(_fboVArray.vertexArray);
 	glBindTexture(GL_TEXTURE_2D, _fboTexId);
+	// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, _fboVArray.count);
 }

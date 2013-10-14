@@ -46,6 +46,7 @@
 		8AD66816180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AD66814180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh */; };
 		8AD66817180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AD66815180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh */; };
 		8AD6681B180BDD8B0044B79B /* MatrixAndAlpha.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6681A180BDD8B0044B79B /* MatrixAndAlpha.mm */; };
+		8AD6681D180BFC140044B79B /* ShaderAlphaCancelTexture.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AD6681C180BFC140044B79B /* ShaderAlphaCancelTexture.fragsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		8AD66815180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderMtrxAlphaTexture.vertsh; sourceTree = "<group>"; };
 		8AD66819180BDD8B0044B79B /* MatrixAndAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixAndAlpha.h; sourceTree = "<group>"; };
 		8AD6681A180BDD8B0044B79B /* MatrixAndAlpha.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MatrixAndAlpha.mm; sourceTree = "<group>"; };
+		8AD6681C180BFC140044B79B /* ShaderAlphaCancelTexture.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderAlphaCancelTexture.fragsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		8A38C3241802C43800DB435F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				8AD6681C180BFC140044B79B /* ShaderAlphaCancelTexture.fragsh */,
 				8AD66814180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh */,
 				8AD66815180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh */,
 				8AC88E2518053C4D00E9ABE3 /* ShaderFastTexture.fragsh */,
@@ -395,6 +398,7 @@
 				8AD3592D17EAF59F00BE0B1F /* GameViewController.xib in Resources */,
 				8AD66816180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh in Resources */,
 				8AD66817180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh in Resources */,
+				8AD6681D180BFC140044B79B /* ShaderAlphaCancelTexture.fragsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
