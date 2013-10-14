@@ -10,5 +10,6 @@
 
 @interface SimpleFboVBuffer : SimpleTextureVBuffer
 
+- (void)setupPartFboWithSize:(CGSize)sizeFbo withRenderTarget:(CGSize)sizeRenderTarget withRenderPart:(CGRect)rectRender withFboPart:(CGRect)rectFbo;
 
 @end

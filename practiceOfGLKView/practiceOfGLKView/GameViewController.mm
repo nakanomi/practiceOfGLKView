@@ -48,7 +48,8 @@ enum {
 	
 	// ランループの途中でテクスチャ読み込みをするためのカウンタ
 	int _testCount;
-	 
+	
+	float _testOffset;
 }
 @property (strong, nonatomic) EAGLContext *context;
 
@@ -211,11 +212,13 @@ enum {
 		NSLog(@"%d", en);
 	}
 	_testCount = 0;
+	_testOffset = 0.0f;
 }
 
 - (void)setupDrawObjects
 {
-	if (_testCount > 100) {
+	if (_testCount > 1)
+	{
 		static BOOL bDone = NO;
 		if (!bDone) {
 			bDone = YES;
@@ -328,10 +331,10 @@ enum {
 		_vTrance[fboIndex][i].x = _vTrance[fboIndex][i - 1].x + (2.0f / (float)_LOOP_NUM);
 		switch (fboIndex) {
 			case _FBO_PREVIOUS:
-				_vTrance[fboIndex][i].y = _vTrance[fboIndex][i - 1].y + (1.0f / (float)_LOOP_NUM);
+				_vTrance[fboIndex][i].y = _testOffset + (_vTrance[fboIndex][i - 1].y + (1.0f / (float)_LOOP_NUM));
 				break;
 			case _FBO_FINAL:
-				_vTrance[fboIndex][i].y = _vTrance[fboIndex][i - 1].y - (1.0f / (float)_LOOP_NUM);
+				_vTrance[fboIndex][i].y = _testOffset + ( _vTrance[fboIndex][i - 1].y - (1.0f / (float)_LOOP_NUM));
 				break;
 				
 			default:
@@ -339,6 +342,7 @@ enum {
 				break;
 		}
 	}
+	_testOffset += 1.0f/4096.0f;
 	
 	for (int i = 0; i < _LOOP_NUM; i++) {
 		// シェーダーのユニフォーム変数をセット

@@ -37,6 +37,7 @@
 {
 	NSLog(@"%s", __PRETTY_FUNCTION__);
 	if (self.textureId > 0) {
+		NSLog(@"tex %d now released", _textureId);
 		glDeleteTextures(1, &_textureId);
 	}
 	if (self.nameOfTexture != nil) {
@@ -49,9 +50,9 @@
 {
 	BOOL result = NO;
 	@try {
-		NSLog(@"GL Error = %u", glGetError());
+		NSLog(@"溜まっているエラーコードを破棄？GL Error = %u", glGetError());
 		NSString* filePath = [[NSBundle mainBundle] pathForResource:nameOfTexture ofType:nameOfType];
-		NSError* error;
+		NSError *error;
 		GLKTextureInfo *texInfo0 = [GLKTextureLoader textureWithContentsOfFile:filePath options:nil error:&error];
 		if (texInfo0 != nil) {
 			NSLog(@"Texture loaded successfully. id = %d file = %@ size = (%d x %d)",
@@ -61,16 +62,20 @@
 			_textureSize.width = texInfo0.width;
 			_textureSize.height = texInfo0.height;
 			_nameOfTexture = [[NSString alloc] initWithString:nameOfTexture];
+			NSLog(@"texture %d allcated for %@", _textureId, nameOfTexture);
 			result = YES;
 		}
 		else {
-			NSLog(@"%@", error);
-			@try {
-				@throw [[NSException alloc] initWithName:@"test" reason:@"test" userInfo:nil];
+			if (error != nil) {
+				NSLog(@"%@", error);
+				@try {
+					@throw [[NSException alloc] initWithName:@"test" reason:@"test" userInfo:nil];
+				}
+				@catch (NSException *exception) {
+					NSLog(@"%@", exception.callStackSymbols);
+				}
 			}
-			@catch (NSException *exception) {
-				NSLog(@"%@", exception.callStackSymbols);
-			}
+			NSLog(@"GL Error = %u", glGetError());
 		}
 		
 	}

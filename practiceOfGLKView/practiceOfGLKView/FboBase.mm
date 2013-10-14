@@ -45,6 +45,7 @@ static GLint sDefaultFbo = -1;
 - (void)dealloc
 {
 	NSLog(@"%s", __PRETTY_FUNCTION__);
+	NSLog(@"tex %d now released", _fboTexId);
 	glDeleteTextures(1, &_fboTexId);
 	glDeleteBuffers(1, &_fboDepthBuffer);
 	glDeleteBuffers(1, &_fboHandle);
@@ -60,6 +61,20 @@ static GLint sDefaultFbo = -1;
 
 - (void)setupFboWithSize:(CGSize)sizeFbo withRenderTarget:(CGSize)sizeRenderTarget;
 {
+	{
+		CGRect rectFbo = CGRectMake(0.0f, 0.0f, sizeFbo.width, sizeFbo.height);
+		CGPoint posCenter = CGPointMake(sizeRenderTarget.width * 0.5f, sizeRenderTarget.height * 0.5f);
+		float halfWidth = sizeFbo.width * 0.5f;
+		float halfHeight = sizeFbo.height * 0.5f;
+		CGRect rectRender = CGRectMake(posCenter.x - halfWidth , posCenter.y - halfHeight,
+									   sizeFbo.width, sizeFbo.height);
+		[self setupPartFboWithSize:sizeFbo withRenderTarget:sizeRenderTarget
+					withRenderPart:rectRender withFboPart:rectFbo];
+	}
+}
+
+- (void)setupPartFboWithSize:(CGSize)sizeFbo withRenderTarget:(CGSize)sizeRenderTarget withRenderPart:(CGRect)rectRende withFboPart:(CGRect)rectFbo
+{
 	_sizeFbo.width = sizeFbo.width;
 	_sizeFbo.height = sizeFbo.height;
 	if (sDefaultFbo < 0) {
@@ -68,6 +83,7 @@ static GLint sDefaultFbo = -1;
 	
 	glGenFramebuffers(1, &_fboHandle);
 	glGenTextures(1, &_fboTexId);
+	NSLog(@"tex %d now allocated for fbo at %s", _fboTexId, __PRETTY_FUNCTION__);
 	glGenRenderbuffers(1, &_fboDepthBuffer);
 	
 	glBindFramebuffer(GL_FRAMEBUFFER, _fboHandle);
@@ -113,11 +129,11 @@ static GLint sDefaultFbo = -1;
 	[_fboShader loadShaderWithVsh:@"ShaderSimpleFbo" withFsh:@"ShaderFastTexture"];
 	_fboVArray = [[SimpleFboVBuffer alloc] init];
 	{
-		[_fboVArray setupVerticesByTexSize:_sizeFbo withRenderBufferSize:sizeRenderTarget];
+		[_fboVArray setupPartFboWithSize:sizeFbo withRenderTarget:sizeRenderTarget withRenderPart:rectRende withFboPart:rectFbo];
 		[_fboVArray loadResourceWithName:nil];
 	}
-	//[_fboVArray loadResourceWithName:nil];
 }
+
 
 - (void)changeRenderTargetToFBO
 {

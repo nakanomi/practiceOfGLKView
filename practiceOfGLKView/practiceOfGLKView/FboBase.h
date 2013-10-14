@@ -18,6 +18,7 @@
 -(id)init;
 - (void)changeRenderTargetToFBO;
 - (void)setupFboWithSize:(CGSize)sizeFbo withRenderTarget:(CGSize)sizeRenderTarget;
+- (void)setupPartFboWithSize:(CGSize)sizeFbo withRenderTarget:(CGSize)sizeRenderTarget withRenderPart:(CGRect)rectRende withFboPart:(CGRect)rectFbo;
 - (void)render;
 
 + (void)setDefaultFbo;

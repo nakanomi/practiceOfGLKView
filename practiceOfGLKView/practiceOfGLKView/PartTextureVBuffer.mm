@@ -7,8 +7,20 @@
 //
 
 #import "PartTextureVBuffer.h"
+#include "gameDefs.h"
+
+static int sNumOfPartTextureVBuffer = 0;
 
 @implementation PartTextureVBuffer
+
+-(id)init
+{
+	self = [super init];
+	if (self != nil) {
+		sNumOfPartTextureVBuffer++;
+	}
+	return self;
+}
 
 -(void)setupVerticesByTexPart:(CGRect)rectOfPart withTexSize:(CGSize)sizeTex withRenderTargetSize:(CGSize)sizeOfRender
 {
@@ -29,6 +41,14 @@
 					   ofS:sLeft ofT:tBottom];
 	[self setParamOfVertex:&_texSquare[3] ofX:width ofY:-height ofZ:0.0f
 					   ofS:sRight ofT:tBottom];
+	//dbgLog(@"width = %f, height = %f", width, height);
+}
+
+- (void)dealloc
+{
+	sNumOfPartTextureVBuffer--;
+	dbgLog(@"num of PartTextureVBuffer = %d", sNumOfPartTextureVBuffer);
+	[super dealloc];
 }
 
 @end

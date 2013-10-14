@@ -7,6 +7,7 @@
 //
 
 #import "SimpleTextureVBuffer.h"
+#include "gameDefs.h"
 enum {
 	_VERTEX_ATTRIB_POSITION = 0,
 	_VERTEX_ATTRIB_TEXCOORD,
@@ -87,6 +88,10 @@ enum {
 		glGenVertexArraysOES(1, &_vertexArray);
 		glBindVertexArrayOES(_vertexArray);
 		{
+			for (int indexVet = 0; indexVet < _SIMPLETEXTV_NUM_VERTICES; indexVet++) {
+				//dbgLog(@"[%d] x:%f,  y:%f,  z:%f", indexVet, _texSquare[indexVet].x, _texSquare[indexVet].y, _texSquare[indexVet].z);
+				//dbgLog(@"[%d] s:%f, t:%f", indexVet, _texSquare[indexVet].s, _texSquare[indexVet].t);
+			}
 			glGenBuffers(1, &_vertexBuffer);
 			glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(_texSquare), _texSquare, GL_DYNAMIC_DRAW);
@@ -101,6 +106,7 @@ enum {
 		_count = _SIMPLETEXTV_NUM_VERTICES;
 	}
 	@catch (NSException *exception) {
+		assert(false);
 	}
 	return result;
 }

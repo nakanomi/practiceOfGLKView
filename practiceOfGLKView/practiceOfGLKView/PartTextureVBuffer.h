@@ -9,5 +9,6 @@
 #import "SimpleTextureVBuffer.h"
 
 @interface PartTextureVBuffer : SimpleTextureVBuffer
+-(id)init;
 -(void)setupVerticesByTexPart:(CGRect)rectOfPart withTexSize:(CGSize)sizeTex withRenderTargetSize:(CGSize)sizeOfRender;
 @end

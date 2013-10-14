@@ -51,6 +51,7 @@
 		8A001D9D18050B5C0058A0AB /* PartTextureVBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PartTextureVBuffer.mm; sourceTree = "<group>"; };
 		8A16DD521803E0980056706B /* SimpleFboVBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFboVBuffer.h; sourceTree = "<group>"; };
 		8A16DD531803E0980056706B /* SimpleFboVBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SimpleFboVBuffer.mm; sourceTree = "<group>"; };
+		8A2A3C8A180BC07800157956 /* gameDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gameDefs.h; sourceTree = "<group>"; };
 		8A38C33D1802C97600DB435F /* Shader.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shader.fragsh; sourceTree = "<group>"; };
 		8A38C33E1802C97600DB435F /* Shader.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shader.vertsh; sourceTree = "<group>"; };
 		8A38C33F1802C97600DB435F /* ShaderSimpleFbo.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleFbo.vertsh; sourceTree = "<group>"; };
@@ -189,6 +190,7 @@
 				8A78567B17E5B13A001EAB1F /* AppDelegate.mm */,
 				8AB6449C17E84F9B00F32580 /* resource */,
 				8A78567217E5B13A001EAB1F /* Supporting Files */,
+				8A2A3C8A180BC07800157956 /* gameDefs.h */,
 			);
 			path = practiceOfGLKView;
 			sourceTree = "<group>";
