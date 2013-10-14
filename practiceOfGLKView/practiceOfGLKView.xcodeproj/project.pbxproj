@@ -43,6 +43,8 @@
 		8AD3592C17EAF59F00BE0B1F /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3592A17EAF59F00BE0B1F /* GameViewController.mm */; };
 		8AD3592D17EAF59F00BE0B1F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */; };
 		8AD3592F17EB054E00BE0B1F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD3592E17EB054E00BE0B1F /* QuartzCore.framework */; };
+		8AD66816180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AD66814180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh */; };
+		8AD66817180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AD66815180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,8 @@
 		8AD3592A17EAF59F00BE0B1F /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameViewController.mm; sourceTree = "<group>"; };
 		8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		8AD3592E17EB054E00BE0B1F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8AD66814180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderMtrxAlphaTexture.fragsh; sourceTree = "<group>"; };
+		8AD66815180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderMtrxAlphaTexture.vertsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 		8A38C3241802C43800DB435F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				8AD66814180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh */,
+				8AD66815180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh */,
 				8AC88E2518053C4D00E9ABE3 /* ShaderFastTexture.fragsh */,
 				8A38C33D1802C97600DB435F /* Shader.fragsh */,
 				8A38C33E1802C97600DB435F /* Shader.vertsh */,
@@ -374,6 +380,8 @@
 				8AB644A017E8501700F32580 /* BG001.png in Resources */,
 				8AC88E2618053C4D00E9ABE3 /* ShaderFastTexture.fragsh in Resources */,
 				8AD3592D17EAF59F00BE0B1F /* GameViewController.xib in Resources */,
+				8AD66816180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh in Resources */,
+				8AD66817180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
