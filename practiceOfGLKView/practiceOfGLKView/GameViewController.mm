@@ -22,6 +22,7 @@
 
 //#define _LOOP_NUM	300
 #define _LOOP_NUM	3
+#define _TEST_ALPHA	0.5f
 enum {
 	_FBO_FINAL = 0,
 	_FBO_PREVIOUS,
@@ -255,7 +256,7 @@ enum {
 	_fboFinal = [[FboBase alloc] init];
 	CGSize size = CGSizeMake(512.0f, 512.0f);
 	[_fboFinal setupFboWithSize:size withRenderTarget:[VArrayBase getScreenSize]];
-	_fboFinal.clearColor = GLKVector4Make(0.0f, 0.0f, 0.0f, 0.0f);
+	_fboFinal.clearColor = GLKVector4Make(0.0f, 0.0f, 0.0f, 1.0f);
 	
 	_fbo0 = [[FboBase alloc] init];
 	[_fbo0 setupFboWithSize:size withRenderTarget:size];
@@ -320,6 +321,8 @@ enum {
     // Render the object with GLKit
     
 	assert(_shader != nil);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
 	// 頂点バッファを選択
 	glBindVertexArrayOES(_vArray.vertexArray);
@@ -349,7 +352,7 @@ enum {
 	
 	for (int i = 0; i < _LOOP_NUM; i++) {
 		// シェーダーのユニフォーム変数をセット
-		glUniform1f([_shader getUniformIndex:UNI_MATRIX_AND_ALPHA_ALPHA], 1.0f);
+		glUniform1f([_shader getUniformIndex:UNI_MATRIX_AND_ALPHA_ALPHA], _TEST_ALPHA);
 		_matrix4[fboIndex][i] = GLKMatrix4Translate(GLKMatrix4Identity, _vTrance[fboIndex][i].x, _vTrance[fboIndex][i].y, _vTrance[fboIndex][i].z);
 		glUniformMatrix4fv([_shader getUniformIndex:UNI_MATRIX_AND_ALPHA_MATRIX], 1, NO, &_matrix4[fboIndex][i].m00);
 		/*
@@ -381,8 +384,6 @@ enum {
 			NSLog(@"width = %f, height = %f", rect.size.width, rect.size.height);
 		}
 	}
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
 	BOOL bUseFbo = YES;
 

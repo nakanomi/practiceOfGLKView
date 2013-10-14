@@ -146,9 +146,6 @@ static GLint sDefaultFbo = -1;
 }
 - (void)render
 {
-	glEnable(GL_ALPHA);
-	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-
 	glUseProgram(_fboShader.programId);
 	glBindVertexArrayOES(_fboVArray.vertexArray);
 	glBindTexture(GL_TEXTURE_2D, _fboTexId);
