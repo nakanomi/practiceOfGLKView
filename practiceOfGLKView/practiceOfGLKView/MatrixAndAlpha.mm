@@ -42,8 +42,10 @@
 {
 	BOOL result = NO;
 	@try {
+		[self initUniforms];
 		_uniforms[UNI_MATRIX_AND_ALPHA_MATRIX] = glGetUniformLocation(self.programId, "affineMatrix");
 		_uniforms[UNI_MATRIX_AND_ALPHA_ALPHA] = glGetUniformLocation(self.programId, "uAlpha");
+		_uniforms[UNI_MATRIX_AND_ALPHA_SAMPLER] = glGetUniformLocation(self.programId, "uSampler");
 		result =YES;
 	}
 	@catch (NSException *exception) {
