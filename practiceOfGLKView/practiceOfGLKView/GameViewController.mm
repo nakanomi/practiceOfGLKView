@@ -22,7 +22,7 @@
 
 //#define _LOOP_NUM	300
 #define _LOOP_NUM	3
-#define _TEST_ALPHA	0.5f
+#define _TEST_ALPHA	1.0f
 enum {
 	_FBO_FINAL = 0,
 	_FBO_PREVIOUS,
@@ -228,7 +228,7 @@ enum {
 			bDone = YES;
 			{
 				_texture = [[TextureBase alloc] init];
-				BOOL loadResult = [_texture loadTextureFromName:@"BG002" ofType:@"png"];
+				BOOL loadResult = [_texture loadTextureFromName:@"coin_02" ofType:@"jpg"];
 				assert(loadResult);
 				
 			}
@@ -238,7 +238,8 @@ enum {
 				//CGSize sizeRenderBuffer = _fboFinal.sizeFbo;
 				PartTextureVBuffer *vArrayBuffer = (PartTextureVBuffer*)_vArray;
 				//[simpleVArray setupVerticesByTexSize:_texture.textureSize withRenderBufferSize:sizeRenderBuffer];
-				CGRect rectPart = CGRectMake(80.0f, 94.0f, 16.0f, 16.0f);
+				//CGRect rectPart = CGRectMake(80.0f, 94.0f, 16.0f, 16.0f);
+				CGRect rectPart = CGRectMake(0.0f, 0.0f, 256.0f, 256.0f);
 				[vArrayBuffer setupVerticesByTexPart:rectPart withTexSize:_texture.textureSize withRenderTargetSize:_fbo0.sizeFbo];
 			}
 			
@@ -348,7 +349,7 @@ enum {
 				break;
 		}
 	}
-	_testOffset += 1.0f/4096.0f;
+	//_testOffset += 1.0f/4096.0f;
 	
 	for (int i = 0; i < _LOOP_NUM; i++) {
 		// シェーダーのユニフォーム変数をセット
