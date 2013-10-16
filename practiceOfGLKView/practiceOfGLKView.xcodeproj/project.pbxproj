@@ -16,6 +16,7 @@
 		8A38C34C1802CA3C00DB435F /* ShaderSimpleTexture.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C3401802C97600DB435F /* ShaderSimpleTexture.fragsh */; };
 		8A38C34D1802CA3C00DB435F /* ShaderSimpleTexture.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C3411802C97600DB435F /* ShaderSimpleTexture.vertsh */; };
 		8A38C34E1802CA3C00DB435F /* ShaderSimpleTriangle.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C3421802C97600DB435F /* ShaderSimpleTriangle.vertsh */; };
+		8A5A16D1180E4A83002E0C29 /* coin_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A5A16D0180E4A83002E0C29 /* coin_02.jpg */; };
 		8A65F59A17E9B3EE00A5AD35 /* TextureBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A65F59917E9B3EE00A5AD35 /* TextureBase.mm */; };
 		8A7620CC180000D90074E85C /* FboBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A7620CB180000D90074E85C /* FboBase.mm */; };
 		8A78566817E5B13A001EAB1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566717E5B13A001EAB1F /* UIKit.framework */; };
@@ -62,6 +63,7 @@
 		8A38C3401802C97600DB435F /* ShaderSimpleTexture.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleTexture.fragsh; sourceTree = "<group>"; };
 		8A38C3411802C97600DB435F /* ShaderSimpleTexture.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleTexture.vertsh; sourceTree = "<group>"; };
 		8A38C3421802C97600DB435F /* ShaderSimpleTriangle.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleTriangle.vertsh; sourceTree = "<group>"; };
+		8A5A16D0180E4A83002E0C29 /* coin_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coin_02.jpg; path = resource/graphics/texture/coin_02.jpg; sourceTree = SOURCE_ROOT; };
 		8A65F59817E9B3EE00A5AD35 /* TextureBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureBase.h; sourceTree = "<group>"; };
 		8A65F59917E9B3EE00A5AD35 /* TextureBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TextureBase.mm; sourceTree = "<group>"; };
 		8A7620CA180000D90074E85C /* FboBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FboBase.h; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 		8AB6449E17E84FB700F32580 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				8A5A16D0180E4A83002E0C29 /* coin_02.jpg */,
 				8A001D9A18050B230058A0AB /* BG002.png */,
 				8AB6449F17E8501700F32580 /* BG001.png */,
 			);
@@ -399,6 +402,7 @@
 				8AD66816180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh in Resources */,
 				8AD66817180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh in Resources */,
 				8AD6681D180BFC140044B79B /* ShaderAlphaCancelTexture.fragsh in Resources */,
+				8A5A16D1180E4A83002E0C29 /* coin_02.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
