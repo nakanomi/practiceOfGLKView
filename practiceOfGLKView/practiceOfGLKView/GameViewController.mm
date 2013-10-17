@@ -240,7 +240,7 @@ enum {
 				//[simpleVArray setupVerticesByTexSize:_texture.textureSize withRenderBufferSize:sizeRenderBuffer];
 				//CGRect rectPart = CGRectMake(80.0f, 94.0f, 16.0f, 16.0f);
 				CGRect rectPart = CGRectMake(0.0f, 0.0f, 256.0f, 256.0f);
-				[vArrayBuffer setupVerticesByTexPart:rectPart withTexSize:_texture.textureSize withRenderTargetSize:_fbo0.sizeFbo];
+				[vArrayBuffer setupVerticesByTexPart:rectPart withTexSize:_texture.textureSize withRenderTargetSize:_fbo0.sizeFbo isDebug:NO];
 			}
 			
 			[_vArray loadResourceWithName:nil];

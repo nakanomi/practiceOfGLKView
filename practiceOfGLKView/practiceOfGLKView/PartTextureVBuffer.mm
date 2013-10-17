@@ -22,7 +22,7 @@ static int sNumOfPartTextureVBuffer = 0;
 	return self;
 }
 
--(void)setupVerticesByTexPart:(CGRect)rectOfPart withTexSize:(CGSize)sizeTex withRenderTargetSize:(CGSize)sizeOfRender
+-(void)setupVerticesByTexPart:(CGRect)rectOfPart withTexSize:(CGSize)sizeTex withRenderTargetSize:(CGSize)sizeOfRender isDebug:(BOOL)isDbg
 {
 	float sSize = rectOfPart.size.width / sizeTex.width;
 	float tSize = rectOfPart.size.height / sizeTex.height;
@@ -42,6 +42,13 @@ static int sNumOfPartTextureVBuffer = 0;
 	[self setParamOfVertex:&_texSquare[3] ofX:width ofY:-height ofZ:0.0f
 					   ofS:sRight ofT:tBottom];
 	//dbgLog(@"width = %f, height = %f", width, height);
+	if (isDbg) {
+		int i;
+		dbgLog(@"%s", __PRETTY_FUNCTION__);
+		for (i = 0; i < 4; i++) {
+			dbgLog(@"[%d] : %f\t%f\ts:%f, t:%f", i, _texSquare[i].x, _texSquare[i].y, _texSquare[i].s, _texSquare[i].t);
+		}
+	}
 }
 
 - (void)dealloc
