@@ -49,6 +49,8 @@
 		8AE0B533180FC80A00B3F2B2 /* TextureBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0B52E180FC80A00B3F2B2 /* TextureBase.mm */; };
 		8AE0B534180FC80A00B3F2B2 /* VArrayBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0B530180FC80A00B3F2B2 /* VArrayBase.mm */; };
 		8AE0B536180FCE8800B3F2B2 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AE0B535180FCE8800B3F2B2 /* circle.png */; };
+		8AE0B538180FD6A700B3F2B2 /* ShaderSimpleMultiTexture.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AE0B537180FD6A700B3F2B2 /* ShaderSimpleMultiTexture.fragsh */; };
+		8AE0B53B180FD6CF00B3F2B2 /* SimpleMultiTexture.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0B53A180FD6CF00B3F2B2 /* SimpleMultiTexture.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +115,9 @@
 		8AE0B52F180FC80A00B3F2B2 /* VArrayBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VArrayBase.h; path = ES2/VArrayBase.h; sourceTree = "<group>"; };
 		8AE0B530180FC80A00B3F2B2 /* VArrayBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = VArrayBase.mm; path = ES2/VArrayBase.mm; sourceTree = "<group>"; };
 		8AE0B535180FCE8800B3F2B2 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circle.png; path = resource/graphics/texture/circle.png; sourceTree = SOURCE_ROOT; };
+		8AE0B537180FD6A700B3F2B2 /* ShaderSimpleMultiTexture.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleMultiTexture.fragsh; sourceTree = "<group>"; };
+		8AE0B539180FD6CF00B3F2B2 /* SimpleMultiTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleMultiTexture.h; path = ES2/SimpleMultiTexture.h; sourceTree = "<group>"; };
+		8AE0B53A180FD6CF00B3F2B2 /* SimpleMultiTexture.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SimpleMultiTexture.mm; path = ES2/SimpleMultiTexture.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +158,7 @@
 		8A38C3241802C43800DB435F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				8AE0B537180FD6A700B3F2B2 /* ShaderSimpleMultiTexture.fragsh */,
 				8AD6681C180BFC140044B79B /* ShaderAlphaCancelTexture.fragsh */,
 				8AD66814180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh */,
 				8AD66815180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh */,
@@ -170,6 +176,8 @@
 		8A5A16D2180E4DDF002E0C29 /* testMultitexture */ = {
 			isa = PBXGroup;
 			children = (
+				8AE0B539180FD6CF00B3F2B2 /* SimpleMultiTexture.h */,
+				8AE0B53A180FD6CF00B3F2B2 /* SimpleMultiTexture.mm */,
 			);
 			name = testMultitexture;
 			sourceTree = "<group>";
@@ -415,6 +423,7 @@
 				8AD6681D180BFC140044B79B /* ShaderAlphaCancelTexture.fragsh in Resources */,
 				8A5A16D1180E4A83002E0C29 /* coin_02.jpg in Resources */,
 				8AE0B536180FCE8800B3F2B2 /* circle.png in Resources */,
+				8AE0B538180FD6A700B3F2B2 /* ShaderSimpleMultiTexture.fragsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +450,7 @@
 				8AE0B532180FC80A00B3F2B2 /* ShaderBase.mm in Sources */,
 				8AE0B533180FC80A00B3F2B2 /* TextureBase.mm in Sources */,
 				8AE0B534180FC80A00B3F2B2 /* VArrayBase.mm in Sources */,
+				8AE0B53B180FD6CF00B3F2B2 /* SimpleMultiTexture.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

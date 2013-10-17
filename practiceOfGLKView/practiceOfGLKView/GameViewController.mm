@@ -233,10 +233,18 @@ enum {
 		if (!bDone) {
 			bDone = YES;
 			{
+				NSString* files[] = {
+					@"coin_02",
+					@"circle"
+				};
+				NSString* exts[] = {
+					@"jpg",
+					@"png"
+				};
 				int i;
 				for (i = 0; i < _MULTEX_NUM; i++) {
 					_texture[i] = [[TextureBase alloc] init];
-					BOOL loadResult = [_texture[i] loadTextureFromName:@"coin_02" ofType:@"jpg"];
+					BOOL loadResult = [_texture[i] loadTextureFromName:files[i] ofType:exts[i]];
 					assert(loadResult);
 				}
 				
@@ -346,6 +354,11 @@ enum {
     glUseProgram(_shader.programId);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_BASE].textureId);
+	//glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_EFFECT].textureId);
+	/*
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_EFFECT].textureId);
+//	 */
 	
 	_vTrance[fboIndex][0].x = -1.0f;
 	for (int i = 1; i < _LOOP_NUM; i++) {

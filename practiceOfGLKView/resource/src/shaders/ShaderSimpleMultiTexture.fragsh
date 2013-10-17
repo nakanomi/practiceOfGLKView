@@ -1,0 +1,28 @@
+//
+//  Shader.fsh
+//  practiceOfGLKView
+//
+//  Created by nakano_michiharu on 2013/09/15.
+//  Copyright (c) 2013年 nakano_michiharu. All rights reserved.
+//
+uniform sampler2D uSamplerBase;
+uniform sampler2D uSamplerEff;
+varying mediump vec2 texcoord;
+
+void main()
+{
+	mediump vec4 vColorBase = texture2D(uSamplerBase, texcoord);
+	// アルファが0ならば書き込まない
+	if (vColorBase.a == 0.0){
+		discard;
+	}
+	else
+	{
+		mediump vec4 vColorEff = texture2D(uSamplerEff, texcoord);
+		mediump vec4 vColorAdd = vColorBase + vColorEff;
+		mediump vec4 vColorMax = (1.0, 1.0, 1.0, 1.0);
+		vColorMax.a = vColorBase.a;
+		mediump vColor = min(vColorAdd, vColorMax);
+		gl_FragColor = vColor;
+	}
+}
