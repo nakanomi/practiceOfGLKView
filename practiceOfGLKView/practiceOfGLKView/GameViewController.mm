@@ -29,6 +29,12 @@ enum {
 	_FBO_NUM
 };
 
+enum {
+	_MULTEX_BASE = 0,
+	_MULTEX_EFFECT,
+	_MULTEX_NUM
+};
+
 @interface GameViewController ()
 {
 	ShaderBase* _shader;
@@ -39,7 +45,7 @@ enum {
 	
 	VArrayBase *_vArray;
 	//	GLuint _textureId;
-	TextureBase *_texture;
+	TextureBase *_texture[_MULTEX_NUM];
 	
     CADisplayLink *_displayLink;
 	BOOL _animating;
@@ -227,9 +233,12 @@ enum {
 		if (!bDone) {
 			bDone = YES;
 			{
-				_texture = [[TextureBase alloc] init];
-				BOOL loadResult = [_texture loadTextureFromName:@"coin_02" ofType:@"jpg"];
-				assert(loadResult);
+				int i;
+				for (i = 0; i < _MULTEX_NUM; i++) {
+					_texture[i] = [[TextureBase alloc] init];
+					BOOL loadResult = [_texture[i] loadTextureFromName:@"coin_02" ofType:@"jpg"];
+					assert(loadResult);
+				}
 				
 			}
 			{
@@ -240,7 +249,7 @@ enum {
 				//[simpleVArray setupVerticesByTexSize:_texture.textureSize withRenderBufferSize:sizeRenderBuffer];
 				//CGRect rectPart = CGRectMake(80.0f, 94.0f, 16.0f, 16.0f);
 				CGRect rectPart = CGRectMake(0.0f, 0.0f, 256.0f, 256.0f);
-				[vArrayBuffer setupVerticesByTexPart:rectPart withTexSize:_texture.textureSize withRenderTargetSize:_fbo0.sizeFbo isDebug:NO];
+				[vArrayBuffer setupVerticesByTexPart:rectPart withTexSize:_texture[_MULTEX_BASE].textureSize withRenderTargetSize:_fbo0.sizeFbo isDebug:NO];
 			}
 			
 			[_vArray loadResourceWithName:nil];
@@ -279,9 +288,14 @@ enum {
 		[_shader release];
 		_shader = nil;
     }
-	if (_texture != nil) {
-		[_texture release];
-		_texture = nil;
+	{
+		int i;
+		for (i = 0; i < _MULTEX_NUM; i++) {
+			if (_texture[i] != nil) {
+				[_texture[i] release];
+				_texture[i] = nil;
+			}
+		}
 	}
 }
 #pragma mark -DisplayLink
@@ -331,7 +345,7 @@ enum {
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, _texture.textureId);
+	glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_BASE].textureId);
 	
 	_vTrance[fboIndex][0].x = -1.0f;
 	for (int i = 1; i < _LOOP_NUM; i++) {
