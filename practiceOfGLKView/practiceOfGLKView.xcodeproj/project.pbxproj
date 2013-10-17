@@ -48,6 +48,7 @@
 		8AE0B532180FC80A00B3F2B2 /* ShaderBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0B52C180FC80A00B3F2B2 /* ShaderBase.mm */; };
 		8AE0B533180FC80A00B3F2B2 /* TextureBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0B52E180FC80A00B3F2B2 /* TextureBase.mm */; };
 		8AE0B534180FC80A00B3F2B2 /* VArrayBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0B530180FC80A00B3F2B2 /* VArrayBase.mm */; };
+		8AE0B536180FCE8800B3F2B2 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AE0B535180FCE8800B3F2B2 /* circle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,7 @@
 		8AE0B52E180FC80A00B3F2B2 /* TextureBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TextureBase.mm; path = ES2/TextureBase.mm; sourceTree = "<group>"; };
 		8AE0B52F180FC80A00B3F2B2 /* VArrayBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VArrayBase.h; path = ES2/VArrayBase.h; sourceTree = "<group>"; };
 		8AE0B530180FC80A00B3F2B2 /* VArrayBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = VArrayBase.mm; path = ES2/VArrayBase.mm; sourceTree = "<group>"; };
+		8AE0B535180FCE8800B3F2B2 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circle.png; path = resource/graphics/texture/circle.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +289,7 @@
 		8AB6449E17E84FB700F32580 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				8AE0B535180FCE8800B3F2B2 /* circle.png */,
 				8A5A16D0180E4A83002E0C29 /* coin_02.jpg */,
 				8A001D9A18050B230058A0AB /* BG002.png */,
 				8AB6449F17E8501700F32580 /* BG001.png */,
@@ -411,6 +414,7 @@
 				8AD66817180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh in Resources */,
 				8AD6681D180BFC140044B79B /* ShaderAlphaCancelTexture.fragsh in Resources */,
 				8A5A16D1180E4A83002E0C29 /* coin_02.jpg in Resources */,
+				8AE0B536180FCE8800B3F2B2 /* circle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
