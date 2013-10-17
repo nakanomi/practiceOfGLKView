@@ -44,6 +44,7 @@
 	BOOL result = NO;
 	@try {
 		_uniforms[UNI_SIMPLE_TEXTURE_TRANS] = glGetUniformLocation(self.programId, "uniTrance");
+		_uniforms[UNI_SIMPLE_TEXTURE_SAMPLER] = glGetUniformLocation(self.programId, "uSampler");
 		result =YES;
 	}
 	@catch (NSException *exception) {
