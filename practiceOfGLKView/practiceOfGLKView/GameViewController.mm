@@ -354,6 +354,10 @@ enum {
 	for (int i = 0; i < _LOOP_NUM; i++) {
 		// シェーダーのユニフォーム変数をセット
 		glUniform1f([_shader getUniformIndex:UNI_MATRIX_AND_ALPHA_ALPHA], _TEST_ALPHA);
+		if (_texture != nil) {
+			// サンプラーに0番
+			glUniform1i([_shader getUniformIndex:UNI_MATRIX_AND_ALPHA_SAMPLER], 0);
+		}
 		_matrix4[fboIndex][i] = GLKMatrix4Translate(GLKMatrix4Identity, _vTrance[fboIndex][i].x, _vTrance[fboIndex][i].y, _vTrance[fboIndex][i].z);
 		glUniformMatrix4fv([_shader getUniformIndex:UNI_MATRIX_AND_ALPHA_MATRIX], 1, NO, &_matrix4[fboIndex][i].m00);
 		/*

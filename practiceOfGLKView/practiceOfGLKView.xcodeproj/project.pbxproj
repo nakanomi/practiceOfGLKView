@@ -165,6 +165,13 @@
 			path = shaders;
 			sourceTree = "<group>";
 		};
+		8A5A16D2180E4DDF002E0C29 /* testMultitexture */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = testMultitexture;
+			sourceTree = "<group>";
+		};
 		8A78565B17E5B13A001EAB1F = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +321,7 @@
 		8AD13D8217E6BDDA00FB0A46 /* shaderAndBuffer */ = {
 			isa = PBXGroup;
 			children = (
+				8A5A16D2180E4DDF002E0C29 /* testMultitexture */,
 				8AD66818180BDD4A0044B79B /* matrixAndAlpha */,
 				8A001D9F18050CF50058A0AB /* PartTexture */,
 				8AC75BAC17FEC2BB00CE96DE /* fboRender */,
