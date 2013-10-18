@@ -460,6 +460,12 @@ enum {
 
 - (void)drawType01ForView:(GLKView*)view
 {
+	[self changeRenderTargetToFBO:_fboFinal];
+	[self renderObjectsForFboIndex:0];
+
+	// レンダリングターゲットを通常のフレームバッファに変更
+	[FboBase setDefaultFbo];
+	[view bindDrawable];
 	// ビューポートを設定
 	CGSize viewSize = [VArrayBase getScreenSize];
 	glViewport(0, 0, viewSize.width, viewSize.height);
@@ -467,7 +473,8 @@ enum {
 	// レンダリングバッファをクリア
     glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	[self renderObjectsForFboIndex:0];
+	
+	[_fboFinal render];
 }
 
 @end
