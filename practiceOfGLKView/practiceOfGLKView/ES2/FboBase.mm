@@ -148,6 +148,7 @@ static GLint sDefaultFbo = -1;
 {
 	glUseProgram(_fboShader.programId);
 	glBindVertexArrayOES(_fboVArray.vertexArray);
+	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, _fboTexId);
 	// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
