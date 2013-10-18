@@ -12,7 +12,8 @@
 
 //#import "SimpleTextureShader.h"
 //#import "SimpleTextureVBuffer.h"
-#import "MatrixAndAlpha.h"
+//#import "MatrixAndAlpha.h"
+#import "SimpleMultiTexture.h"
 #import "PartTextureVBuffer.h"
 
 #import "SimpleFboShader.h"
@@ -74,6 +75,9 @@ enum {
 
 - (void)setupFBO;
 - (void)setupDrawObjects;
+
+- (void)drawType00ForView:(GLKView*)view;
+- (void)drawType01ForView:(GLKView*)view;
 @end
 
 @implementation GameViewController
@@ -197,8 +201,8 @@ enum {
 
 	[self setupFBO];
     
-	_shader = [[MatrixAndAlpha alloc] init];
-	[_shader loadShaderWithVsh:@"ShaderMtrxAlphaTexture" withFsh:@"ShaderMtrxAlphaTexture"];
+	_shader = [[SimpleMultiTexture alloc] init];
+	[_shader loadShaderWithVsh:@"ShaderSimpleTexture" withFsh:@"ShaderSimpleMultiTexture"];
     
     glEnable(GL_DEPTH_TEST);
 	
@@ -380,13 +384,8 @@ enum {
 	
 	for (int i = 0; i < _LOOP_NUM; i++) {
 		// シェーダーのユニフォーム変数をセット
-		glUniform1f([_shader getUniformIndex:UNI_MATRIX_AND_ALPHA_ALPHA], _TEST_ALPHA);
-		if (_texture != nil) {
-			// サンプラーに0番
-			glUniform1i([_shader getUniformIndex:UNI_MATRIX_AND_ALPHA_SAMPLER], 0);
-		}
-		_matrix4[fboIndex][i] = GLKMatrix4Translate(GLKMatrix4Identity, _vTrance[fboIndex][i].x, _vTrance[fboIndex][i].y, _vTrance[fboIndex][i].z);
-		glUniformMatrix4fv([_shader getUniformIndex:UNI_MATRIX_AND_ALPHA_MATRIX], 1, NO, &_matrix4[fboIndex][i].m00);
+		glUniform1i([_shader getUniformIndex:UNI_SIMPLEMULTI_SAMPLERBASE], 0);
+		glUniform1i([_shader getUniformIndex:UNI_SIMPLEMULTI_SAMPLEREFF], 1);
 		/*
 		glUniform4fv([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_TRANS],
 					 1, &_vTrance[fboIndex][i].x);
@@ -416,9 +415,15 @@ enum {
 			NSLog(@"width = %f, height = %f", rect.size.width, rect.size.height);
 		}
 	}
+	[self drawType00ForView:view];
 	
-	BOOL bUseFbo = YES;
+    
+}
 
+- (void)drawType00ForView:(GLKView*)view
+{
+	BOOL bUseFbo = YES;
+	
 	if (bUseFbo) {
 		// レンダリングターゲットをFBOに変更
 		[self changeRenderTargetToFBO:_fbo0];
@@ -450,8 +455,11 @@ enum {
 	else {
 		[self renderObjectsForFboIndex:0];
 	}
+}
+
+- (void)drawType01ForView:(GLKView*)view
+{
 	
-    
 }
 
 @end
