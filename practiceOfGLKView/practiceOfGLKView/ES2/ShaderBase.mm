@@ -124,35 +124,57 @@
 
 - (BOOL)compileShader:(GLuint *)shader type:(GLenum)type file:(NSString *)file
 {
-    GLint status;
-    const GLchar *source;
-    
-    source = (GLchar *)[[NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil] UTF8String];
-    if (!source) {
-        NSLog(@"Failed to load vertex shader");
-        return NO;
-    }
-    
-    *shader = glCreateShader(type);
-    glShaderSource(*shader, 1, &source, NULL);
-    glCompileShader(*shader);
-    
+	GLchar* buf = nil;
+	
+	@try {
+		GLint status;
+		const GLchar *source;
+		
+		source = (GLchar *)[[NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil] UTF8String];
+		if (!source) {
+			NSLog(@"Failed to load  shader");
+			return NO;
+		}
+		
+		*shader = glCreateShader(type);
+		
+		{
+			unsigned int len = strlen(source);
+			len += 128;
+			unsigned int size = len * sizeof(GLchar);
+			buf = (GLchar*)malloc(size);
+			sprintf(buf, "precision mediump float;\n %s", source);
+		}
+		glShaderSource(*shader, 1, (const GLchar**)&buf, NULL);
+		glCompileShader(*shader);
+		
 #if defined(DEBUG)
-    GLint logLength;
-    glGetShaderiv(*shader, GL_INFO_LOG_LENGTH, &logLength);
-    if (logLength > 0) {
-        GLchar *log = (GLchar *)malloc(logLength);
-        glGetShaderInfoLog(*shader, logLength, &logLength, log);
-        NSLog(@"Shader compile log:\n%s", log);
-        free(log);
-    }
+		GLint logLength;
+		glGetShaderiv(*shader, GL_INFO_LOG_LENGTH, &logLength);
+		if (logLength > 0) {
+			GLchar *log = (GLchar *)malloc(logLength);
+			glGetShaderInfoLog(*shader, logLength, &logLength, log);
+			NSLog(@"Shader compile log:\n%s", log);
+			free(log);
+		}
 #endif
+		
+		glGetShaderiv(*shader, GL_COMPILE_STATUS, &status);
+		if (status == 0) {
+			glDeleteShader(*shader);
+			return NO;
+		}
+	}
+	@catch (NSException *exception) {
+		NSLog(@"%@", exception);
+		assert(false);
+	}
+	@finally {
+		if (buf != nil) {
+			free(buf);
+		}
+	}
     
-    glGetShaderiv(*shader, GL_COMPILE_STATUS, &status);
-    if (status == 0) {
-        glDeleteShader(*shader);
-        return NO;
-    }
     
     return YES;
 }

@@ -7,16 +7,16 @@
 //
 uniform sampler2D uSamplerBase;
 uniform sampler2D uSamplerEff;
-varying mediump vec2 vTexcoord;
+varying vec2 vTexcoord;
 
 void main()
 {
-	mediump vec4 vColorBase = texture2D(uSamplerBase, vTexcoord);
-	mediump vec4 vColorEff = texture2D(uSamplerEff, vTexcoord);
+	vec4 vColorBase = texture2D(uSamplerBase, vTexcoord);
+	vec4 vColorEff = texture2D(uSamplerEff, vTexcoord);
 
 	// スクリーン
 	if (vColorEff.a > 0.0) {
-		mediump vec4 vColor = 1.0 - ((1.0 - vColorBase) * (1.0 - vColorEff));
+		vec4 vColor = 1.0 - ((1.0 - vColorBase) * (1.0 - vColorEff));
 
 		vColor.a = 1.0;
 		gl_FragColor = vColor;
