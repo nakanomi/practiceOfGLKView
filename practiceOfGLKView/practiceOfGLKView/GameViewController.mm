@@ -239,7 +239,7 @@ enum {
 			{
 				NSString* files[] = {
 					@"coin_02",
-					@"circle"
+					@"rectangle"
 				};
 				NSString* exts[] = {
 					@"jpg",
