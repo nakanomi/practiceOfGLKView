@@ -19,6 +19,15 @@ float overlay(float base, float eff)
 	}
 }
 
+float dodge(float base, float eff)
+{
+	float result = eff;
+	if (eff < 1.0) {
+		result = base / (1.0 - eff);
+	}
+	return min(1.0, result);
+}
+
 void main()
 {
 	vec4 vColorBase = texture2D(uSamplerBase, vTexcoord);
@@ -27,9 +36,9 @@ void main()
 	// オーバーレイ
 	if (vColorEff.a > 0.0) {
 		vec4 vColor;
-		vColor.r = overlay(vColorBase.r, vColorEff.r);
-		vColor.g = overlay(vColorBase.g, vColorEff.g);
-		vColor.b = overlay(vColorBase.b, vColorEff.b);
+		vColor.r = dodge(vColorBase.r, vColorEff.r);
+		vColor.g = dodge(vColorBase.g, vColorEff.g);
+		vColor.b = dodge(vColorBase.b, vColorEff.b);
 
 		vColor.a = 1.0;
 		gl_FragColor = vColor;
