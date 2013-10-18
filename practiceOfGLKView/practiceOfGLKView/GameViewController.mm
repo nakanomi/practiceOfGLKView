@@ -239,11 +239,11 @@ enum {
 			{
 				NSString* files[] = {
 					@"coin_02",
-					@"rectangle"
+					@"coin_02"
 				};
 				NSString* exts[] = {
 					@"jpg",
-					@"png"
+					@"jpg"
 				};
 				int i;
 				for (i = 0; i < _MULTEX_NUM; i++) {
