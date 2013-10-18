@@ -359,7 +359,7 @@ enum {
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_BASE].textureId);
 	//glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_EFFECT].textureId);
-	/*
+//	/*
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_EFFECT].textureId);
 //	 */
@@ -380,7 +380,7 @@ enum {
 				break;
 		}
 	}
-	//_testOffset += 1.0f/4096.0f;
+	_testOffset += 1.0f/4096.0f;
 	
 	for (int i = 0; i < _LOOP_NUM; i++) {
 		// シェーダーのユニフォーム変数をセット
@@ -415,7 +415,8 @@ enum {
 			NSLog(@"width = %f, height = %f", rect.size.width, rect.size.height);
 		}
 	}
-	[self drawType00ForView:view];
+	//[self drawType00ForView:view];
+	[self drawType01ForView:view];
 	
     
 }
@@ -459,7 +460,14 @@ enum {
 
 - (void)drawType01ForView:(GLKView*)view
 {
+	// ビューポートを設定
+	CGSize viewSize = [VArrayBase getScreenSize];
+	glViewport(0, 0, viewSize.width, viewSize.height);
 	
+	// レンダリングバッファをクリア
+    glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	[self renderObjectsForFboIndex:0];
 }
 
 @end

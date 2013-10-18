@@ -13,15 +13,6 @@ void main()
 {
 	mediump vec4 vColorBase = texture2D(uSamplerBase, vTexcoord);
 	mediump vec4 vColorEff = texture2D(uSamplerEff, vTexcoord);
-	mediump vec4 vColorAdd = vColorBase + vColorEff;
-	mediump vec4 vColorMax = vec4(1.0, 1.0, 1.0, 1.0);
-	mediump vec4 vColor = min(vColorAdd, vColorMax);
-	// アルファが0ならば書き込まない
-	if (vColorBase.a == 0.0){
-		discard;
-	}
-	else
-	{
-		gl_FragColor = vColor;
-	}
+
+	gl_FragColor = (vColorBase * 0.5) + (vColorEff * 0.5);
 }
