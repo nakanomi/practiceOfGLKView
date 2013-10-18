@@ -14,5 +14,19 @@ void main()
 	mediump vec4 vColorBase = texture2D(uSamplerBase, vTexcoord);
 	mediump vec4 vColorEff = texture2D(uSamplerEff, vTexcoord);
 
-	gl_FragColor = (vColorBase * 0.5) + (vColorEff * 0.5);
+	// 加算
+	//gl_FragColor = vColorBase + vColorEff;
+	// 減算
+	//mediump vec4 vColor = vColorBase - vColorEff;
+	// 乗算
+
+	if (vColorEff.a > 0.0) {
+		mediump vec4 vColor = vColorBase * vColorEff;
+
+		vColor.a = 1.0;
+		gl_FragColor = vColor;
+	}
+	else {
+		gl_FragColor = vColorBase;
+	}
 }
