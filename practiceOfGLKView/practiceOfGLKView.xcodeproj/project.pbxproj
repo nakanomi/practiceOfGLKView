@@ -14,6 +14,7 @@
 		8A38C34C1802CA3C00DB435F /* ShaderSimpleTexture.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C3401802C97600DB435F /* ShaderSimpleTexture.fragsh */; };
 		8A38C34D1802CA3C00DB435F /* ShaderSimpleTexture.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C3411802C97600DB435F /* ShaderSimpleTexture.vertsh */; };
 		8A38C34E1802CA3C00DB435F /* ShaderSimpleTriangle.vertsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C3421802C97600DB435F /* ShaderSimpleTriangle.vertsh */; };
+		8A54E2F3181120070063DCA4 /* rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A54E2F2181120070063DCA4 /* rectangle.png */; };
 		8A5A16D1180E4A83002E0C29 /* coin_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A5A16D0180E4A83002E0C29 /* coin_02.jpg */; };
 		8A78566817E5B13A001EAB1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566717E5B13A001EAB1F /* UIKit.framework */; };
 		8A78566A17E5B13A001EAB1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566917E5B13A001EAB1F /* Foundation.framework */; };
@@ -62,6 +63,7 @@
 		8A38C3401802C97600DB435F /* ShaderSimpleTexture.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleTexture.fragsh; sourceTree = "<group>"; };
 		8A38C3411802C97600DB435F /* ShaderSimpleTexture.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleTexture.vertsh; sourceTree = "<group>"; };
 		8A38C3421802C97600DB435F /* ShaderSimpleTriangle.vertsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleTriangle.vertsh; sourceTree = "<group>"; };
+		8A54E2F2181120070063DCA4 /* rectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rectangle.png; path = resource/graphics/texture/rectangle.png; sourceTree = SOURCE_ROOT; };
 		8A5A16D0180E4A83002E0C29 /* coin_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coin_02.jpg; path = resource/graphics/texture/coin_02.jpg; sourceTree = SOURCE_ROOT; };
 		8A78566417E5B13A001EAB1F /* practiceOfGLKView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practiceOfGLKView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A78566717E5B13A001EAB1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -297,6 +299,7 @@
 		8AB6449E17E84FB700F32580 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				8A54E2F2181120070063DCA4 /* rectangle.png */,
 				8AE0B535180FCE8800B3F2B2 /* circle.png */,
 				8A5A16D0180E4A83002E0C29 /* coin_02.jpg */,
 				8A001D9A18050B230058A0AB /* BG002.png */,
@@ -424,6 +427,7 @@
 				8A5A16D1180E4A83002E0C29 /* coin_02.jpg in Resources */,
 				8AE0B536180FCE8800B3F2B2 /* circle.png in Resources */,
 				8AE0B538180FD6A700B3F2B2 /* ShaderSimpleMultiTexture.fragsh in Resources */,
+				8A54E2F3181120070063DCA4 /* rectangle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
