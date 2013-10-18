@@ -202,7 +202,7 @@ enum {
 	[self setupFBO];
     
 	_shader = [[SimpleMultiTexture alloc] init];
-	[_shader loadShaderWithVsh:@"ShaderSimpleTexture" withFsh:@"ShaderSimpleMultiTexture"];
+	[_shader loadShaderWithVsh:@"ShaderSimpleTexture" withFsh:@"ShaderSimpleOverlay"];
     
     glEnable(GL_DEPTH_TEST);
 	
@@ -239,11 +239,11 @@ enum {
 			{
 				NSString* files[] = {
 					@"coin_02",
-					@"coin_02"
+					@"rectangle"
 				};
 				NSString* exts[] = {
 					@"jpg",
-					@"jpg"
+					@"png"
 				};
 				int i;
 				for (i = 0; i < _MULTEX_NUM; i++) {
