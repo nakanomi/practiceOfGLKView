@@ -62,6 +62,9 @@ enum {
 	float _testOffset;
 	
 	GAMEVIEW_SHADER _setupShader;
+	
+	BOOL _isLogRect;
+	BOOL _isDone;
 }
 @property (strong, nonatomic) EAGLContext *context;
 
@@ -147,6 +150,9 @@ enum {
 	// [self.navigationController setNavigationBarHidden:YES];
 	_displayLink = nil;
 	_animating = NO;
+	
+	_isLogRect = NO;
+	_isDone = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -253,9 +259,8 @@ enum {
 {
 	if (_testCount > 1)
 	{
-		static BOOL bDone = NO;
-		if (!bDone) {
-			bDone = YES;
+		if (!_isDone) {
+			_isDone = YES;
 			{
 				NSString* files[] = {
 					@"coin_02",
@@ -429,9 +434,8 @@ enum {
 {
 	[self setupDrawObjects];
 	{
-		static BOOL bLogRect = NO;
-		if (!bLogRect) {
-			bLogRect = YES;
+		if (!_isLogRect) {
+			_isLogRect = YES;
 			NSLog(@"width = %f, height = %f", rect.size.width, rect.size.height);
 		}
 	}
