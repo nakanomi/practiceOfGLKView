@@ -29,6 +29,7 @@
 		8A78567E17E5B13A001EAB1F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A78567D17E5B13A001EAB1F /* Default.png */; };
 		8A78568017E5B13A001EAB1F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A78567F17E5B13A001EAB1F /* Default@2x.png */; };
 		8A78568217E5B13A001EAB1F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A78568117E5B13A001EAB1F /* Default-568h@2x.png */; };
+		8A80C3971812627B00CBA3F7 /* ShaderSimpleBurn.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A80C3961812627B00CBA3F7 /* ShaderSimpleBurn.fragsh */; };
 		8A97E18E17E6C47700B5B4E8 /* TitleViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A97E18C17E6C47700B5B4E8 /* TitleViewController.mm */; };
 		8A97E18F17E6C47700B5B4E8 /* TitleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */; };
 		8AB644A017E8501700F32580 /* BG001.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449F17E8501700F32580 /* BG001.png */; };
@@ -84,6 +85,7 @@
 		8A78567D17E5B13A001EAB1F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8A78567F17E5B13A001EAB1F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8A78568117E5B13A001EAB1F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8A80C3961812627B00CBA3F7 /* ShaderSimpleBurn.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleBurn.fragsh; sourceTree = "<group>"; };
 		8A97E18B17E6C47700B5B4E8 /* TitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleViewController.h; sourceTree = "<group>"; };
 		8A97E18C17E6C47700B5B4E8 /* TitleViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TitleViewController.mm; sourceTree = "<group>"; };
 		8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleViewController.xib; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		8A38C3241802C43800DB435F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				8A80C3961812627B00CBA3F7 /* ShaderSimpleBurn.fragsh */,
 				8A54E2F418113E450063DCA4 /* ShaderSimpleDodge.fragsh */,
 				8A54E2F518113E450063DCA4 /* ShaderSimpleOverlay.fragsh */,
 				8AE0B537180FD6A700B3F2B2 /* ShaderSimpleMultiTexture.fragsh */,
@@ -436,6 +439,7 @@
 				8A54E2F3181120070063DCA4 /* rectangle.png in Resources */,
 				8A54E2F618113E450063DCA4 /* ShaderSimpleDodge.fragsh in Resources */,
 				8A54E2F718113E450063DCA4 /* ShaderSimpleOverlay.fragsh in Resources */,
+				8A80C3971812627B00CBA3F7 /* ShaderSimpleBurn.fragsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

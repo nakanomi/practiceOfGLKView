@@ -202,7 +202,7 @@ enum {
 	[self setupFBO];
     
 	_shader = [[SimpleMultiTexture alloc] init];
-	[_shader loadShaderWithVsh:@"ShaderSimpleTexture" withFsh:@"ShaderSimpleOverlay"];
+	[_shader loadShaderWithVsh:@"ShaderSimpleTexture" withFsh:@"ShaderSimpleBurn"];
     
     glEnable(GL_DEPTH_TEST);
 	
