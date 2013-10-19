@@ -30,6 +30,8 @@
 		8A78568017E5B13A001EAB1F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A78567F17E5B13A001EAB1F /* Default@2x.png */; };
 		8A78568217E5B13A001EAB1F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A78568117E5B13A001EAB1F /* Default-568h@2x.png */; };
 		8A80C3971812627B00CBA3F7 /* ShaderSimpleBurn.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A80C3961812627B00CBA3F7 /* ShaderSimpleBurn.fragsh */; };
+		8A80C39B18126BEB00CBA3F7 /* SelShaderViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A80C39918126BEB00CBA3F7 /* SelShaderViewController.mm */; };
+		8A80C39C18126BEB00CBA3F7 /* SelShaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A80C39A18126BEB00CBA3F7 /* SelShaderViewController.xib */; };
 		8A97E18E17E6C47700B5B4E8 /* TitleViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A97E18C17E6C47700B5B4E8 /* TitleViewController.mm */; };
 		8A97E18F17E6C47700B5B4E8 /* TitleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */; };
 		8AB644A017E8501700F32580 /* BG001.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449F17E8501700F32580 /* BG001.png */; };
@@ -86,6 +88,9 @@
 		8A78567F17E5B13A001EAB1F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8A78568117E5B13A001EAB1F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8A80C3961812627B00CBA3F7 /* ShaderSimpleBurn.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleBurn.fragsh; sourceTree = "<group>"; };
+		8A80C39818126BEB00CBA3F7 /* SelShaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelShaderViewController.h; sourceTree = "<group>"; };
+		8A80C39918126BEB00CBA3F7 /* SelShaderViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelShaderViewController.mm; sourceTree = "<group>"; };
+		8A80C39A18126BEB00CBA3F7 /* SelShaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelShaderViewController.xib; sourceTree = "<group>"; };
 		8A97E18B17E6C47700B5B4E8 /* TitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleViewController.h; sourceTree = "<group>"; };
 		8A97E18C17E6C47700B5B4E8 /* TitleViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TitleViewController.mm; sourceTree = "<group>"; };
 		8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleViewController.xib; sourceTree = "<group>"; };
@@ -337,6 +342,9 @@
 				8AD3592917EAF59F00BE0B1F /* GameViewController.h */,
 				8AD3592A17EAF59F00BE0B1F /* GameViewController.mm */,
 				8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */,
+				8A80C39818126BEB00CBA3F7 /* SelShaderViewController.h */,
+				8A80C39918126BEB00CBA3F7 /* SelShaderViewController.mm */,
+				8A80C39A18126BEB00CBA3F7 /* SelShaderViewController.xib */,
 			);
 			name = viewAndController;
 			sourceTree = "<group>";
@@ -440,6 +448,7 @@
 				8A54E2F618113E450063DCA4 /* ShaderSimpleDodge.fragsh in Resources */,
 				8A54E2F718113E450063DCA4 /* ShaderSimpleOverlay.fragsh in Resources */,
 				8A80C3971812627B00CBA3F7 /* ShaderSimpleBurn.fragsh in Resources */,
+				8A80C39C18126BEB00CBA3F7 /* SelShaderViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +476,7 @@
 				8AE0B533180FC80A00B3F2B2 /* TextureBase.mm in Sources */,
 				8AE0B534180FC80A00B3F2B2 /* VArrayBase.mm in Sources */,
 				8AE0B53B180FD6CF00B3F2B2 /* SimpleMultiTexture.mm in Sources */,
+				8A80C39B18126BEB00CBA3F7 /* SelShaderViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
