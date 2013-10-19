@@ -51,6 +51,7 @@
 		@"オーバーレイ",
 		@"覆い焼き",
 		@"焼き込み",
+		@"ぼかし",
 	};
 	const int count = sizeof(labels) / sizeof(labels[0]);
 	for (int i = 0; i < count; i++) {
