@@ -7,8 +7,12 @@
 //
 
 #import "SelShaderViewController.h"
+#import "GameViewController.h"
 
 @interface SelShaderViewController ()
+{
+	NSMutableArray *_items;
+}
 
 @end
 
@@ -16,6 +20,7 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -23,9 +28,35 @@
     return self;
 }
 
+- (void)dealloc
+{
+	[_items release];
+	[super dealloc];
+}
+
 - (void)viewDidLoad
 {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
     [super viewDidLoad];
+	
+	_items = [[NSMutableArray alloc]init];
+	NSString* labels[] = {
+#if 0
+		NONE = 0,
+		OVERLAY,
+		DODGE,
+		BURN
+#endif
+		@"無効",
+		@"オーバーレイ",
+		@"覆い焼き",
+		@"焼き込み",
+	};
+	const int count = sizeof(labels) / sizeof(labels[0]);
+	for (int i = 0; i < count; i++) {
+		NSString* strCell = labels[i];
+		[_items addObject:strCell];
+	}
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -36,6 +67,7 @@
 
 - (void)didReceiveMemoryWarning
 {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -44,27 +76,30 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+	NSLog(@"%s", __PRETTY_FUNCTION__);
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+	NSLog(@"%s", __PRETTY_FUNCTION__);
     // Return the number of rows in the section.
-    return 0;
+    return [_items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+	//NSLog(@"%s : row :%d", __PRETTY_FUNCTION__, indexPath.row);
+	NSString *CellIdentifier = [_items objectAtIndex: indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
+		//NSLog(@"alloc cell");
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
+	cell.textLabel.text = CellIdentifier;
     
     return cell;
 }
@@ -112,14 +147,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+	NSLog(@"%s : row : %d", __PRETTY_FUNCTION__, indexPath.row);
+	GAMEVIEW_SHADER shader = (GAMEVIEW_SHADER)indexPath.row;
+	if (shader != NONE) {
+		GameViewController *controller = [[GameViewController alloc] initWithNibName:@"GameViewController" bundle:nil];
+		controller.setupShader = shader;
+		[self.navigationController pushViewController:controller animated:YES];
+		[controller release];
+	}
+
+	/*
+	 */
 }
 
 @end

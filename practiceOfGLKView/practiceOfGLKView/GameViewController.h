@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKView.h>
 
-
+enum GAMEVIEW_SHADER {
+	NONE = 0,
+	OVERLAY,
+	DODGE,
+	BURN
+	};
 @interface GameViewController : UIViewController<GLKViewDelegate>
 
+@property (assign) GAMEVIEW_SHADER setupShader;
 @end

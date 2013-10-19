@@ -60,6 +60,8 @@ enum {
 	int _testCount;
 	
 	float _testOffset;
+	
+	GAMEVIEW_SHADER _setupShader;
 }
 @property (strong, nonatomic) EAGLContext *context;
 
@@ -81,6 +83,7 @@ enum {
 @end
 
 @implementation GameViewController
+@synthesize setupShader = _setupShader;
 
 - (void)dealloc
 {
@@ -111,6 +114,7 @@ enum {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		_setupShader = NONE;
     }
     return self;
 }
@@ -202,7 +206,23 @@ enum {
 	[self setupFBO];
     
 	_shader = [[SimpleMultiTexture alloc] init];
-	[_shader loadShaderWithVsh:@"ShaderSimpleTexture" withFsh:@"ShaderSimpleBurn"];
+	NSString *strFragShader = nil;
+	switch (self.setupShader) {
+		case OVERLAY:
+			strFragShader = @"ShaderSimpleOverlay";
+			break;
+		case DODGE:
+			strFragShader = @"ShaderSimpleDodge";
+			break;
+		case BURN:
+			strFragShader = @"ShaderSimpleBurn";
+			break;
+			
+		default:
+			assert(false);
+			break;
+	}
+	[_shader loadShaderWithVsh:@"ShaderSimpleTexture" withFsh:strFragShader];
     
     glEnable(GL_DEPTH_TEST);
 	
