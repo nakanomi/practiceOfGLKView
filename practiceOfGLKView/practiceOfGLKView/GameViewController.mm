@@ -266,11 +266,11 @@ enum {
 			_isDone = YES;
 			{
 				NSString* files[] = {
-					@"coin_02",
-					@"rectangle"
+					@"bg",
+					@"texture"
 				};
 				NSString* exts[] = {
-					@"jpg",
+					@"png",
 					@"png"
 				};
 				int i;
