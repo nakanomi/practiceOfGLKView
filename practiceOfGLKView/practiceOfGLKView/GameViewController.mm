@@ -223,6 +223,7 @@ enum {
 			_shader = [[SimpleMultiTexture alloc] init];
 			break;
 		case OFF_GRADATION:
+		case STAR_LIGHT_SCOPE:
 			_shader = [[SimpleEffect alloc] init];
 			break;
 			
@@ -251,6 +252,9 @@ enum {
 			break;
 		case OFF_GRADATION:
 			strFragShader = @"ShaderOffGradation";
+			break;
+		case STAR_LIGHT_SCOPE:
+			strFragShader = @"ShaderStarLightScope";
 			break;
 			
 		default:

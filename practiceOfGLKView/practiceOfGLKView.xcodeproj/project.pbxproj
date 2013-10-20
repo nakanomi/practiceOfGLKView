@@ -23,6 +23,7 @@
 		8A68A1241813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A68A1231813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh */; };
 		8A68A12E1813DEA800A0448D /* SimpleEffect.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A68A12D1813DEA800A0448D /* SimpleEffect.mm */; };
 		8A68A1301813E7E000A0448D /* ShaderOffGradation.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A68A12F1813E7E000A0448D /* ShaderOffGradation.fragsh */; };
+		8A68A1321813EF8C00A0448D /* ShaderStarLightScope.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A68A1311813EF8C00A0448D /* ShaderStarLightScope.fragsh */; };
 		8A78566817E5B13A001EAB1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566717E5B13A001EAB1F /* UIKit.framework */; };
 		8A78566A17E5B13A001EAB1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566917E5B13A001EAB1F /* Foundation.framework */; };
 		8A78566C17E5B13A001EAB1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566B17E5B13A001EAB1F /* CoreGraphics.framework */; };
@@ -84,6 +85,7 @@
 		8A68A12C1813DEA800A0448D /* SimpleEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleEffect.h; path = ES2/SimpleEffect.h; sourceTree = "<group>"; };
 		8A68A12D1813DEA800A0448D /* SimpleEffect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SimpleEffect.mm; path = ES2/SimpleEffect.mm; sourceTree = "<group>"; };
 		8A68A12F1813E7E000A0448D /* ShaderOffGradation.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderOffGradation.fragsh; sourceTree = "<group>"; };
+		8A68A1311813EF8C00A0448D /* ShaderStarLightScope.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderStarLightScope.fragsh; sourceTree = "<group>"; };
 		8A78566417E5B13A001EAB1F /* practiceOfGLKView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practiceOfGLKView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A78566717E5B13A001EAB1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A78566917E5B13A001EAB1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -184,6 +186,7 @@
 		8A38C3241802C43800DB435F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				8A68A1311813EF8C00A0448D /* ShaderStarLightScope.fragsh */,
 				8A68A12F1813E7E000A0448D /* ShaderOffGradation.fragsh */,
 				8A68A1231813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh */,
 				8A80C39D181287F300CBA3F7 /* ShaderSimpleBlur.fragsh */,
@@ -482,6 +485,7 @@
 				8A37457B18138EA600B73F9A /* texture.png in Resources */,
 				8A68A1241813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh in Resources */,
 				8A68A1301813E7E000A0448D /* ShaderOffGradation.fragsh in Resources */,
+				8A68A1321813EF8C00A0448D /* ShaderStarLightScope.fragsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
