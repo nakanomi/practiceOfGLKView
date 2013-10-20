@@ -10,7 +10,14 @@ varying vec2 vTexcoord;
 // 諧調を落とす
 float offGradation(float base)
 {
-	float result = base;
+	const int offVar = 32;
+	float result = 1.0;
+	float fVar = 255.0 * base;
+	int iVar = int(fVar);
+	iVar /= offVar;
+	iVar *= offVar;
+	fVar = float(iVar);
+	result = fVar / 255.0;
 	return result;
 }
 
