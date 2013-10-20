@@ -5,7 +5,7 @@
 //  Created by nakano_michiharu on 2013/09/15.
 //  Copyright (c) 2013年 nakano_michiharu. All rights reserved.
 //
-uniform sampler2D uSampler;
+uniform sampler2D uSamplerBase;
 varying vec2 vTexcoord;
 // 諧調を落とす
 float offGradation(float base)
@@ -16,8 +16,8 @@ float offGradation(float base)
 
 void main()
 {
-	vec4 vColorBase = texture2D(uSampler, vTexcoord);
-	
+	vec4 vColorBase = texture2D(uSamplerBase, vTexcoord);
+
 	vec4 vColor;
 	vColor.r = offGradation(vColorBase.r);
 	vColor.g = offGradation(vColorBase.g);

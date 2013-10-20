@@ -16,7 +16,7 @@ enum GAMEVIEW_SHADER {
 	BURN,
 	ADD,
 	BLUR_TEST_5DOT,
-	
+	OFF_GRADATION,
 	};
 @interface GameViewController : UIViewController<GLKViewDelegate>
 

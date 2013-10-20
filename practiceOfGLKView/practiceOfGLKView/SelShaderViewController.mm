@@ -53,6 +53,7 @@
 		@"焼き込み",
 		@"加算（覆い焼きリニア？）",
 		@"ぼかし",
+		@"諧調落とし（作成中）",
 	};
 	const int count = sizeof(labels) / sizeof(labels[0]);
 	for (int i = 0; i < count; i++) {

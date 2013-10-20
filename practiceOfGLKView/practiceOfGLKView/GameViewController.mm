@@ -14,6 +14,7 @@
 //#import "SimpleTextureVBuffer.h"
 //#import "MatrixAndAlpha.h"
 #import "SimpleMultiTexture.h"
+#import "SimpleEffect.h"
 #import "PartTextureVBuffer.h"
 
 #import "SimpleFboShader.h"
@@ -211,8 +212,26 @@ enum {
     [EAGLContext setCurrentContext:self.context];
 
 	[self setupFBO];
+	_shader = nil;
+	switch (self.setupShader) {
+			// マルチテクスチャ
+		case OVERLAY:
+		case DODGE:
+		case BURN:
+		case ADD:
+		case BLUR_TEST_5DOT:
+			_shader = [[SimpleMultiTexture alloc] init];
+			break;
+		case OFF_GRADATION:
+			_shader = [[SimpleEffect alloc] init];
+			break;
+			
+		default:
+			assert(false);
+			break;
+	}
+	assert(_shader != nil);
     
-	_shader = [[SimpleMultiTexture alloc] init];
 	NSString *strFragShader = nil;
 	switch (self.setupShader) {
 		case OVERLAY:
@@ -229,6 +248,9 @@ enum {
 			break;
 		case ADD:
 			strFragShader = @"ShaderSimpleMultiAdd";
+			break;
+		case OFF_GRADATION:
+			strFragShader = @"ShaderOffGradation";
 			break;
 			
 		default:
