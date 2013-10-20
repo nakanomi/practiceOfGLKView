@@ -76,6 +76,7 @@ enum {
 - (void)endAnimation;
 - (void)drawFrame;
 - (void)changeRenderTargetToFBO:(FboBase*)targetFbo;
+- (void)setupTextures:(int)count;
 - (void)renderObjectsForFboIndex:(int)fboIndex;
 
 - (void)setupFBO;
@@ -374,6 +375,18 @@ enum {
 	
 }
 
+- (void)setupTextures:(int)count
+{
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_BASE].textureId);
+	if (count >= 2) {
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_EFFECT].textureId);
+	}
+	
+}
+
+
 - (void)renderObjectsForFboIndex:(int)fboIndex;
 {
     // Render the object with GLKit
@@ -387,13 +400,7 @@ enum {
     
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_BASE].textureId);
-	//glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_EFFECT].textureId);
-//	/*
-	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_EFFECT].textureId);
-//	 */
+	[self setupTextures:_shader.textureCount];
 	
 	_vTrance[fboIndex][0].x = -1.0f;
 	for (int i = 1; i < _LOOP_NUM; i++) {

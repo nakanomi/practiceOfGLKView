@@ -22,6 +22,7 @@ enum  {
 {
 	
 }
+- (id)init;
 - (GLint) getUniformIndex: (int) index;
 
 @end

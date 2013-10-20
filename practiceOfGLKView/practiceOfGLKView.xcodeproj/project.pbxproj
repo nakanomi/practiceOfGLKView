@@ -21,6 +21,7 @@
 		8A54E2F718113E450063DCA4 /* ShaderSimpleOverlay.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A54E2F518113E450063DCA4 /* ShaderSimpleOverlay.fragsh */; };
 		8A5A16D1180E4A83002E0C29 /* coin_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A5A16D0180E4A83002E0C29 /* coin_02.jpg */; };
 		8A68A1241813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A68A1231813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh */; };
+		8A68A12E1813DEA800A0448D /* SimpleEffect.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A68A12D1813DEA800A0448D /* SimpleEffect.mm */; };
 		8A78566817E5B13A001EAB1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566717E5B13A001EAB1F /* UIKit.framework */; };
 		8A78566A17E5B13A001EAB1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566917E5B13A001EAB1F /* Foundation.framework */; };
 		8A78566C17E5B13A001EAB1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566B17E5B13A001EAB1F /* CoreGraphics.framework */; };
@@ -79,6 +80,8 @@
 		8A54E2F518113E450063DCA4 /* ShaderSimpleOverlay.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleOverlay.fragsh; sourceTree = "<group>"; };
 		8A5A16D0180E4A83002E0C29 /* coin_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coin_02.jpg; path = resource/graphics/texture/coin_02.jpg; sourceTree = SOURCE_ROOT; };
 		8A68A1231813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleMultiAdd.fragsh; sourceTree = "<group>"; };
+		8A68A12C1813DEA800A0448D /* SimpleEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleEffect.h; path = ES2/SimpleEffect.h; sourceTree = "<group>"; };
+		8A68A12D1813DEA800A0448D /* SimpleEffect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SimpleEffect.mm; path = ES2/SimpleEffect.mm; sourceTree = "<group>"; };
 		8A78566417E5B13A001EAB1F /* practiceOfGLKView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practiceOfGLKView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A78566717E5B13A001EAB1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A78566917E5B13A001EAB1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -206,6 +209,15 @@
 				8AE0B53A180FD6CF00B3F2B2 /* SimpleMultiTexture.mm */,
 			);
 			name = testMultitexture;
+			sourceTree = "<group>";
+		};
+		8A68A12B1813DE7D00A0448D /* testSimpleEffect */ = {
+			isa = PBXGroup;
+			children = (
+				8A68A12C1813DEA800A0448D /* SimpleEffect.h */,
+				8A68A12D1813DEA800A0448D /* SimpleEffect.mm */,
+			);
+			name = testSimpleEffect;
 			sourceTree = "<group>";
 		};
 		8A78565B17E5B13A001EAB1F = {
@@ -364,6 +376,7 @@
 		8AD13D8217E6BDDA00FB0A46 /* shaderAndBuffer */ = {
 			isa = PBXGroup;
 			children = (
+				8A68A12B1813DE7D00A0448D /* testSimpleEffect */,
 				8A5A16D2180E4DDF002E0C29 /* testMultitexture */,
 				8AD66818180BDD4A0044B79B /* matrixAndAlpha */,
 				8A001D9F18050CF50058A0AB /* PartTexture */,
@@ -493,6 +506,7 @@
 				8AE0B534180FC80A00B3F2B2 /* VArrayBase.mm in Sources */,
 				8AE0B53B180FD6CF00B3F2B2 /* SimpleMultiTexture.mm in Sources */,
 				8A80C39B18126BEB00CBA3F7 /* SelShaderViewController.mm in Sources */,
+				8A68A12E1813DEA800A0448D /* SimpleEffect.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

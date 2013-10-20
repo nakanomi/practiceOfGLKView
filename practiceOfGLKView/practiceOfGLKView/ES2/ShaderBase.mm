@@ -23,12 +23,14 @@
 
 @implementation ShaderBase
 @synthesize programId = _programId;
+@synthesize textureCount = _textureCount;
 
 - (id)init
 {
 	self = [super init];
 	if (self != nil) {
 		_programId = 0;
+		_textureCount = 1;
 		[self initUniforms];
 	}
 	return self;

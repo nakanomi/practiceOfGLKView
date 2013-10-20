@@ -11,8 +11,10 @@
 
 @interface ShaderBase : NSObject
 {
+	int _textureCount;
 }
 @property (readonly) GLuint programId;
+@property (readonly) int textureCount;
 
 - (id)init;
 

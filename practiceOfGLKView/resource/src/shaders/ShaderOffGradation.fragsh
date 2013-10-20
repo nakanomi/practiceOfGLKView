@@ -1,0 +1,28 @@
+//
+//  Shader.fsh
+//  practiceOfGLKView
+//
+//  Created by nakano_michiharu on 2013/09/15.
+//  Copyright (c) 2013年 nakano_michiharu. All rights reserved.
+//
+uniform sampler2D uSampler;
+varying vec2 vTexcoord;
+// 諧調を落とす
+float offGradation(float base)
+{
+	float result = base;
+	return result;
+}
+
+void main()
+{
+	vec4 vColorBase = texture2D(uSampler, vTexcoord);
+	
+	vec4 vColor;
+	vColor.r = offGradation(vColorBase.r);
+	vColor.g = offGradation(vColorBase.g);
+	vColor.b = offGradation(vColorBase.b);
+	vColor.a = 1.0;
+	
+	gl_FragColor = vColor;
+}

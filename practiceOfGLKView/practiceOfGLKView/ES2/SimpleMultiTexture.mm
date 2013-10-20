@@ -16,6 +16,15 @@
 @end
 
 @implementation SimpleMultiTexture
+- (id)init
+{
+	self = [super init];
+	if (self != nil) {
+		_textureCount = 2;
+	}
+	return self;
+}
+
 - (GLint) getUniformIndex: (int) index
 {
 	GLint result = -1;
