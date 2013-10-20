@@ -19,9 +19,8 @@ void main()
 	if (vColorEff.a > 0.0) {
 		vec4 vColor;
 		vColor = vColorBase + vColorEff;
-		vColor.r = min(1.0, vColor.r);
-		vColor.g = min(1.0, vColor.g);
-		vColor.b = min(1.0, vColor.b);
+		vec4 vLimit = vec4(1.0, 1.0, 1.0, 1.0);
+		vColor = min(vColor, vLimit);
 		vColor.a = 1.0;
 		gl_FragColor = vColor;
 	}
