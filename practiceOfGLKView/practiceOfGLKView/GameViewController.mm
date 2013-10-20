@@ -223,8 +223,11 @@ enum {
 		case BURN:
 			strFragShader = @"ShaderSimpleBurn";
 			break;
-		case BLUR:
+		case BLUR_TEST_5DOT:
 			strFragShader = @"ShaderSimpleBlur";
+			break;
+		case ADD:
+			strFragShader = @"ShaderSimpleMultiAdd";
 			break;
 			
 		default:

@@ -20,6 +20,7 @@
 		8A54E2F618113E450063DCA4 /* ShaderSimpleDodge.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A54E2F418113E450063DCA4 /* ShaderSimpleDodge.fragsh */; };
 		8A54E2F718113E450063DCA4 /* ShaderSimpleOverlay.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A54E2F518113E450063DCA4 /* ShaderSimpleOverlay.fragsh */; };
 		8A5A16D1180E4A83002E0C29 /* coin_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A5A16D0180E4A83002E0C29 /* coin_02.jpg */; };
+		8A68A1241813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A68A1231813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh */; };
 		8A78566817E5B13A001EAB1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566717E5B13A001EAB1F /* UIKit.framework */; };
 		8A78566A17E5B13A001EAB1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566917E5B13A001EAB1F /* Foundation.framework */; };
 		8A78566C17E5B13A001EAB1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566B17E5B13A001EAB1F /* CoreGraphics.framework */; };
@@ -77,6 +78,7 @@
 		8A54E2F418113E450063DCA4 /* ShaderSimpleDodge.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleDodge.fragsh; sourceTree = "<group>"; };
 		8A54E2F518113E450063DCA4 /* ShaderSimpleOverlay.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleOverlay.fragsh; sourceTree = "<group>"; };
 		8A5A16D0180E4A83002E0C29 /* coin_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = coin_02.jpg; path = resource/graphics/texture/coin_02.jpg; sourceTree = SOURCE_ROOT; };
+		8A68A1231813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleMultiAdd.fragsh; sourceTree = "<group>"; };
 		8A78566417E5B13A001EAB1F /* practiceOfGLKView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practiceOfGLKView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A78566717E5B13A001EAB1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A78566917E5B13A001EAB1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -177,6 +179,7 @@
 		8A38C3241802C43800DB435F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				8A68A1231813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh */,
 				8A80C39D181287F300CBA3F7 /* ShaderSimpleBlur.fragsh */,
 				8A80C3961812627B00CBA3F7 /* ShaderSimpleBurn.fragsh */,
 				8A54E2F418113E450063DCA4 /* ShaderSimpleDodge.fragsh */,
@@ -461,6 +464,7 @@
 				8A80C39E181287F300CBA3F7 /* ShaderSimpleBlur.fragsh in Resources */,
 				8A37457A18138EA600B73F9A /* bg.png in Resources */,
 				8A37457B18138EA600B73F9A /* texture.png in Resources */,
+				8A68A1241813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
