@@ -58,10 +58,9 @@ void main()
 	}
 	colorEff = texture2D(uSamplerScanLine, vTexcoord);
 	if (colorEff.a > 0.0) {
-		colorEff.r = overlay(color.r, colorEff.r);
-		colorEff.g = overlay(color.g, colorEff.g);
-		colorEff.b = overlay(color.b, colorEff.b);
-		color = colorEff;
+		color.r = overlay(color.r, colorEff.r);
+		color.g = overlay(color.g, colorEff.g);
+		color.b = overlay(color.b, colorEff.b);
 	}
 	color.a = 1.0;
 
