@@ -21,17 +21,26 @@
 
 @implementation StarLightScopeShader
 
-- (GLint) getUniformIndex: (int) index
+- (id)init
 {
-	int result = -1;
-	if ((index >= 0) && (index < (sizeof(_uniforms) / sizeof(_uniforms[0])))) {
-		result = _uniforms[index];
+	self = [super init];
+	if (self != nil) {
 		_colorOverlay.r = 34.0f/255.0f;
 		_colorOverlay.g = 172.0f/255.0f;
 		_colorOverlay.b = 56.0f/255.0f;
 		_colorOverlay.a = 1.0f;
 		
 		memset(&_noMoveVec, 0, sizeof(_noMoveVec));
+	}
+	return self;
+}
+
+
+- (GLint) getUniformIndex: (int) index
+{
+	int result = -1;
+	if ((index >= 0) && (index < (sizeof(_uniforms) / sizeof(_uniforms[0])))) {
+		result = _uniforms[index];
 	}
 	return result;
 }

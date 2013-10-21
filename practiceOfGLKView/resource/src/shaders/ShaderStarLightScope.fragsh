@@ -9,6 +9,16 @@ uniform sampler2D uSamplerBase;
 varying vec2 vTexcoord;
 uniform vec4 uColorOverlay;
 
+float overlayMono(float monoBase, float eff)
+{
+	if (monoBase < 0.5) {
+		return monoBase * eff * 2.0;
+	}
+	else {
+		return 1.0 - 2.0 * (1.0 - monoBase) * (1.0 - eff);
+	}
+}
+
 
 void main()
 {
@@ -17,7 +27,11 @@ void main()
 
 	// モノクロ化  = ( 0.298912 * R + 0.586611 * G + 0.114478 * B )
 	float monoVal = colorBase.r * 0.298912 + colorBase.g * 0.586611 + colorBase.b * 0.114478;
-	vec4 colorMono = vec4(monoVal, monoVal, monoVal, 1.0);
+	vec4 colorMono;
+	colorMono.r = overlayMono(monoVal, uColorOverlay.r);
+	colorMono.g = overlayMono(monoVal, uColorOverlay.g);
+	colorMono.b = overlayMono(monoVal, uColorOverlay.b);
+	colorMono.a = 1.0;
 
 	gl_FragColor = colorMono;
 }
