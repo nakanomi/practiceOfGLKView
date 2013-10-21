@@ -14,7 +14,7 @@
 //#import "SimpleTextureVBuffer.h"
 //#import "MatrixAndAlpha.h"
 #import "SimpleMultiTexture.h"
-#import "SimpleEffect.h"
+#import "StarLightScopeShader.h"
 #import "PartTextureVBuffer.h"
 
 #import "SimpleFboShader.h"
@@ -79,6 +79,7 @@ enum {
 - (void)changeRenderTargetToFBO:(FboBase*)targetFbo;
 - (void)setupTextures:(int)count;
 - (void)renderObjectsForFboIndex:(int)fboIndex;
+- (void)renderStarLightFbo;
 
 - (void)setupFBO;
 - (void)setupDrawObjects;
@@ -224,7 +225,7 @@ enum {
 			break;
 		case OFF_GRADATION:
 		case STAR_LIGHT_SCOPE:
-			_shader = [[SimpleEffect alloc] init];
+			_shader = [[StarLightScopeShader alloc] init];
 			break;
 			
 		default:
@@ -286,6 +287,11 @@ enum {
 	}
 	_testCount = 0;
 	_testOffset = 0.0f;
+	{
+		GLint param = 0;
+		glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &param);
+		NSLog(@"texunit:%d", param);
+	}
 }
 
 - (void)setupDrawObjects
@@ -412,6 +418,31 @@ enum {
 	
 }
 
+- (void)renderStarLightFbo
+{
+	assert(_shader != nil);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	
+	// 頂点バッファを選択
+	glBindVertexArrayOES(_vArray.vertexArray);
+    
+	// シェーダープログラムを適用
+    glUseProgram(_shader.programId);
+	[self setupTextures:_shader.textureCount];
+	// シェーダーのユニフォーム変数をセット
+	glUniform1i([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_SAMPLER], 0);
+	
+	// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	//glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, _vArray.count);
+}
+
+
 
 - (void)renderObjectsForFboIndex:(int)fboIndex;
 {
@@ -524,7 +555,8 @@ enum {
 - (void)drawType01ForView:(GLKView*)view
 {
 	[self changeRenderTargetToFBO:_fboFinal];
-	[self renderObjectsForFboIndex:0];
+	//[self renderObjectsForFboIndex:0];
+	[self renderStarLightFbo];
 
 	// レンダリングターゲットを通常のフレームバッファに変更
 	[FboBase setDefaultFbo];

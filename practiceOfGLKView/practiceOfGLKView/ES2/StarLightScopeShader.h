@@ -8,6 +8,12 @@
 
 #import "SimpleTextureShader.h"
 
-@interface SimpleEffect : SimpleTextureShader
+enum {
+	UNI_STARLIGHTSCOPE_OVERLAY_GREEN = UNI_SIMPLE_TEXTURE_NUM,
+	UNI_STARLIGHTSCOPE_NUM
+};
+
+@interface StarLightScopeShader : SimpleTextureShader
+- (GLint) getUniformIndex: (int) index;
 
 @end

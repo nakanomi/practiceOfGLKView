@@ -7,46 +7,17 @@
 //
 uniform sampler2D uSamplerBase;
 varying vec2 vTexcoord;
-// 諧調を落とす
-float offGradation(float base)
-{
-	const int offVar = 16;
-	float result = 1.0;
-	float fVar = 255.0 * base;
-	int iVar = int(fVar);
-	iVar /= offVar;
-	iVar *= offVar;
-	fVar = float(iVar);
-	result = fVar / 255.0;
-	return result;
-}
+uniform vec4 uColorOverlay;
 
-vec4 lightUp(vec4 base, float upParam)
-{
-	vec4 result = base * upParam;
-	vec4 limit = vec4(1.0, 1.0, 1.0, 1.0);
-	return min(limit, result);
-}
 
 void main()
 {
 	// TODO ラスタずらし
-	vec4 vColorBase = texture2D(uSamplerBase, vTexcoord);
+	vec4 colorBase = texture2D(uSamplerBase, vTexcoord);
 
-	// 一旦値を増幅させる
-	vec4 vColor = lightUp(vColorBase, 4.0);
-	vColor.a = 1.0;
-
-	// 諧調を落とす
-	vColor.r = offGradation(vColorBase.r);
-	vColor.g = offGradation(vColorBase.g);
-	vColor.b = offGradation(vColorBase.b);
 	// モノクロ化  = ( 0.298912 * R + 0.586611 * G + 0.114478 * B )
-	float monoVal = vColor.r * 0.298912 + vColor.g * 0.586611 + vColor.b * 0.114478;
-	monoVal = min(1.0, monoVal);
-	float mono2 = monoVal * monoVal;
-	float mono4 = mono2 * mono2;
-	vColor = vec4(mono4, monoVal, mono2, 1.0);
+	float monoVal = colorBase.r * 0.298912 + colorBase.g * 0.586611 + colorBase.b * 0.114478;
+	vec4 colorMono = vec4(monoVal, monoVal, monoVal, 1.0);
 
-	gl_FragColor = vColor;
+	gl_FragColor = colorMono;
 }
