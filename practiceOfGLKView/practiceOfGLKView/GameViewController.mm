@@ -33,7 +33,7 @@ enum {
 
 enum {
 	_MULTEX_BASE = 0,
-	_MULTEX_EFFECT,
+	_MULTEX_EFFECT_01,
 	_MULTEX_NUM
 };
 
@@ -304,7 +304,7 @@ enum {
 			{
 				NSString* files[] = {
 					@"bg",
-					@"texture"
+					@"shadowup"
 				};
 				NSString* exts[] = {
 					@"png",
@@ -414,7 +414,7 @@ enum {
 	glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_BASE].textureId);
 	if (count >= 2) {
 		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_EFFECT].textureId);
+		glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_EFFECT_01].textureId);
 	}
 	
 }

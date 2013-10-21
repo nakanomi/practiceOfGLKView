@@ -29,6 +29,7 @@
 		_colorOverlay.g = 172.0f/255.0f;
 		_colorOverlay.b = 56.0f/255.0f;
 		_colorOverlay.a = 1.0f;
+		_textureCount = 2;
 		
 		memset(&_noMoveVec, 0, sizeof(_noMoveVec));
 	}
@@ -51,6 +52,7 @@
 	glUniform4fv(_uniforms[UNI_SIMPLE_TEXTURE_TRANS], 1, &_noMoveVec.x);
 	glUniform1i(_uniforms[UNI_SIMPLE_TEXTURE_SAMPLER], 0);
 	glUniform4fv(_uniforms[UNI_STARLIGHTSCOPE_OVERLAY_GREEN], 1, &_colorOverlay.x);
+	glUniform1i(_uniforms[UNI_STARLIGHTSCOPE_SAMPLER_BURN], 1);
 }
 
 
@@ -61,9 +63,15 @@
 	@try {
 		// SimpleTexture
 		_uniforms[UNI_SIMPLE_TEXTURE_TRANS] = glGetUniformLocation(self.programId, "uniTrance");
-		_uniforms[UNI_SIMPLE_TEXTURE_SAMPLER] = glGetUniformLocation(self.programId, "uSampler");
+		_uniforms[UNI_SIMPLE_TEXTURE_SAMPLER] = glGetUniformLocation(self.programId, "uSamplerBase");
 		// StarLightScope
 		_uniforms[UNI_STARLIGHTSCOPE_OVERLAY_GREEN] = glGetUniformLocation(self.programId, "uColorOverlay");
+		_uniforms[UNI_STARLIGHTSCOPE_SAMPLER_BURN] =  glGetUniformLocation(self.programId, "uSamplerBurn");
+#warning TODO fragmentshader
+		_uniforms[UNI_STARLIGHTSCOPE_SAMPLER_SCANLINE] =  0;
+		for (int i = 0; i < UNI_STARLIGHTSCOPE_NUM; i++) {
+			assert(_uniforms[i] >= 0);
+		}
 		result =YES;
 	}
 	@catch (NSException *exception) {

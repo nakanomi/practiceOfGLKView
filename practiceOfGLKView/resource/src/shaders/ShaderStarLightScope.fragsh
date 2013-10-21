@@ -6,6 +6,8 @@
 //  Copyright (c) 2013年 nakano_michiharu. All rights reserved.
 //
 uniform sampler2D uSamplerBase;
+uniform sampler2D uSamplerBurn;
+//uniform sampler2D uSamplerScanLine;
 varying vec2 vTexcoord;
 uniform vec4 uColorOverlay;
 
@@ -19,6 +21,20 @@ float overlayMono(float monoBase, float eff)
 	}
 }
 
+float burn(float base, float eff)
+{
+	float result = eff;
+	if (eff == 0.0) {
+		result = 0.0;
+	}
+	else {
+		result = 1.0 - ((1.0 - base) / eff);
+	}
+	result = min(1.0, result);
+	return max(0.0, result);
+}
+
+
 
 void main()
 {
@@ -27,11 +43,18 @@ void main()
 
 	// モノクロ化  = ( 0.298912 * R + 0.586611 * G + 0.114478 * B )
 	float monoVal = colorBase.r * 0.298912 + colorBase.g * 0.586611 + colorBase.b * 0.114478;
-	vec4 colorMono;
-	colorMono.r = overlayMono(monoVal, uColorOverlay.r);
-	colorMono.g = overlayMono(monoVal, uColorOverlay.g);
-	colorMono.b = overlayMono(monoVal, uColorOverlay.b);
-	colorMono.a = 1.0;
+	vec4 color;
+	color.r = overlayMono(monoVal, uColorOverlay.r);
+	color.g = overlayMono(monoVal, uColorOverlay.g);
+	color.b = overlayMono(monoVal, uColorOverlay.b);
+	vec4 colorEff = texture2D(uSamplerBurn, vTexcoord);
+	if (colorEff.a > 0.0) {
+		colorEff.r = burn(color.r, colorEff.r);
+		colorEff.g = burn(color.g, colorEff.g);
+		colorEff.b = burn(color.b, colorEff.b);
+		color = (color * (1.0 - colorEff.a)) + (colorEff * colorEff.a);
+	}
+	color.a = 1.0;
 
-	gl_FragColor = colorMono;
+	gl_FragColor = color;
 }
