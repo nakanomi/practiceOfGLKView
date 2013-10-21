@@ -11,6 +11,8 @@
 @interface StarLightScopeShader()
 {
 	GLint _uniforms[UNI_STARLIGHTSCOPE_NUM];
+	GLKVector4 _colorOverlay;
+	GLKVector4 _noMoveVec;
 }
 - (BOOL)setupUniforms;
 - (void)initUniforms;
@@ -24,9 +26,24 @@
 	int result = -1;
 	if ((index >= 0) && (index < (sizeof(_uniforms) / sizeof(_uniforms[0])))) {
 		result = _uniforms[index];
+		_colorOverlay.r = 34.0f/255.0f;
+		_colorOverlay.g = 172.0f/255.0f;
+		_colorOverlay.b = 56.0f/255.0f;
+		_colorOverlay.a = 1.0f;
+		
+		memset(&_noMoveVec, 0, sizeof(_noMoveVec));
 	}
 	return result;
 }
+
+- (void)setUniformsToSystem
+{
+	// シェーダーのユニフォーム変数をセット
+	glUniform4fv(_uniforms[UNI_SIMPLE_TEXTURE_TRANS], 1, &_noMoveVec.x);
+	glUniform1i(_uniforms[UNI_SIMPLE_TEXTURE_SAMPLER], 0);
+	glUniform4fv(_uniforms[UNI_STARLIGHTSCOPE_OVERLAY_GREEN], 1, &_colorOverlay.x);
+}
+
 
 
 - (BOOL)setupUniforms

@@ -15,5 +15,6 @@ enum {
 
 @interface StarLightScopeShader : SimpleTextureShader
 - (GLint) getUniformIndex: (int) index;
+- (void)setUniformsToSystem;
 
 @end
