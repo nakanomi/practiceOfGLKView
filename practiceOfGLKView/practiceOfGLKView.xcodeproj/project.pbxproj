@@ -42,6 +42,8 @@
 		8A97E18E17E6C47700B5B4E8 /* TitleViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A97E18C17E6C47700B5B4E8 /* TitleViewController.mm */; };
 		8A97E18F17E6C47700B5B4E8 /* TitleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */; };
 		8AB644A017E8501700F32580 /* BG001.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449F17E8501700F32580 /* BG001.png */; };
+		8ABBA13D181508280033E1BC /* scanline.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ABBA13B181508280033E1BC /* scanline.png */; };
+		8ABBA13E181508280033E1BC /* shadowup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ABBA13C181508280033E1BC /* shadowup.png */; };
 		8AC88E2618053C4D00E9ABE3 /* ShaderFastTexture.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AC88E2518053C4D00E9ABE3 /* ShaderFastTexture.fragsh */; };
 		8AD3592C17EAF59F00BE0B1F /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3592A17EAF59F00BE0B1F /* GameViewController.mm */; };
 		8AD3592D17EAF59F00BE0B1F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */; };
@@ -110,6 +112,8 @@
 		8A97E18C17E6C47700B5B4E8 /* TitleViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TitleViewController.mm; sourceTree = "<group>"; };
 		8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleViewController.xib; sourceTree = "<group>"; };
 		8AB6449F17E8501700F32580 /* BG001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG001.png; path = resource/graphics/texture/BG001.png; sourceTree = SOURCE_ROOT; };
+		8ABBA13B181508280033E1BC /* scanline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scanline.png; path = resource/graphics/texture/scanline.png; sourceTree = SOURCE_ROOT; };
+		8ABBA13C181508280033E1BC /* shadowup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadowup.png; path = resource/graphics/texture/shadowup.png; sourceTree = SOURCE_ROOT; };
 		8AC88E2518053C4D00E9ABE3 /* ShaderFastTexture.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderFastTexture.fragsh; sourceTree = "<group>"; };
 		8AD3592917EAF59F00BE0B1F /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		8AD3592A17EAF59F00BE0B1F /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameViewController.mm; sourceTree = "<group>"; };
@@ -341,6 +345,8 @@
 		8AB6449E17E84FB700F32580 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				8ABBA13B181508280033E1BC /* scanline.png */,
+				8ABBA13C181508280033E1BC /* shadowup.png */,
 				8A37457818138EA600B73F9A /* bg.png */,
 				8A37457918138EA600B73F9A /* texture.png */,
 				8A54E2F2181120070063DCA4 /* rectangle.png */,
@@ -486,6 +492,8 @@
 				8A68A1241813BB9F00A0448D /* ShaderSimpleMultiAdd.fragsh in Resources */,
 				8A68A1301813E7E000A0448D /* ShaderOffGradation.fragsh in Resources */,
 				8A68A1321813EF8C00A0448D /* ShaderStarLightScope.fragsh in Resources */,
+				8ABBA13D181508280033E1BC /* scanline.png in Resources */,
+				8ABBA13E181508280033E1BC /* shadowup.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
