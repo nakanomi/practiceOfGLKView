@@ -34,6 +34,7 @@ enum {
 enum {
 	_MULTEX_BASE = 0,
 	_MULTEX_EFFECT_01,
+	_MULTEX_EFFECT_02,
 	_MULTEX_NUM
 };
 
@@ -304,11 +305,13 @@ enum {
 			{
 				NSString* files[] = {
 					@"bg",
-					@"shadowup"
+					@"shadowup",
+					@"scanline",
 				};
 				NSString* exts[] = {
 					@"png",
-					@"png"
+					@"png",
+					@"png",
 				};
 				int i;
 				for (i = 0; i < _MULTEX_NUM; i++) {
@@ -415,6 +418,10 @@ enum {
 	if (count >= 2) {
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_EFFECT_01].textureId);
+	}
+	if (count >= 3) {
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, _texture[_MULTEX_EFFECT_02].textureId);
 	}
 	
 }

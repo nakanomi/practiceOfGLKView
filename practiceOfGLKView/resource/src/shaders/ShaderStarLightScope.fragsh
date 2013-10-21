@@ -7,17 +7,19 @@
 //
 uniform sampler2D uSamplerBase;
 uniform sampler2D uSamplerBurn;
-//uniform sampler2D uSamplerScanLine;
+uniform sampler2D uSamplerScanLine;
 varying vec2 vTexcoord;
 uniform vec4 uColorOverlay;
 
-float overlayMono(float monoBase, float eff)
+float overlay(float base, float eff)
 {
-	if (monoBase < 0.5) {
-		return monoBase * eff * 2.0;
+	if (base < 0.5) {
+		float tmp = base * eff * 2.0;
+		tmp = min(1.0, tmp);
+		return tmp;
 	}
 	else {
-		return 1.0 - 2.0 * (1.0 - monoBase) * (1.0 - eff);
+		return 1.0 - 2.0 * (1.0 - base) * (1.0 - eff);
 	}
 }
 
@@ -44,15 +46,22 @@ void main()
 	// モノクロ化  = ( 0.298912 * R + 0.586611 * G + 0.114478 * B )
 	float monoVal = colorBase.r * 0.298912 + colorBase.g * 0.586611 + colorBase.b * 0.114478;
 	vec4 color;
-	color.r = overlayMono(monoVal, uColorOverlay.r);
-	color.g = overlayMono(monoVal, uColorOverlay.g);
-	color.b = overlayMono(monoVal, uColorOverlay.b);
+	color.r = overlay(monoVal, uColorOverlay.r);
+	color.g = overlay(monoVal, uColorOverlay.g);
+	color.b = overlay(monoVal, uColorOverlay.b);
 	vec4 colorEff = texture2D(uSamplerBurn, vTexcoord);
 	if (colorEff.a > 0.0) {
 		colorEff.r = burn(color.r, colorEff.r);
 		colorEff.g = burn(color.g, colorEff.g);
 		colorEff.b = burn(color.b, colorEff.b);
 		color = (color * (1.0 - colorEff.a)) + (colorEff * colorEff.a);
+	}
+	colorEff = texture2D(uSamplerScanLine, vTexcoord);
+	if (colorEff.a > 0.0) {
+		colorEff.r = overlay(color.r, colorEff.r);
+		colorEff.g = overlay(color.g, colorEff.g);
+		colorEff.b = overlay(color.b, colorEff.b);
+		color = colorEff;
 	}
 	color.a = 1.0;
 

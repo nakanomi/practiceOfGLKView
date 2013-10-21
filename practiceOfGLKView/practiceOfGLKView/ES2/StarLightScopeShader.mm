@@ -29,7 +29,7 @@
 		_colorOverlay.g = 172.0f/255.0f;
 		_colorOverlay.b = 56.0f/255.0f;
 		_colorOverlay.a = 1.0f;
-		_textureCount = 2;
+		_textureCount = 3;
 		
 		memset(&_noMoveVec, 0, sizeof(_noMoveVec));
 	}
@@ -53,6 +53,7 @@
 	glUniform1i(_uniforms[UNI_SIMPLE_TEXTURE_SAMPLER], 0);
 	glUniform4fv(_uniforms[UNI_STARLIGHTSCOPE_OVERLAY_GREEN], 1, &_colorOverlay.x);
 	glUniform1i(_uniforms[UNI_STARLIGHTSCOPE_SAMPLER_BURN], 1);
+	glUniform1i(_uniforms[UNI_STARLIGHTSCOPE_SAMPLER_SCANLINE], 2);
 }
 
 
@@ -67,8 +68,7 @@
 		// StarLightScope
 		_uniforms[UNI_STARLIGHTSCOPE_OVERLAY_GREEN] = glGetUniformLocation(self.programId, "uColorOverlay");
 		_uniforms[UNI_STARLIGHTSCOPE_SAMPLER_BURN] =  glGetUniformLocation(self.programId, "uSamplerBurn");
-#warning TODO fragmentshader
-		_uniforms[UNI_STARLIGHTSCOPE_SAMPLER_SCANLINE] =  0;
+		_uniforms[UNI_STARLIGHTSCOPE_SAMPLER_SCANLINE] =  glGetUniformLocation(self.programId, "uSamplerScanLine");
 		for (int i = 0; i < UNI_STARLIGHTSCOPE_NUM; i++) {
 			assert(_uniforms[i] >= 0);
 		}
