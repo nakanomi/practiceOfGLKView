@@ -44,7 +44,7 @@
 	posCenter.y /= sizeOfRender.height;
 	
 	*pMatrix = GLKMatrix4Identity;
-	GLKMatrix4Scale(*pMatrix, sizeScale.width, sizeScale.height, 1.0f);
+	*pMatrix = GLKMatrix4Scale(GLKMatrix4Identity, sizeScale.width, sizeScale.height, 1.0f);
 	pMatrix->m30 = posCenter.x;
 	pMatrix->m31 = posCenter.y;
 }
