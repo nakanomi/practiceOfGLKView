@@ -8,6 +8,17 @@
 
 #import "ShaderBase.h"
 
+enum {
+	ATTRIB_COLORNOTEX_POSITION = 0,
+};
+
+enum {
+	UNI_COLORNOTEX_COLOR = 0,
+	UNI_COLORNOTEX_MATRIX,
+	UNI_COLORNOTEX_NUM
+};
+
 @interface ColorNoTexShader : ShaderBase
+- (GLint) getUniformIndex: (int) index;
 
 @end
