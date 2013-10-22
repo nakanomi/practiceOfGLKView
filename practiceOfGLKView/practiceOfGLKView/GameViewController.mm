@@ -226,6 +226,8 @@ enum {
 			_shader = [[SimpleMultiTexture alloc] init];
 			break;
 		case OFF_GRADATION:
+			_shader = [[SimpleTextureShader alloc] init];
+			break;
 		case STAR_LIGHT_SCOPE:
 			_shader = [[StarLightScopeShader alloc] init];
 			break;
@@ -566,8 +568,15 @@ enum {
 - (void)drawType01ForView:(GLKView*)view
 {
 	[self changeRenderTargetToFBO:_fboFinal];
-	//[self renderObjectsForFboIndex:0];
+	switch (self.setupShader) {
+		case STAR_LIGHT_SCOPE:
 	[self renderStarLightFbo];
+			break;
+			
+		default:
+			[self renderObjectsForFboIndex:0];
+			break;
+	}
 
 	// レンダリングターゲットを通常のフレームバッファに変更
 	[FboBase setDefaultFbo];
