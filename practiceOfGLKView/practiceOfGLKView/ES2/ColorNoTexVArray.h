@@ -21,5 +21,6 @@ typedef struct {
 -(void)setParamOfVertex:(NOTEX_VERTEX*)vertex ofX:(float)x ofY:(float)y ofZ:(float)z;
 - (id)init;
 -(void)setupMatrixByRectangle:(CGRect)rect withRenderTargetSize:(CGSize)sizeOfRender matrix:(GLKMatrix4*)pMatrix isDebug:(BOOL)isDbg;
+-(BOOL)loadResourceWithName:(NSString*)strNameOfResource;
 
 @end

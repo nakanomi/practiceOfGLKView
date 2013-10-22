@@ -22,6 +22,12 @@
 #import "TextureBase.h"
 #import "FboBase.h"
 
+#define _TEST_SQUARE	1
+#if _TEST_SQUARE
+#import "ColorNoTexShader.h"
+#import "ColorNoTexVArray.h"
+#endif
+
 //#define _LOOP_NUM	300
 #define _LOOP_NUM	3
 #define _TEST_ALPHA	1.0f
@@ -67,6 +73,13 @@ enum {
 	
 	BOOL _isLogRect;
 	BOOL _isDone;
+	
+#if _TEST_SQUARE
+	ColorNoTexShader *_shaderNoTex;
+	ColorNoTexVArray *_vArrayNoTex;
+	GLKMatrix4 _matrixSquare;
+	GLKVector4 _vColor;
+#endif
 }
 @property (strong, nonatomic) EAGLContext *context;
 
@@ -296,6 +309,17 @@ enum {
 		glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &param);
 		NSLog(@"texunit:%d", param);
 	}
+#if _TEST_SQUARE
+	{
+		_shaderNoTex = [[ColorNoTexShader alloc] init];
+		[_shaderNoTex loadShaderWithVsh:@"ShaderColorMtrxNoTex" withFsh:@"ShaderColorMtrxNoTex"];
+		CGRect rect = CGRectMake(20, 30, 40, 50);
+		_vArrayNoTex = [[ColorNoTexVArray alloc] init];
+		[_vArrayNoTex setupMatrixByRectangle:rect withRenderTargetSize:_fbo0.sizeFbo matrix:&_matrixSquare isDebug:NO];
+		[_vArrayNoTex loadResourceWithName:nil];
+		_vColor = GLKVector4Make(1.0f, 1.0f, 0.0f, 0.8f);
+	}
+#endif
 }
 
 - (void)setupDrawObjects
@@ -507,7 +531,19 @@ enum {
 		//glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, _vArray.count);
 	}
-	
+#if _TEST_SQUARE
+	{
+		glUseProgram(_shaderNoTex.programId);
+		glUniform4fv([_shaderNoTex getUniformIndex:UNI_COLORNOTEX_COLOR],
+					 1, &_vColor.x);
+		glUniformMatrix4fv([_shaderNoTex getUniformIndex:UNI_COLORNOTEX_MATRIX],
+						   1, NO, &_matrixSquare.m00);
+		glBindVertexArrayOES(_vArrayNoTex.vertexArray);
+		glDisable(GL_DEPTH_TEST);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+		glEnable(GL_DEPTH_TEST);
+	}
+#endif
 	//render objects
 }
 
@@ -570,7 +606,7 @@ enum {
 	[self changeRenderTargetToFBO:_fboFinal];
 	switch (self.setupShader) {
 		case STAR_LIGHT_SCOPE:
-	[self renderStarLightFbo];
+			[self renderStarLightFbo];
 			break;
 			
 		default:
