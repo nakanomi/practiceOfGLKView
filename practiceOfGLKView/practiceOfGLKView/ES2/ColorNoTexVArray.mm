@@ -44,8 +44,8 @@ enum {
 	posCenter.x -= (sizeOfRender.width / 2.0f);
 	posCenter.y -= (sizeOfRender.height / 2.0f);
 	posCenter.y *= -1.0f;
-	posCenter.x /= sizeOfRender.width;
-	posCenter.y /= sizeOfRender.height;
+	posCenter.x /= (sizeOfRender.width / 2.0f);
+	posCenter.y /= (sizeOfRender.height / 2.0f);
 	
 	*pMatrix = GLKMatrix4Identity;
 	*pMatrix = GLKMatrix4Scale(GLKMatrix4Identity, sizeScale.width, sizeScale.height, 1.0f);
