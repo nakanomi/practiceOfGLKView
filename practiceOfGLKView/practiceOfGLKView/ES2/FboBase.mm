@@ -9,8 +9,9 @@
 #import "FboBase.h"
 #import "SimpleFboShader.h"
 //#import "FboTextureBuffer.h"
-//#import "SimpleTextureVBuffer.h"
+//#import "SimpleTextureVBuffer.h"ba
 #import "SimpleFboVBuffer.h"
+#include "gameDefs.h"
 
 static GLint sDefaultFbo = -1;
 
@@ -30,6 +31,7 @@ static GLint sDefaultFbo = -1;
 
 @implementation FboBase
 @synthesize sizeFbo = _sizeFbo;
+@synthesize texId = _fboTexId;
 -(id)init
 {
 	self = [super init];
@@ -133,6 +135,10 @@ static GLint sDefaultFbo = -1;
 		[_fboVArray loadResourceWithName:nil];
 	}
 }
+- (void)bindVertex
+{
+	glBindVertexArrayOES(_fboVArray.vertexArray);
+}
 
 
 - (void)changeRenderTargetToFBO
@@ -147,7 +153,7 @@ static GLint sDefaultFbo = -1;
 - (void)render
 {
 	glUseProgram(_fboShader.programId);
-	glBindVertexArrayOES(_fboVArray.vertexArray);
+	[self bindVertex];
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, _fboTexId);
 	// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい

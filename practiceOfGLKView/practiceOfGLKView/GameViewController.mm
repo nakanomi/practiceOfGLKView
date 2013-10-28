@@ -313,7 +313,7 @@ enum {
 	{
 		_shaderNoTex = [[ColorNoTexShader alloc] init];
 		[_shaderNoTex loadShaderWithVsh:@"ShaderColorMtrxNoTex" withFsh:@"ShaderColorMtrxNoTex"];
-		CGRect rect = CGRectMake(20, 30, 40, 50);
+		CGRect rect = CGRectMake(128, 128, 40, 50);
 		_vArrayNoTex = [[ColorNoTexVArray alloc] init];
 		[_vArrayNoTex setupMatrixByRectangle:rect withRenderTargetSize:_fbo0.sizeFbo matrix:&_matrixSquare isDebug:NO];
 		[_vArrayNoTex loadResourceWithName:nil];

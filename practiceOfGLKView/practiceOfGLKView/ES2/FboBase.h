@@ -15,11 +15,13 @@
 }
 @property (readonly)CGSize sizeFbo;
 @property (readwrite)GLKVector4 clearColor;
+@property (readonly)GLuint texId;
 -(id)init;
 - (void)changeRenderTargetToFBO;
 - (void)setupFboWithSize:(CGSize)sizeFbo withRenderTarget:(CGSize)sizeRenderTarget;
 - (void)setupPartFboWithSize:(CGSize)sizeFbo withRenderTarget:(CGSize)sizeRenderTarget withRenderPart:(CGRect)rectRende withFboPart:(CGRect)rectFbo;
 - (void)render;
+- (void)bindVertex;
 
 + (void)setDefaultFbo;
 
