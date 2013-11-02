@@ -115,6 +115,7 @@
 			glDetachShader(_programId, fragShader);
 			glDeleteShader(fragShader);
 		}
+		NSLog(@"%s complete", __PRETTY_FUNCTION__);
 		result = YES;
 	}
 	@catch (NSException *exception) {

@@ -535,19 +535,6 @@ enum {
 		//glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, _vArray.count);
 	}
-#if _TEST_SQUARE
-	{
-		glUseProgram(_shaderNoTex.programId);
-		glUniform4fv([_shaderNoTex getUniformIndex:UNI_COLORNOTEX_COLOR],
-					 1, &_vColor.x);
-		glUniformMatrix4fv([_shaderNoTex getUniformIndex:UNI_COLORNOTEX_MATRIX],
-						   1, NO, &_matrixSquare.m00);
-		glBindVertexArrayOES(_vArrayNoTex.vertexArray);
-		glDisable(GL_DEPTH_TEST);
-		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-		glEnable(GL_DEPTH_TEST);
-	}
-#endif
 	//render objects
 }
 
