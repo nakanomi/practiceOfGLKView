@@ -55,6 +55,7 @@
 		@"ぼかし",
 		@"諧調落とし",
 		@"スターライトスコープ風(作成中)",
+		@"テスト",
 	};
 	const int count = sizeof(labels) / sizeof(labels[0]);
 	for (int i = 0; i < count; i++) {

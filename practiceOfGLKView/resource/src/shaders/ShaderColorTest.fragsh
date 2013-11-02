@@ -1,0 +1,17 @@
+
+uniform sampler2D uSamplerBase;
+varying vec2 vTexcoord;
+
+void main()
+{
+	mediump vec4 vColor = texture2D(uSamplerBase, vTexcoord);
+	// アルファが0ならば書き込まない
+	if (vColor.a == 0.0){
+		discard;
+	}
+	else
+	{
+		gl_FragColor = vColor;
+	}
+}
+
