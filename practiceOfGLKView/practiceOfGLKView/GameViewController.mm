@@ -333,12 +333,27 @@ enum {
 		if (!_isDone) {
 			_isDone = YES;
 			{
-				NSString* files[] = {
+				NSString* filesForStarLightScope[] = {
 					@"bg",
-					//@"shadowup",
-					@"distortionmap",
+					@"shadowup",
 					@"scanline",
 				};
+				NSString* filesForDistortion[] = {
+					@"bg",
+					@"shadowup",
+					//@"distortionmap",
+					@"scanline",
+				};
+				NSString** files = nil;
+				switch (self.setupShader) {
+					case STAR_LIGHT_SCOPE:
+						files = filesForStarLightScope;
+						break;
+						
+					default:
+						files = filesForDistortion;
+						break;
+				}
 				NSString* exts[] = {
 					@"png",
 					@"png",
@@ -479,7 +494,7 @@ enum {
     glUseProgram(_shader.programId);
 	[self setupTextures:_shader.textureCount];
 	StarLightScopeShader *shaderStar = (StarLightScopeShader*)(_shader);
-	[shaderStar setUniformsOnRender];
+	[shaderStar setUniformsOnRenderWithParam:0.0f];
 	
 	// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい
 	[self setTextureParametries];
@@ -521,6 +536,7 @@ enum {
 		}
 	}
 	_testOffset += 1.0f/4096.0f;
+	[_shader setUniformsOnRenderWithParam:0.0f];
 	
 	for (int i = 0; i < _LOOP_NUM; i++) {
 		// シェーダーのユニフォーム変数をセット

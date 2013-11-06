@@ -21,5 +21,7 @@
 - (BOOL)loadShaderWithVsh: (NSString*)vshFile withFsh:(NSString*)fshFile;
 
 - (GLint) getUniformIndex: (int) index;
+- (void)setUniformsOnRenderWithParam:(float)param;
+
 
 @end

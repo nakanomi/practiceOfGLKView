@@ -46,7 +46,7 @@
 	return result;
 }
 
-- (void)setUniformsOnRender
+- (void)setUniformsOnRenderWithParam:(float)param
 {
 	// シェーダーのユニフォーム変数をセット
 	glUniform4fv(_uniforms[UNI_SIMPLE_TEXTURE_TRANS], 1, &_noMoveVec.x);
