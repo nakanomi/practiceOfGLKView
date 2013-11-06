@@ -29,6 +29,8 @@
 #import "ColorNoTexVArray.h"
 #endif
 
+#include "gameDefs.h"
+
 //#define _LOOP_NUM	300
 #define _LOOP_NUM	3
 #define _TEST_ALPHA	1.0f
@@ -541,7 +543,13 @@ enum {
 	_testOffset += 1.0f/4096.0f;
 	switch (self.setupShader) {
 		case COLOR_TEST:
-			[_shader setUniformsOnRenderWithParam:50.0f/ 255.0f];
+		{
+			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
+			float sinVal = sinf(testTheta);
+			//dbgLog(@"sin:%f", sinVal);
+			float mag = sinVal * (50.0f / 255.0f);
+			[_shader setUniformsOnRenderWithParam:mag];
+		}
 			break;
 			
 		default:
