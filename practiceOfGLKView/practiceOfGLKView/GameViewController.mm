@@ -479,7 +479,7 @@ enum {
     glUseProgram(_shader.programId);
 	[self setupTextures:_shader.textureCount];
 	StarLightScopeShader *shaderStar = (StarLightScopeShader*)(_shader);
-	[shaderStar setUniformsToSystem];
+	[shaderStar setUniformsOnRender];
 	
 	// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい
 	[self setTextureParametries];
@@ -526,11 +526,6 @@ enum {
 		// シェーダーのユニフォーム変数をセット
 		glUniform1i([_shader getUniformIndex:UNI_SIMPLEMULTI_SAMPLERBASE], 0);
 		glUniform1i([_shader getUniformIndex:UNI_SIMPLEMULTI_SAMPLEREFF], 1);
-		/*
-		glUniform4fv([_shader getUniformIndex:UNI_SIMPLE_TEXTURE_TRANS],
-					 1, &_vTrance[fboIndex][i].x);
-		 */
-		
 		// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい
 		[self setTextureParametries];
 		//glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
