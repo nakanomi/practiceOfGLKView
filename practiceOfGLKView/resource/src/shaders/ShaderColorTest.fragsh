@@ -5,20 +5,15 @@ varying vec2 vTexcoord;
 
 void main()
 {
-	mediump vec4 colorBase = texture2D(uSamplerBase, vTexcoord);
 	mediump vec4 colorDistortion = texture2D(uSamplerEff, vTexcoord);
 	if (colorDistortion.a == 0.0) {
-		gl_FragColor = colorBase;
+		gl_FragColor = texture2D(uSamplerBase, vTexcoord);
 	}
 	else {
-		gl_FragColor = colorDistortion;
+		float uMag = 50.0 / 255.0;
+		vec2 vDistortion = vec2(colorDistortion.r - (128.0) / 255.0, 0.0);
+		vDistortion *= uMag;
+		gl_FragColor = texture2D(uSamplerBase, vDistortion + vTexcoord);
 	}
-//
-//	if (colorBase.r == 128.0/255.0) {
-//		gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
-//	}
-//	else {
-//		gl_FragColor = colorBase;
-//	}
 }
 
