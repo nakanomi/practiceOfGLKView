@@ -11,8 +11,10 @@ void main()
 		gl_FragColor = texture2D(uSamplerBase, vTexcoord);
 	}
 	else {
-		vec2 vDistortion = vec2(colorDistortion.r - (128.0 / 255.0), colorDistortion.g - (128.0 / 255.0));
-		vDistortion *= uVecMag;
+		float pi2 = 3.14159 * 2.0;
+		float x = sin(vTexcoord.x * pi2 * uVecMag.x) * colorDistortion.r * (1.0 / 32.0);
+		float y = cos(vTexcoord.y * pi2 * uVecMag.y) * colorDistortion.r * (1.0 / 32.0);
+		vec2 vDistortion = vec2(x , y);
 		gl_FragColor = texture2D(uSamplerBase, vDistortion + vTexcoord);
 	}
 }
