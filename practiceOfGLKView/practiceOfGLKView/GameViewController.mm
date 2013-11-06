@@ -242,6 +242,7 @@ enum {
 			_shader = [[SimpleMultiTexture alloc] init];
 			break;
 		case DISTORTION_1:
+		case DISTORTION_2:
 			_shader = [[SimpleDistortion alloc] init];
 			break;
 		case OFF_GRADATION:
@@ -278,6 +279,7 @@ enum {
 			strFragShader = @"ShaderOffGradation";
 			break;
 		case DISTORTION_1:
+		case DISTORTION_2:
 			strFragShader = @"ShaderSimpleDistortion";
 			break;
 		case STAR_LIGHT_SCOPE:
@@ -343,9 +345,13 @@ enum {
 					@"shadowup",
 					@"scanline",
 				};
-				NSString* filesForDistortion[] = {
+				NSString* filesForDistortion1[] = {
 					@"bg",
-					//@"shadowup",
+					@"shadowup",
+					@"scanline",
+				};
+				NSString* filesForDistortion2[] = {
+					@"bg",
 					@"distortionmap",
 					@"scanline",
 				};
@@ -354,9 +360,12 @@ enum {
 					case STAR_LIGHT_SCOPE:
 						files = filesForStarLightScope;
 						break;
+					case DISTORTION_2:
+						files = filesForDistortion2;
+						break;
 						
 					default:
-						files = filesForDistortion;
+						files = filesForDistortion1;
 						break;
 				}
 				NSString* exts[] = {
@@ -543,6 +552,7 @@ enum {
 	_testOffset += 1.0f/4096.0f;
 	switch (self.setupShader) {
 		case DISTORTION_1:
+		case DISTORTION_2:
 		{
 			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
 			float sinVal = sinf(testTheta);

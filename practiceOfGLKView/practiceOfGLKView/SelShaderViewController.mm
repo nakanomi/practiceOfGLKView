@@ -55,7 +55,8 @@
 		@"ぼかし",
 		@"諧調落とし",
 		@"スターライトスコープ風(作成中)",
-		@"テスト",
+		@"歪み1:shadowup",
+		@"歪み2:distortionmap",
 	};
 	const int count = sizeof(labels) / sizeof(labels[0]);
 	for (int i = 0; i < count; i++) {
