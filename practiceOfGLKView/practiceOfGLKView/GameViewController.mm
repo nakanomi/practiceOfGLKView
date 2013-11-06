@@ -241,7 +241,7 @@ enum {
 		case BLUR_TEST_5DOT:
 			_shader = [[SimpleMultiTexture alloc] init];
 			break;
-		case COLOR_TEST:
+		case DISTORTION_1:
 			_shader = [[SimpleDistortion alloc] init];
 			break;
 		case OFF_GRADATION:
@@ -277,8 +277,8 @@ enum {
 		case OFF_GRADATION:
 			strFragShader = @"ShaderOffGradation";
 			break;
-		case COLOR_TEST:
-			strFragShader = @"ShaderColorTest";
+		case DISTORTION_1:
+			strFragShader = @"ShaderSimpleDistortion";
 			break;
 		case STAR_LIGHT_SCOPE:
 			strFragShader = @"ShaderStarLightScope";
@@ -345,8 +345,8 @@ enum {
 				};
 				NSString* filesForDistortion[] = {
 					@"bg",
-					@"shadowup",
-					//@"distortionmap",
+					//@"shadowup",
+					@"distortionmap",
 					@"scanline",
 				};
 				NSString** files = nil;
@@ -542,7 +542,7 @@ enum {
 	}
 	_testOffset += 1.0f/4096.0f;
 	switch (self.setupShader) {
-		case COLOR_TEST:
+		case DISTORTION_1:
 		{
 			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
 			float sinVal = sinf(testTheta);
