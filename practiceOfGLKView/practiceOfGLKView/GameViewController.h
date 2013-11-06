@@ -20,6 +20,9 @@ enum GAMEVIEW_SHADER {
 	STAR_LIGHT_SCOPE,
 	DISTORTION_1_1,
 	DISTORTION_1_2,
+	
+	DISTORTION_2_1,
+	DISTORTION_2_2,
 	};
 @interface GameViewController : UIViewController<GLKViewDelegate>
 

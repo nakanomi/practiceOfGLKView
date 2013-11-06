@@ -246,6 +246,10 @@ enum {
 		case DISTORTION_1_2:
 			_shader = [[SimpleDistortion alloc] init];
 			break;
+		case DISTORTION_2_1:
+		case DISTORTION_2_2:
+			_shader = [[SimpleDistortion2 alloc] init];
+			break;
 		case OFF_GRADATION:
 			_shader = [[SimpleTextureShader alloc] init];
 			break;
@@ -282,6 +286,10 @@ enum {
 		case DISTORTION_1_1:
 		case DISTORTION_1_2:
 			strFragShader = @"ShaderSimpleDistortion";
+			break;
+		case DISTORTION_2_1:
+		case DISTORTION_2_2:
+			strFragShader = @"ShaderSimpleDistortion2";
 			break;
 		case STAR_LIGHT_SCOPE:
 			strFragShader = @"ShaderStarLightScope";
@@ -362,6 +370,7 @@ enum {
 						files = filesForStarLightScope;
 						break;
 					case DISTORTION_1_2:
+					case DISTORTION_2_2:
 						files = filesForDistortion2;
 						break;
 						
@@ -554,6 +563,8 @@ enum {
 	switch (self.setupShader) {
 		case DISTORTION_1_1:
 		case DISTORTION_1_2:
+		case DISTORTION_2_1:
+		case DISTORTION_2_2:
 		{
 			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
 			float sinVal = sinf(testTheta);
