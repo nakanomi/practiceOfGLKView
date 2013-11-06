@@ -16,6 +16,7 @@
 #import "SimpleMultiTexture.h"
 #import "StarLightScopeShader.h"
 #import "PartTextureVBuffer.h"
+#import "SimpleDistortion.h"
 
 #import "SimpleFboShader.h"
 
@@ -236,8 +237,10 @@ enum {
 		case BURN:
 		case ADD:
 		case BLUR_TEST_5DOT:
-		case COLOR_TEST:
 			_shader = [[SimpleMultiTexture alloc] init];
+			break;
+		case COLOR_TEST:
+			_shader = [[SimpleDistortion alloc] init];
 			break;
 		case OFF_GRADATION:
 			_shader = [[SimpleTextureShader alloc] init];

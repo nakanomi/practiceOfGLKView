@@ -25,6 +25,7 @@
 		8A68A1301813E7E000A0448D /* ShaderOffGradation.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A68A12F1813E7E000A0448D /* ShaderOffGradation.fragsh */; };
 		8A68A1321813EF8C00A0448D /* ShaderStarLightScope.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A68A1311813EF8C00A0448D /* ShaderStarLightScope.fragsh */; };
 		8A75187F182A180100319139 /* distortionmap.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A75187E182A180100319139 /* distortionmap.png */; };
+		8A751883182A2F1F00319139 /* SimpleDistortion.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A751882182A2F1F00319139 /* SimpleDistortion.mm */; };
 		8A77BF31182502600047B1A7 /* ShaderColorTest.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A77BF30182502600047B1A7 /* ShaderColorTest.fragsh */; };
 		8A78566817E5B13A001EAB1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566717E5B13A001EAB1F /* UIKit.framework */; };
 		8A78566A17E5B13A001EAB1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566917E5B13A001EAB1F /* Foundation.framework */; };
@@ -95,6 +96,8 @@
 		8A68A12F1813E7E000A0448D /* ShaderOffGradation.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderOffGradation.fragsh; sourceTree = "<group>"; };
 		8A68A1311813EF8C00A0448D /* ShaderStarLightScope.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderStarLightScope.fragsh; sourceTree = "<group>"; };
 		8A75187E182A180100319139 /* distortionmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = distortionmap.png; path = resource/graphics/texture/distortionmap.png; sourceTree = SOURCE_ROOT; };
+		8A751881182A2F1F00319139 /* SimpleDistortion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleDistortion.h; path = ES2/SimpleDistortion.h; sourceTree = "<group>"; };
+		8A751882182A2F1F00319139 /* SimpleDistortion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SimpleDistortion.mm; path = ES2/SimpleDistortion.mm; sourceTree = "<group>"; };
 		8A77BF30182502600047B1A7 /* ShaderColorTest.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderColorTest.fragsh; sourceTree = "<group>"; };
 		8A78566417E5B13A001EAB1F /* practiceOfGLKView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practiceOfGLKView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A78566717E5B13A001EAB1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -245,6 +248,15 @@
 				8A68A12D1813DEA800A0448D /* StarLightScopeShader.mm */,
 			);
 			name = testStarLightScope;
+			sourceTree = "<group>";
+		};
+		8A751880182A2EF200319139 /* testDistortion */ = {
+			isa = PBXGroup;
+			children = (
+				8A751881182A2F1F00319139 /* SimpleDistortion.h */,
+				8A751882182A2F1F00319139 /* SimpleDistortion.mm */,
+			);
+			name = testDistortion;
 			sourceTree = "<group>";
 		};
 		8A78565B17E5B13A001EAB1F = {
@@ -417,6 +429,7 @@
 		8AD13D8217E6BDDA00FB0A46 /* shaderAndBuffer */ = {
 			isa = PBXGroup;
 			children = (
+				8A751880182A2EF200319139 /* testDistortion */,
 				8A8528A8181673850093AC20 /* testNoTex */,
 				8A68A12B1813DE7D00A0448D /* testStarLightScope */,
 				8A5A16D2180E4DDF002E0C29 /* testMultitexture */,
@@ -558,6 +571,7 @@
 				8AE0B53B180FD6CF00B3F2B2 /* SimpleMultiTexture.mm in Sources */,
 				8A80C39B18126BEB00CBA3F7 /* SelShaderViewController.mm in Sources */,
 				8A68A12E1813DEA800A0448D /* StarLightScopeShader.mm in Sources */,
+				8A751883182A2F1F00319139 /* SimpleDistortion.mm in Sources */,
 				8A8528AB181673A80093AC20 /* ColorNoTexVArray.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
