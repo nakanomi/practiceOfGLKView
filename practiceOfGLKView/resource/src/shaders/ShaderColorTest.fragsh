@@ -1,15 +1,24 @@
 
 uniform sampler2D uSamplerBase;
+uniform sampler2D uSamplerEff;
 varying vec2 vTexcoord;
 
 void main()
 {
-	mediump vec4 vColor = texture2D(uSamplerBase, vTexcoord);
-	if (vColor.r == 128.0/255.0) {
-		gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+	mediump vec4 colorBase = texture2D(uSamplerBase, vTexcoord);
+	mediump vec4 colorDistortion = texture2D(uSamplerEff, vTexcoord);
+	if (colorDistortion.a == 0.0) {
+		gl_FragColor = colorBase;
 	}
 	else {
-		gl_FragColor = vColor;
+		gl_FragColor = colorDistortion;
 	}
+//
+//	if (colorBase.r == 128.0/255.0) {
+//		gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+//	}
+//	else {
+//		gl_FragColor = colorBase;
+//	}
 }
 

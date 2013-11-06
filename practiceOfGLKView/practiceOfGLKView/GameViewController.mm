@@ -236,10 +236,10 @@ enum {
 		case BURN:
 		case ADD:
 		case BLUR_TEST_5DOT:
+		case COLOR_TEST:
 			_shader = [[SimpleMultiTexture alloc] init];
 			break;
 		case OFF_GRADATION:
-		case COLOR_TEST:
 			_shader = [[SimpleTextureShader alloc] init];
 			break;
 		case STAR_LIGHT_SCOPE:
@@ -335,7 +335,8 @@ enum {
 			{
 				NSString* files[] = {
 					@"bg",
-					@"shadowup",
+					//@"shadowup",
+					@"distortionmap",
 					@"scanline",
 				};
 				NSString* exts[] = {
