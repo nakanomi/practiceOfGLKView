@@ -354,14 +354,19 @@ enum {
 					@"shadowup",
 					@"scanline",
 				};
-				NSString* filesForDistortion1[] = {
+				NSString* filesForDistortionx_1[] = {
 					@"bg",
 					@"shadowup",
 					@"scanline",
 				};
-				NSString* filesForDistortion2[] = {
+				NSString* filesForDistortionx_2[] = {
 					@"bg",
 					@"distortionmap",
+					@"scanline",
+				};
+				NSString* filesForDistortion2_1[] = {
+					@"bg",
+					@"distortionmap2",
 					@"scanline",
 				};
 				NSString** files = nil;
@@ -371,11 +376,14 @@ enum {
 						break;
 					case DISTORTION_1_2:
 					case DISTORTION_2_2:
-						files = filesForDistortion2;
+						files = filesForDistortionx_2;
+						break;
+					case DISTORTION_2_1:
+						files = filesForDistortion2_1;
 						break;
 						
 					default:
-						files = filesForDistortion1;
+						files = filesForDistortionx_1;
 						break;
 				}
 				NSString* exts[] = {
@@ -563,14 +571,19 @@ enum {
 	switch (self.setupShader) {
 		case DISTORTION_1_1:
 		case DISTORTION_1_2:
-		case DISTORTION_2_1:
-		case DISTORTION_2_2:
 		{
 			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
 			float sinVal = sinf(testTheta);
 			//dbgLog(@"sin:%f", sinVal);
 			float mag = sinVal * (50.0f / 255.0f);
 			[_shader setUniformsOnRenderWithParam:mag];
+		}
+			break;
+		case DISTORTION_2_1:
+		case DISTORTION_2_2:
+		{
+			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
+			[_shader setUniformsOnRenderWithParam:testTheta];
 		}
 			break;
 			

@@ -72,8 +72,9 @@ enum {
 
 - (void)setUniformsOnRenderWithParam:(float)param
 {
-	_vUniMag.x  = param;
-	_vUniMag.y = 0.0f;
+	float magVal = 50.0f / 255.0f;
+	_vUniMag.x  = sinf(param) * magVal;
+	_vUniMag.y = cosf(param) * magVal;
 	glUniform2fv(_uniforms[UNI_SIMPLEDISTORTION2_VMAG], 1, &_vUniMag.x);
 }
 
