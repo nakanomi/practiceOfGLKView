@@ -27,7 +27,7 @@
 		8A75187F182A180100319139 /* distortionmap.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A75187E182A180100319139 /* distortionmap.png */; };
 		8A751883182A2F1F00319139 /* SimpleDistortion.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A751882182A2F1F00319139 /* SimpleDistortion.mm */; };
 		8A751885182A417700319139 /* ShaderSimpleDistortion2.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A751884182A417700319139 /* ShaderSimpleDistortion2.fragsh */; };
-		8A751888182A43D000319139 /* SimpleDistortion2.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A751887182A43D000319139 /* SimpleDistortion2.m */; };
+		8A751888182A43D000319139 /* SimpleDistortion2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A751887182A43D000319139 /* SimpleDistortion2.mm */; };
 		8A77BF31182502600047B1A7 /* ShaderSimpleDistortion.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A77BF30182502600047B1A7 /* ShaderSimpleDistortion.fragsh */; };
 		8A78566817E5B13A001EAB1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566717E5B13A001EAB1F /* UIKit.framework */; };
 		8A78566A17E5B13A001EAB1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566917E5B13A001EAB1F /* Foundation.framework */; };
@@ -102,7 +102,7 @@
 		8A751882182A2F1F00319139 /* SimpleDistortion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SimpleDistortion.mm; path = ES2/SimpleDistortion.mm; sourceTree = "<group>"; };
 		8A751884182A417700319139 /* ShaderSimpleDistortion2.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleDistortion2.fragsh; sourceTree = "<group>"; };
 		8A751886182A43D000319139 /* SimpleDistortion2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleDistortion2.h; path = ES2/SimpleDistortion2.h; sourceTree = "<group>"; };
-		8A751887182A43D000319139 /* SimpleDistortion2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleDistortion2.m; path = ES2/SimpleDistortion2.m; sourceTree = "<group>"; };
+		8A751887182A43D000319139 /* SimpleDistortion2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SimpleDistortion2.mm; path = ES2/SimpleDistortion2.mm; sourceTree = "<group>"; };
 		8A77BF30182502600047B1A7 /* ShaderSimpleDistortion.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleDistortion.fragsh; sourceTree = "<group>"; };
 		8A78566417E5B13A001EAB1F /* practiceOfGLKView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practiceOfGLKView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A78566717E5B13A001EAB1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -262,7 +262,7 @@
 				8A751881182A2F1F00319139 /* SimpleDistortion.h */,
 				8A751882182A2F1F00319139 /* SimpleDistortion.mm */,
 				8A751886182A43D000319139 /* SimpleDistortion2.h */,
-				8A751887182A43D000319139 /* SimpleDistortion2.m */,
+				8A751887182A43D000319139 /* SimpleDistortion2.mm */,
 			);
 			name = testDistortion;
 			sourceTree = "<group>";
@@ -561,7 +561,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A78567817E5B13A001EAB1F /* main.m in Sources */,
-				8A751888182A43D000319139 /* SimpleDistortion2.m in Sources */,
+				8A751888182A43D000319139 /* SimpleDistortion2.mm in Sources */,
 				8A78567C17E5B13A001EAB1F /* AppDelegate.mm in Sources */,
 				8A97E18E17E6C47700B5B4E8 /* TitleViewController.mm in Sources */,
 				8AD3592C17EAF59F00BE0B1F /* GameViewController.mm in Sources */,
