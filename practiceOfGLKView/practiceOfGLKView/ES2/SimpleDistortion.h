@@ -9,5 +9,10 @@
 #import "SimpleMultiTexture.h"
 
 @interface SimpleDistortion : SimpleMultiTexture
+{
+	
+}
+- (id)init;
+- (GLint) getUniformIndex: (int) index;
 
 @end

@@ -539,7 +539,15 @@ enum {
 		}
 	}
 	_testOffset += 1.0f/4096.0f;
-	[_shader setUniformsOnRenderWithParam:0.0f];
+	switch (self.setupShader) {
+		case COLOR_TEST:
+			[_shader setUniformsOnRenderWithParam:50.0f/ 255.0f];
+			break;
+			
+		default:
+			[_shader setUniformsOnRenderWithParam:0.0f];
+			break;
+	}
 	
 	for (int i = 0; i < _LOOP_NUM; i++) {
 		// シェーダーのユニフォーム変数をセット

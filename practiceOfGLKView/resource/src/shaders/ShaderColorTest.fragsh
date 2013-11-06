@@ -1,6 +1,7 @@
 
 uniform sampler2D uSamplerBase;
 uniform sampler2D uSamplerEff;
+uniform float uMag;
 varying vec2 vTexcoord;
 
 void main()
@@ -10,7 +11,6 @@ void main()
 		gl_FragColor = texture2D(uSamplerBase, vTexcoord);
 	}
 	else {
-		float uMag = 50.0 / 255.0;
 		vec2 vDistortion = vec2(colorDistortion.r - (128.0 / 255.0), colorDistortion.g - (128.0 / 255.0));
 		vDistortion *= uMag;
 		gl_FragColor = texture2D(uSamplerBase, vDistortion + vTexcoord);
