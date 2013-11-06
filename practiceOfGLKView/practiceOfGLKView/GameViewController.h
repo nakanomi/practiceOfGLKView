@@ -18,8 +18,8 @@ enum GAMEVIEW_SHADER {
 	BLUR_TEST_5DOT,
 	OFF_GRADATION,
 	STAR_LIGHT_SCOPE,
-	DISTORTION_1,
-	DISTORTION_2,
+	DISTORTION_1_1,
+	DISTORTION_1_2,
 	};
 @interface GameViewController : UIViewController<GLKViewDelegate>
 

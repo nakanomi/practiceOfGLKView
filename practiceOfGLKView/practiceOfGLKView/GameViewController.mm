@@ -17,6 +17,7 @@
 #import "StarLightScopeShader.h"
 #import "PartTextureVBuffer.h"
 #import "SimpleDistortion.h"
+#import "SimpleDistortion2.h"
 
 #import "SimpleFboShader.h"
 
@@ -241,8 +242,8 @@ enum {
 		case BLUR_TEST_5DOT:
 			_shader = [[SimpleMultiTexture alloc] init];
 			break;
-		case DISTORTION_1:
-		case DISTORTION_2:
+		case DISTORTION_1_1:
+		case DISTORTION_1_2:
 			_shader = [[SimpleDistortion alloc] init];
 			break;
 		case OFF_GRADATION:
@@ -278,8 +279,8 @@ enum {
 		case OFF_GRADATION:
 			strFragShader = @"ShaderOffGradation";
 			break;
-		case DISTORTION_1:
-		case DISTORTION_2:
+		case DISTORTION_1_1:
+		case DISTORTION_1_2:
 			strFragShader = @"ShaderSimpleDistortion";
 			break;
 		case STAR_LIGHT_SCOPE:
@@ -360,7 +361,7 @@ enum {
 					case STAR_LIGHT_SCOPE:
 						files = filesForStarLightScope;
 						break;
-					case DISTORTION_2:
+					case DISTORTION_1_2:
 						files = filesForDistortion2;
 						break;
 						
@@ -551,8 +552,8 @@ enum {
 	}
 	_testOffset += 1.0f/4096.0f;
 	switch (self.setupShader) {
-		case DISTORTION_1:
-		case DISTORTION_2:
+		case DISTORTION_1_1:
+		case DISTORTION_1_2:
 		{
 			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
 			float sinVal = sinf(testTheta);
