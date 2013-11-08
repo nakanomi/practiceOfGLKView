@@ -57,7 +57,7 @@
 		@"スターライトスコープ風(作成中)",
 		@"歪み1-1:shadowup",
 		@"歪み1-2:distortionmap",
-		@"歪み2-1:shadowup",
+		@"歪み2-1:distortionmap2",
 		@"歪み2-2:distortionmap",
 	};
 	const int count = sizeof(labels) / sizeof(labels[0]);
