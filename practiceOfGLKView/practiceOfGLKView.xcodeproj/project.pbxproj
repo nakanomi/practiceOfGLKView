@@ -29,6 +29,7 @@
 		8A751885182A417700319139 /* ShaderSimpleDistortion2.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A751884182A417700319139 /* ShaderSimpleDistortion2.fragsh */; };
 		8A751888182A43D000319139 /* SimpleDistortion2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A751887182A43D000319139 /* SimpleDistortion2.mm */; };
 		8A75188A182A4AC100319139 /* distortionmap2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A751889182A4AC100319139 /* distortionmap2.png */; };
+		8A76AB66182E0EAA00707981 /* bg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A76AB65182E0EAA00707981 /* bg3.png */; };
 		8A77BF31182502600047B1A7 /* ShaderSimpleDistortion.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A77BF30182502600047B1A7 /* ShaderSimpleDistortion.fragsh */; };
 		8A78566817E5B13A001EAB1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566717E5B13A001EAB1F /* UIKit.framework */; };
 		8A78566A17E5B13A001EAB1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A78566917E5B13A001EAB1F /* Foundation.framework */; };
@@ -106,6 +107,7 @@
 		8A751886182A43D000319139 /* SimpleDistortion2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleDistortion2.h; path = ES2/SimpleDistortion2.h; sourceTree = "<group>"; };
 		8A751887182A43D000319139 /* SimpleDistortion2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SimpleDistortion2.mm; path = ES2/SimpleDistortion2.mm; sourceTree = "<group>"; };
 		8A751889182A4AC100319139 /* distortionmap2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = distortionmap2.png; path = resource/graphics/texture/distortionmap2.png; sourceTree = SOURCE_ROOT; };
+		8A76AB65182E0EAA00707981 /* bg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg3.png; path = resource/graphics/texture/bg3.png; sourceTree = SOURCE_ROOT; };
 		8A77BF30182502600047B1A7 /* ShaderSimpleDistortion.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleDistortion.fragsh; sourceTree = "<group>"; };
 		8A78566417E5B13A001EAB1F /* practiceOfGLKView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practiceOfGLKView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A78566717E5B13A001EAB1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -397,6 +399,7 @@
 		8AB6449E17E84FB700F32580 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				8A76AB65182E0EAA00707981 /* bg3.png */,
 				8AAABA1C182CE74E000513BF /* bg2.png */,
 				8A751889182A4AC100319139 /* distortionmap2.png */,
 				8A75187E182A180100319139 /* distortionmap.png */,
@@ -547,6 +550,7 @@
 				8A54E2F718113E450063DCA4 /* ShaderSimpleOverlay.fragsh in Resources */,
 				8A80C3971812627B00CBA3F7 /* ShaderSimpleBurn.fragsh in Resources */,
 				8A80C39C18126BEB00CBA3F7 /* SelShaderViewController.xib in Resources */,
+				8A76AB66182E0EAA00707981 /* bg3.png in Resources */,
 				8AAABA1D182CE74E000513BF /* bg2.png in Resources */,
 				8A80C39E181287F300CBA3F7 /* ShaderSimpleBlur.fragsh in Resources */,
 				8A37457A18138EA600B73F9A /* bg.png in Resources */,
