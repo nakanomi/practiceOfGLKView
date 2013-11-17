@@ -23,6 +23,8 @@ enum GAMEVIEW_SHADER {
 	
 	DISTORTION_2_1,
 	DISTORTION_2_2,
+	
+	DISTORTION_3_1,
 	};
 @interface GameViewController : UIViewController<GLKViewDelegate>
 

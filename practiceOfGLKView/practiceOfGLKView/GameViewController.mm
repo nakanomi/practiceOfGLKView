@@ -249,7 +249,9 @@ enum {
 			break;
 		case DISTORTION_2_1:
 		case DISTORTION_2_2:
-			//_shader = [[SimpleDistortion2 alloc] init];
+			_shader = [[SimpleDistortion2 alloc] init];
+			break;
+			case DISTORTION_3_1:
 			_shader = [[SimpleDitortionByPower alloc] init];
 			break;
 		case OFF_GRADATION:
@@ -291,6 +293,9 @@ enum {
 			break;
 		case DISTORTION_2_1:
 		case DISTORTION_2_2:
+			strFragShader = @"ShaderSimpleDistortion2";
+			break;
+		case DISTORTION_3_1:
 			strFragShader = @"ShaderSimpleDistortionByPower";
 			break;
 		case STAR_LIGHT_SCOPE:
@@ -367,6 +372,11 @@ enum {
 					@"scanline",
 				};
 				NSString* filesForDistortion2_1[] = {
+					@"bg2",
+					@"distortionmap2",
+					@"scanline",
+				};
+				NSString* filesForDistortion3_1[] = {
 					@"BG001-2",
 					@"distortionCircle2",
 					@"scanline",
@@ -382,6 +392,9 @@ enum {
 						break;
 					case DISTORTION_2_1:
 						files = filesForDistortion2_1;
+						break;
+					case DISTORTION_3_1:
+						files = filesForDistortion3_1;
 						break;
 						
 					default:
@@ -584,10 +597,12 @@ enum {
 		case DISTORTION_2_1:
 		case DISTORTION_2_2:
 		{
-			/*
 			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
 			[_shader setUniformsOnRenderWithParam:testTheta];
-			 */
+		}
+			break;
+		case DISTORTION_3_1:
+		{
 			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
 			float param = (sinf(testTheta) * 2.0f) + 1.5f;
 			[_shader setUniformsOnRenderWithParam:param];

@@ -59,6 +59,7 @@
 		@"歪み1-2:distortionmap",
 		@"歪み2-1:distortionmap2",
 		@"歪み2-2:distortionmap",
+		@"歪み3-1:distortionCircle2",
 	};
 	const int count = sizeof(labels) / sizeof(labels[0]);
 	for (int i = 0; i < count; i++) {
