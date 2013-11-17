@@ -289,7 +289,7 @@ enum {
 			break;
 		case DISTORTION_2_1:
 		case DISTORTION_2_2:
-			strFragShader = @"ShaderSimpleDistortion2";
+			strFragShader = @"ShaderSimpleDistortionByPower";
 			break;
 		case STAR_LIGHT_SCOPE:
 			strFragShader = @"ShaderStarLightScope";
@@ -365,8 +365,8 @@ enum {
 					@"scanline",
 				};
 				NSString* filesForDistortion2_1[] = {
-					@"bg2",
-					@"distortionmap2",
+					@"BG001-2",
+					@"distortionCircle2",
 					@"scanline",
 				};
 				NSString** files = nil;

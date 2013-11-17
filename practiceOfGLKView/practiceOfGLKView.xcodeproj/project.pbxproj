@@ -57,6 +57,9 @@
 		8AB644A017E8501700F32580 /* BG001.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449F17E8501700F32580 /* BG001.png */; };
 		8ABBA13D181508280033E1BC /* scanline.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ABBA13B181508280033E1BC /* scanline.png */; };
 		8ABBA13E181508280033E1BC /* shadowup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ABBA13C181508280033E1BC /* shadowup.png */; };
+		8AC2C8061838838400B0EC6C /* ShaderSimpleDistortionByPower.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AC2C8051838838400B0EC6C /* ShaderSimpleDistortionByPower.fragsh */; };
+		8AC2C8081838870500B0EC6C /* distortionCircle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC2C8071838870500B0EC6C /* distortionCircle2.png */; };
+		8AC2C80A18389F1200B0EC6C /* BG001-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC2C80918389F1200B0EC6C /* BG001-2.png */; };
 		8AC88E2618053C4D00E9ABE3 /* ShaderFastTexture.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8AC88E2518053C4D00E9ABE3 /* ShaderFastTexture.fragsh */; };
 		8AD3592C17EAF59F00BE0B1F /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3592A17EAF59F00BE0B1F /* GameViewController.mm */; };
 		8AD3592D17EAF59F00BE0B1F /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD3592B17EAF59F00BE0B1F /* GameViewController.xib */; };
@@ -144,6 +147,9 @@
 		8AB6449F17E8501700F32580 /* BG001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG001.png; path = resource/graphics/texture/BG001.png; sourceTree = SOURCE_ROOT; };
 		8ABBA13B181508280033E1BC /* scanline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scanline.png; path = resource/graphics/texture/scanline.png; sourceTree = SOURCE_ROOT; };
 		8ABBA13C181508280033E1BC /* shadowup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadowup.png; path = resource/graphics/texture/shadowup.png; sourceTree = SOURCE_ROOT; };
+		8AC2C8051838838400B0EC6C /* ShaderSimpleDistortionByPower.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderSimpleDistortionByPower.fragsh; sourceTree = "<group>"; };
+		8AC2C8071838870500B0EC6C /* distortionCircle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = distortionCircle2.png; path = resource/graphics/texture/distortionCircle2.png; sourceTree = SOURCE_ROOT; };
+		8AC2C80918389F1200B0EC6C /* BG001-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BG001-2.png"; path = "resource/graphics/texture/BG001-2.png"; sourceTree = SOURCE_ROOT; };
 		8AC88E2518053C4D00E9ABE3 /* ShaderFastTexture.fragsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShaderFastTexture.fragsh; sourceTree = "<group>"; };
 		8AD3592917EAF59F00BE0B1F /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		8AD3592A17EAF59F00BE0B1F /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameViewController.mm; sourceTree = "<group>"; };
@@ -220,6 +226,7 @@
 		8A38C3241802C43800DB435F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				8AC2C8051838838400B0EC6C /* ShaderSimpleDistortionByPower.fragsh */,
 				8A77BF30182502600047B1A7 /* ShaderSimpleDistortion.fragsh */,
 				8A751884182A417700319139 /* ShaderSimpleDistortion2.fragsh */,
 				8A8528A41816737B0093AC20 /* ShaderColorMtrxNoTex.fragsh */,
@@ -401,6 +408,8 @@
 		8AB6449E17E84FB700F32580 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				8AC2C80918389F1200B0EC6C /* BG001-2.png */,
+				8AC2C8071838870500B0EC6C /* distortionCircle2.png */,
 				8A19EDC5183758DC00339458 /* distortionCircle.png */,
 				8A76AB65182E0EAA00707981 /* bg3.png */,
 				8AAABA1C182CE74E000513BF /* bg2.png */,
@@ -536,11 +545,13 @@
 				8A78567617E5B13A001EAB1F /* InfoPlist.strings in Resources */,
 				8A19EDC6183758DC00339458 /* distortionCircle.png in Resources */,
 				8A78567E17E5B13A001EAB1F /* Default.png in Resources */,
+				8AC2C8061838838400B0EC6C /* ShaderSimpleDistortionByPower.fragsh in Resources */,
 				8A78568017E5B13A001EAB1F /* Default@2x.png in Resources */,
 				8A78568217E5B13A001EAB1F /* Default-568h@2x.png in Resources */,
 				8A97E18F17E6C47700B5B4E8 /* TitleViewController.xib in Resources */,
 				8AB644A017E8501700F32580 /* BG001.png in Resources */,
 				8AC88E2618053C4D00E9ABE3 /* ShaderFastTexture.fragsh in Resources */,
+				8AC2C80A18389F1200B0EC6C /* BG001-2.png in Resources */,
 				8AD3592D17EAF59F00BE0B1F /* GameViewController.xib in Resources */,
 				8AD66816180BDA4E0044B79B /* ShaderMtrxAlphaTexture.fragsh in Resources */,
 				8AD66817180BDA4E0044B79B /* ShaderMtrxAlphaTexture.vertsh in Resources */,
@@ -551,6 +562,7 @@
 				8AE0B538180FD6A700B3F2B2 /* ShaderSimpleMultiTexture.fragsh in Resources */,
 				8A54E2F3181120070063DCA4 /* rectangle.png in Resources */,
 				8A54E2F618113E450063DCA4 /* ShaderSimpleDodge.fragsh in Resources */,
+				8AC2C8081838870500B0EC6C /* distortionCircle2.png in Resources */,
 				8A54E2F718113E450063DCA4 /* ShaderSimpleOverlay.fragsh in Resources */,
 				8A80C3971812627B00CBA3F7 /* ShaderSimpleBurn.fragsh in Resources */,
 				8A80C39C18126BEB00CBA3F7 /* SelShaderViewController.xib in Resources */,

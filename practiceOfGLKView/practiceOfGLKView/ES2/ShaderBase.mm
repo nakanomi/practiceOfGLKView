@@ -149,6 +149,7 @@
 			sprintf(buf, "precision mediump float;\n %s", source);
 		}
 		glShaderSource(*shader, 1, (const GLchar**)&buf, NULL);
+		NSLog(@"%s", buf);
 		glCompileShader(*shader);
 		
 #if defined(DEBUG)

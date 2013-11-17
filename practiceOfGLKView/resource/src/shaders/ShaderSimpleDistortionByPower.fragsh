@@ -1,0 +1,27 @@
+
+uniform sampler2D uSamplerBase;
+uniform sampler2D uSamplerEff;
+uniform vec2 uVecMag;
+varying vec2 vTexcoord;
+
+void main()
+{
+	mediump vec4 colorDistortion = texture2D(uSamplerEff, vTexcoord);
+	if (colorDistortion.a == 0.0) {
+		gl_FragColor = texture2D(uSamplerBase, vTexcoord);
+	}
+	else {
+		
+		highp float percentage = colorDistortion.r;
+		percentage = pow(percentage, 1.5);
+		highp vec2 vDistortion = vec2(colorDistortion.g, colorDistortion.b);
+		vDistortion -= 0.5;
+		// 71.0:半径 128.0:FBOの半分
+		vDistortion *= (71.0 / 128.0) * percentage;
+		// 中心座標。ひとまずど真ん中
+		vDistortion.x += 0.5;
+		vDistortion.y += 0.5;
+		gl_FragColor = texture2D(uSamplerBase, vDistortion);
+	}
+}
+
