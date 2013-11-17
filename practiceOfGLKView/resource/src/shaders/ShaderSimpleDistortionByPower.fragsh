@@ -12,11 +12,11 @@ void main()
 	}
 	else {
 		
-		highp float percentage = colorDistortion.r;
-		percentage = pow(percentage, 1.5);
-		highp vec2 vDistortion = vec2(colorDistortion.g, colorDistortion.b);
+		float percentage = colorDistortion.r;
+		percentage = pow(percentage, 0.8);
+		vec2 vDistortion = vec2(colorDistortion.g, colorDistortion.b);
 		vDistortion -= 0.5;
-		// 71.0:半径 128.0:FBOの半分
+		// 71.0:テクスチャの半径 128.0:FBOの半分
 		vDistortion *= (71.0 / 128.0) * percentage;
 		// 中心座標。ひとまずど真ん中
 		vDistortion.x += 0.5;
