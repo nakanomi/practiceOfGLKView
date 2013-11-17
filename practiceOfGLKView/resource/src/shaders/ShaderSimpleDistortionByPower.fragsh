@@ -1,7 +1,8 @@
 
 uniform sampler2D uSamplerBase;
 uniform sampler2D uSamplerEff;
-uniform vec2 uVecMag;
+uniform float radius;
+uniform float powVal;
 varying vec2 vTexcoord;
 
 void main()
@@ -13,11 +14,11 @@ void main()
 	else {
 		
 		float percentage = colorDistortion.r;
-		percentage = pow(percentage, 0.8);
+		percentage = pow(percentage, 1.0 + powVal);
 		vec2 vDistortion = vec2(colorDistortion.g, colorDistortion.b);
 		vDistortion -= 0.5;
 		// 71.0:テクスチャの半径 128.0:FBOの半分
-		vDistortion *= (71.0 / 128.0) * percentage;
+		vDistortion *= radius * percentage;
 		// 中心座標。ひとまずど真ん中
 		vDistortion.x += 0.5;
 		vDistortion.y += 0.5;

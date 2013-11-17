@@ -18,6 +18,7 @@
 #import "PartTextureVBuffer.h"
 #import "SimpleDistortion.h"
 #import "SimpleDistortion2.h"
+#import "SimpleDitortionByPower.h"
 
 #import "SimpleFboShader.h"
 
@@ -248,7 +249,8 @@ enum {
 			break;
 		case DISTORTION_2_1:
 		case DISTORTION_2_2:
-			_shader = [[SimpleDistortion2 alloc] init];
+			//_shader = [[SimpleDistortion2 alloc] init];
+			_shader = [[SimpleDitortionByPower alloc] init];
 			break;
 		case OFF_GRADATION:
 			_shader = [[SimpleTextureShader alloc] init];
@@ -582,8 +584,13 @@ enum {
 		case DISTORTION_2_1:
 		case DISTORTION_2_2:
 		{
+			/*
 			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
 			[_shader setUniformsOnRenderWithParam:testTheta];
+			 */
+			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
+			float param = (sinf(testTheta) * 2.0f) + 1.5f;
+			[_shader setUniformsOnRenderWithParam:param];
 		}
 			break;
 			
