@@ -16,12 +16,12 @@ void main()
 		float percentage = colorDistortion.r;
 		percentage = pow(percentage, 1.0 + powVal);
 		vec2 vDistortion = vec2(colorDistortion.g, colorDistortion.b);
+		// vDistortion.xyが０から１に納めるため0.5加算された形になっている。
 		vDistortion -= 0.5;
-		// 71.0:テクスチャの半径 128.0:FBOの半分
+		// 
 		vDistortion *= radius * percentage;
 		// 中心座標。ひとまずど真ん中
-		vDistortion.x += 0.5;
-		vDistortion.y += 0.5;
+		vDistortion += 0.5;
 		gl_FragColor = texture2D(uSamplerBase, vDistortion);
 	}
 }

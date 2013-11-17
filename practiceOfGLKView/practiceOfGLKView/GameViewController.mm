@@ -377,7 +377,7 @@ enum {
 					@"scanline",
 				};
 				NSString* filesForDistortion3_1[] = {
-					@"BG001-2",
+					@"bg2",
 					@"distortionCircle2",
 					@"scanline",
 				};

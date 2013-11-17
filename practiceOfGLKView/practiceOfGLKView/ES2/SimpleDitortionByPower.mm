@@ -72,6 +72,7 @@ enum {
 }
 - (void)setUniformsOnRenderWithParam:(float)param
 {
+	// 71.0:テクスチャの半径 128.0:FBOの半分
 	glUniform1f(_uniforms[_UNI_SIMPLEDISTORTIONBYPOW_RADIUS], 71.0f / 128.0f);
 	glUniform1f(_uniforms[_UNI_SIMPLEDISTORTIONBYPOW_POWVAL], param);
 }
