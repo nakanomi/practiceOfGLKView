@@ -11,12 +11,16 @@ void main()
 		gl_FragColor = texture2D(uSamplerBase, vTexcoord);
 	}
 	else {
-		float pi2 = 3.14159 * 2.0 * 4.0;
-		float x = sin(vTexcoord.x * pi2 * uVecMag.x) * colorDistortion.r * (1.0 / 64.0);
-		x = sin((vTexcoord.x * pi2) + uVecMag.x ) * (1.0 / 64.0);
-		float y = cos(vTexcoord.y * pi2 + uVecMag.y) * colorDistortion.r * (1.0 / 64.0);
-		y = 0.0;
+		float pi2 = 3.14159 * 2.0 * 32.0;
+		float param2 = (1.0 / 64.0);
+		float x = 0.0;
+		x = sin((vTexcoord.x * pi2) + uVecMag.x ) * colorDistortion.r;
+
+		float y = 0.0;
+		y = sin((vTexcoord.y * pi2) + uVecMag.y) * colorDistortion.r;
+		
 		vec2 vDistortion = vec2(x , y);
+		vDistortion *= param2;
 		gl_FragColor = texture2D(uSamplerBase, vDistortion + vTexcoord);
 	}
 }

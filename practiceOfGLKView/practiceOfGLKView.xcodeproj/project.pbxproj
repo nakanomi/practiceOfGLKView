@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A001D9B18050B230058A0AB /* BG002.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A001D9A18050B230058A0AB /* BG002.png */; };
+		8A19EDC6183758DC00339458 /* distortionCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A19EDC5183758DC00339458 /* distortionCircle.png */; };
 		8A37457A18138EA600B73F9A /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A37457818138EA600B73F9A /* bg.png */; };
 		8A37457B18138EA600B73F9A /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A37457918138EA600B73F9A /* texture.png */; };
 		8A38C3491802CA3C00DB435F /* Shader.fragsh in Resources */ = {isa = PBXBuildFile; fileRef = 8A38C33D1802C97600DB435F /* Shader.fragsh */; };
@@ -82,6 +83,7 @@
 
 /* Begin PBXFileReference section */
 		8A001D9A18050B230058A0AB /* BG002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG002.png; path = resource/graphics/texture/BG002.png; sourceTree = SOURCE_ROOT; };
+		8A19EDC5183758DC00339458 /* distortionCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = distortionCircle.png; path = resource/graphics/texture/distortionCircle.png; sourceTree = SOURCE_ROOT; };
 		8A2A3C8A180BC07800157956 /* gameDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gameDefs.h; sourceTree = "<group>"; };
 		8A37457818138EA600B73F9A /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = resource/graphics/texture/bg.png; sourceTree = SOURCE_ROOT; };
 		8A37457918138EA600B73F9A /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture.png; path = resource/graphics/texture/texture.png; sourceTree = SOURCE_ROOT; };
@@ -399,6 +401,7 @@
 		8AB6449E17E84FB700F32580 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				8A19EDC5183758DC00339458 /* distortionCircle.png */,
 				8A76AB65182E0EAA00707981 /* bg3.png */,
 				8AAABA1C182CE74E000513BF /* bg2.png */,
 				8A751889182A4AC100319139 /* distortionmap2.png */,
@@ -531,6 +534,7 @@
 				8A38C34D1802CA3C00DB435F /* ShaderSimpleTexture.vertsh in Resources */,
 				8A38C34E1802CA3C00DB435F /* ShaderSimpleTriangle.vertsh in Resources */,
 				8A78567617E5B13A001EAB1F /* InfoPlist.strings in Resources */,
+				8A19EDC6183758DC00339458 /* distortionCircle.png in Resources */,
 				8A78567E17E5B13A001EAB1F /* Default.png in Resources */,
 				8A78568017E5B13A001EAB1F /* Default@2x.png in Resources */,
 				8A78568217E5B13A001EAB1F /* Default-568h@2x.png in Resources */,
