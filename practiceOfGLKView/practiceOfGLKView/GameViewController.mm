@@ -557,6 +557,10 @@ enum {
 
 - (void)render2PassFbo
 {
+#if 1
+	// ************ 注意 *************
+	// ここでは簡単にするため描画対象が一つしかないので、いきなりフィルター処理に入っているが
+	// ぼかしなどは本来、シーン全体をレンダリングしてからかけることに注意
 	// ************ pass1 *************
 	[self changeRenderTargetToFBO:_fbo0];
 	assert(_shader != nil);
@@ -586,6 +590,17 @@ enum {
 	glBindTexture(GL_TEXTURE_2D, _fbo0.texId);
 	[self setTextureParametries];
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, _fbo0.countVertice);
+#else
+	[self changeRenderTargetToFBO:_fboFinal];
+	glUseProgram(_shader.programId);
+	[_shader setUniformsOnRenderWithParam:0.0f pass:1];
+	// 頂点バッファを選択
+	glBindVertexArrayOES(_vArray.vertexArray);
+	glActiveTexture(GL_TEXTURE0);
+	[self setupTextures:_shader.textureCount];
+	[self setTextureParametries];
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, _fbo0.countVertice);
+#endif
 	
 }
 

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 nakano_michiharu. All rights reserved.
 //
 
-#import "SimpleMultiTexture.h"
+#import "SimpleTextureShader.h"
 
-@interface SimpleBlur : SimpleMultiTexture
+@interface SimpleBlur : SimpleTextureShader
 {
 	
 }

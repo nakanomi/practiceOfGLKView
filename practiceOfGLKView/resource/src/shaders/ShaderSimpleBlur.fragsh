@@ -6,35 +6,27 @@
 //  Copyright (c) 2013年 nakano_michiharu. All rights reserved.
 //
 uniform sampler2D uSamplerBase;
-uniform sampler2D uSamplerEff;
 varying vec2 vTexcoord;
 
 void main()
 {
 	vec4 vColorBase = texture2D(uSamplerBase, vTexcoord);
-	vec4 vColorEff = texture2D(uSamplerEff, vTexcoord);
 
-	// オーバーレイ
-	if (vColorEff.a > 0.0) {
-		vec4 vColor = vColorBase;
-		vec2 vTexAround = vTexcoord;
-		vTexAround.x -= 1.0 / 256.0;
-		vColor += texture2D(uSamplerBase, vTexAround);
-		vTexAround.x += 2.0 / 256.0;
-		vColor += texture2D(uSamplerBase, vTexAround);
-		
-		vTexAround = vTexcoord;
-		vTexAround.y -= 1.0 / 256.0;
-		vColor += texture2D(uSamplerBase, vTexAround);
-		vTexAround.y += 2.0 / 256.0;
-		vColor += texture2D(uSamplerBase, vTexAround);
-		
-		vColor /= 5.0;
-
-		vColor.a = 1.0;
-		gl_FragColor = vColor;
-	}
-	else {
-		gl_FragColor = vColorBase;
-	}
+	vec4 vColor = vColorBase;
+	vec2 vTexAround = vTexcoord;
+	vTexAround.x -= 1.0 / 256.0;
+	vColor += texture2D(uSamplerBase, vTexAround);
+	vTexAround.x += 2.0 / 256.0;
+	vColor += texture2D(uSamplerBase, vTexAround);
+	
+	vTexAround = vTexcoord;
+	vTexAround.y -= 1.0 / 256.0;
+	vColor += texture2D(uSamplerBase, vTexAround);
+	vTexAround.y += 2.0 / 256.0;
+	vColor += texture2D(uSamplerBase, vTexAround);
+	
+	vColor /= 5.0;
+	
+	vColor.a = 1.0;
+	gl_FragColor = vColor;
 }

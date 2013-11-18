@@ -13,7 +13,7 @@
 #define _WEIGHT_TABLE_NUM	10
 @interface SimpleBlur()
 {
-	GLint _uniforms[UNI_SIMPLEMULTI_NUM];
+	GLint _uniforms[UNI_SIMPLE_TEXTURE_NUM];
 	float _weight[_WEIGHT_TABLE_NUM];
 }
 - (void)makeWeightBySigma:(float)sigma andMu:(float)mu;
@@ -25,7 +25,7 @@
 {
 	self = [super init];
 	if (self != nil) {
-		_textureCount = 2;
+		_textureCount = 1;
 		[self makeWeightBySigma:1.0f andMu:0.0f];
 	}
 	return self;
@@ -43,8 +43,7 @@
 	BOOL result = NO;
 	@try {
 		[self initUniforms];
-		_uniforms[UNI_SIMPLEMULTI_SAMPLERBASE] = glGetUniformLocation(self.programId, "uSamplerBase");
-		_uniforms[UNI_SIMPLEMULTI_SAMPLEREFF] = glGetUniformLocation(self.programId, "uSamplerEff");
+		_uniforms[UNI_SIMPLE_TEXTURE_SAMPLER] = glGetUniformLocation(self.programId, "uSamplerBase");
 		result =YES;
 	}
 	@catch (NSException *exception) {
