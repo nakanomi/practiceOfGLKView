@@ -16,6 +16,7 @@
 @property (readonly)CGSize sizeFbo;
 @property (readwrite)GLKVector4 clearColor;
 @property (readonly)GLuint texId;
+@property (readonly)GLsizei countVertice;
 -(id)init;
 - (void)changeRenderTargetToFBO;
 - (void)setupFboWithSize:(CGSize)sizeFbo withRenderTarget:(CGSize)sizeRenderTarget;

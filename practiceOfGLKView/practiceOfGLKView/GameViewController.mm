@@ -99,6 +99,7 @@ enum {
 - (void)setupTextures:(int)count;
 - (void)renderObjectsForFboIndex:(int)fboIndex;
 - (void)renderStarLightFbo;
+- (void)render2PassFbo;
 - (void)setTextureParametries;
 
 - (void)setupFBO;
@@ -530,6 +531,7 @@ enum {
 
 - (void)renderStarLightFbo
 {
+	[self changeRenderTargetToFBO:_fboFinal];
 	assert(_shader != nil);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -549,10 +551,42 @@ enum {
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, _vArray.count);
 }
 
+- (void)render2PassFbo
+{
+	// ************ pass1 *************
+	[self changeRenderTargetToFBO:_fbo0];
+	assert(_shader != nil);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	
+	// 頂点バッファを選択
+	glBindVertexArrayOES(_vArray.vertexArray);
+    
+	// シェーダープログラムを適用
+    glUseProgram(_shader.programId);
+	[self setupTextures:_shader.textureCount];
+	
+	// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい
+	[self setTextureParametries];
+	//glDrawArrays(GL_TRIANGLES, 0, _vArray.count);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, _vArray.count);
+	
+	
+	// ************ pass1 *************
+	[self changeRenderTargetToFBO:_fboFinal];
+	glUseProgram(_shader.programId);
+	[_fbo0 bindVertex];
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, _fbo0.texId);
+	[self setTextureParametries];
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, _fbo0.countVertice);
+	
+}
 
 
 - (void)renderObjectsForFboIndex:(int)fboIndex;
 {
+	[self changeRenderTargetToFBO:_fboFinal];
     // Render the object with GLKit
     
 	assert(_shader != nil);
@@ -682,10 +716,12 @@ enum {
 
 - (void)drawType01ForView:(GLKView*)view
 {
-	[self changeRenderTargetToFBO:_fboFinal];
 	switch (self.setupShader) {
 		case STAR_LIGHT_SCOPE:
 			[self renderStarLightFbo];
+			break;
+		case BLUR_TEST_5DOT:
+			[self render2PassFbo];
 			break;
 			
 		default:

@@ -165,6 +165,15 @@ static GLint sDefaultFbo = -1;
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, _fboVArray.count);
 }
 
+- (GLsizei) countVertice
+{
+	GLsizei result = 0;
+	if (_fboVArray != nil) {
+		result = _fboVArray.count;
+	}
+	return result;
+}
+
 + (void)setDefaultFbo
 {
 	// レンダリングターゲットを通常のフレームバッファに変更
