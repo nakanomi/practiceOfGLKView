@@ -66,7 +66,7 @@ enum {
 	}
 }
 
-- (void)setUniformsOnRenderWithParam:(float)param
+- (void)setUniformsOnRenderWithParam:(float)param pass:(int)passOfRender;
 {
 	glUniform1f(_uniforms[UNI_SIMPLEDISTORTION_MAG], param);
 }

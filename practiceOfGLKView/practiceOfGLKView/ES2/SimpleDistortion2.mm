@@ -70,7 +70,7 @@ enum {
 	}
 }
 
-- (void)setUniformsOnRenderWithParam:(float)param
+- (void)setUniformsOnRenderWithParam:(float)param pass:(int)passOfRender;
 {
 	float speed = 8.0f;
 	_vUniMag.x  = param * speed;

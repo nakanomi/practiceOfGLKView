@@ -252,7 +252,7 @@
 {
 	NSLog(@"%s このシェーダーはユニフォーム変数を持ちません", __PRETTY_FUNCTION__);
 }
-- (void)setUniformsOnRenderWithParam:(float)param
+- (void)setUniformsOnRenderWithParam:(float)param pass:(int)passOfRender;
 {
 	
 }

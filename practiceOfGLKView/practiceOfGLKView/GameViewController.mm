@@ -543,7 +543,7 @@ enum {
     glUseProgram(_shader.programId);
 	[self setupTextures:_shader.textureCount];
 	StarLightScopeShader *shaderStar = (StarLightScopeShader*)(_shader);
-	[shaderStar setUniformsOnRenderWithParam:0.0f];
+	[shaderStar setUniformsOnRenderWithParam:0.0f pass:0];
 	
 	// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい
 	[self setTextureParametries];
@@ -625,26 +625,26 @@ enum {
 			float sinVal = sinf(testTheta);
 			//dbgLog(@"sin:%f", sinVal);
 			float mag = sinVal * (50.0f / 255.0f);
-			[_shader setUniformsOnRenderWithParam:mag];
+			[_shader setUniformsOnRenderWithParam:mag pass:0];
 		}
 			break;
 		case DISTORTION_2_1:
 		case DISTORTION_2_2:
 		{
 			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
-			[_shader setUniformsOnRenderWithParam:testTheta];
+			[_shader setUniformsOnRenderWithParam:testTheta pass:0];
 		}
 			break;
 		case DISTORTION_3_1:
 		{
 			float testTheta = fmodf(_testOffset * 256.0f, M_PI * 2.0f);
 			float param = (sinf(testTheta) * 2.0f) + 1.5f;
-			[_shader setUniformsOnRenderWithParam:param];
+			[_shader setUniformsOnRenderWithParam:param pass:0];
 		}
 			break;
 			
 		default:
-			[_shader setUniformsOnRenderWithParam:0.0f];
+			[_shader setUniformsOnRenderWithParam:0.0f pass:0];
 			break;
 	}
 	
