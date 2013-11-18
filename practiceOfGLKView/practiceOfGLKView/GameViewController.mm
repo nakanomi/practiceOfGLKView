@@ -20,6 +20,8 @@
 #import "SimpleDistortion2.h"
 #import "SimpleDitortionByPower.h"
 
+#import "SimpleBlur.h"
+
 #import "SimpleFboShader.h"
 
 #import "TextureBase.h"
@@ -241,8 +243,10 @@ enum {
 		case DODGE:
 		case BURN:
 		case ADD:
-		case BLUR_TEST_5DOT:
 			_shader = [[SimpleMultiTexture alloc] init];
+			break;
+		case BLUR_TEST_5DOT:
+			_shader = [[SimpleBlur alloc] init];
 			break;
 		case DISTORTION_1_1:
 		case DISTORTION_1_2:
@@ -564,6 +568,7 @@ enum {
     
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
+	[_shader setUniformsOnRenderWithParam:0.0f pass:0];
 	[self setupTextures:_shader.textureCount];
 	
 	// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい
@@ -575,6 +580,7 @@ enum {
 	// ************ pass1 *************
 	[self changeRenderTargetToFBO:_fboFinal];
 	glUseProgram(_shader.programId);
+	[_shader setUniformsOnRenderWithParam:0.0f pass:1];
 	[_fbo0 bindVertex];
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, _fbo0.texId);

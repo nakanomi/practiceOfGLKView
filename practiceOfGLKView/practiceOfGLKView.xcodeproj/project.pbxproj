@@ -54,6 +54,7 @@
 		8A97E18E17E6C47700B5B4E8 /* TitleViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A97E18C17E6C47700B5B4E8 /* TitleViewController.mm */; };
 		8A97E18F17E6C47700B5B4E8 /* TitleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */; };
 		8AAABA1D182CE74E000513BF /* bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AAABA1C182CE74E000513BF /* bg2.png */; };
+		8AAE588E1839F3920023AF2D /* SimpleBlur.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE588D1839F3920023AF2D /* SimpleBlur.mm */; };
 		8AB644A017E8501700F32580 /* BG001.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6449F17E8501700F32580 /* BG001.png */; };
 		8ABBA13D181508280033E1BC /* scanline.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ABBA13B181508280033E1BC /* scanline.png */; };
 		8ABBA13E181508280033E1BC /* shadowup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ABBA13C181508280033E1BC /* shadowup.png */; };
@@ -145,6 +146,8 @@
 		8A97E18C17E6C47700B5B4E8 /* TitleViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TitleViewController.mm; sourceTree = "<group>"; };
 		8A97E18D17E6C47700B5B4E8 /* TitleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleViewController.xib; sourceTree = "<group>"; };
 		8AAABA1C182CE74E000513BF /* bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg2.png; path = resource/graphics/texture/bg2.png; sourceTree = SOURCE_ROOT; };
+		8AAE588C1839F3920023AF2D /* SimpleBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleBlur.h; path = ES2/SimpleBlur.h; sourceTree = "<group>"; };
+		8AAE588D1839F3920023AF2D /* SimpleBlur.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SimpleBlur.mm; path = ES2/SimpleBlur.mm; sourceTree = "<group>"; };
 		8AB6449F17E8501700F32580 /* BG001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG001.png; path = resource/graphics/texture/BG001.png; sourceTree = SOURCE_ROOT; };
 		8ABBA13B181508280033E1BC /* scanline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scanline.png; path = resource/graphics/texture/scanline.png; sourceTree = SOURCE_ROOT; };
 		8ABBA13C181508280033E1BC /* shadowup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadowup.png; path = resource/graphics/texture/shadowup.png; sourceTree = SOURCE_ROOT; };
@@ -356,6 +359,15 @@
 			name = testNoTex;
 			sourceTree = "<group>";
 		};
+		8AAE588B1839F0F30023AF2D /* testBlur */ = {
+			isa = PBXGroup;
+			children = (
+				8AAE588C1839F3920023AF2D /* SimpleBlur.h */,
+				8AAE588D1839F3920023AF2D /* SimpleBlur.mm */,
+			);
+			name = testBlur;
+			sourceTree = "<group>";
+		};
 		8AB6448817E83B1400F32580 /* base */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +475,7 @@
 		8AD13D8217E6BDDA00FB0A46 /* shaderAndBuffer */ = {
 			isa = PBXGroup;
 			children = (
+				8AAE588B1839F0F30023AF2D /* testBlur */,
 				8A751880182A2EF200319139 /* testDistortion */,
 				8A8528A8181673850093AC20 /* testNoTex */,
 				8A68A12B1813DE7D00A0448D /* testStarLightScope */,
@@ -616,6 +629,7 @@
 				8A80C39B18126BEB00CBA3F7 /* SelShaderViewController.mm in Sources */,
 				8A68A12E1813DEA800A0448D /* StarLightScopeShader.mm in Sources */,
 				8A751883182A2F1F00319139 /* SimpleDistortion.mm in Sources */,
+				8AAE588E1839F3920023AF2D /* SimpleBlur.mm in Sources */,
 				8A8528AB181673A80093AC20 /* ColorNoTexVArray.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
