@@ -32,7 +32,7 @@ enum {
 	self = [super init];
 	if (self != nil) {
 		_textureCount = 1;
-		[self makeWeightBySigma:1.0f andMu:0.0f];
+		[self makeWeightBySigma:4.0f andMu:0.0f];
 	}
 	return self;
 }
@@ -70,11 +70,14 @@ enum {
 - (void)setUniformsOnRenderWithParam:(float)param pass:(int)passOfRender
 {
 	glUniform1fv(_uniforms[_UNI_SIMPLEBLUR_WEIGHT], _WEIGHT_TABLE_NUM, &_weight[0]);
+	float val = 1.0f / 256.0f;
 	if (passOfRender == 0) {
-		_vDelta = GLKVector2Make(1.0f/256.0f, 0.0f);
+		_vDelta = GLKVector2Make(val, 0.0f);
 	}
 	else {
-		_vDelta = GLKVector2Make(0.0f, 1.0f/256.0f);
+		// テクスチャサイズが256x256、FBOサイズが512x512
+		// このため2パス目はテクスチャサイズが縦横とも２倍になるので、差分のベクトルを2で割る必要がある。
+		_vDelta = GLKVector2Make(0.0f, val / 2.0f);
 		
 	}
 	glUniform2fv(_uniforms[_UNI_SIMPLEBLUR_VDELTA], 1, &_vDelta.x);
