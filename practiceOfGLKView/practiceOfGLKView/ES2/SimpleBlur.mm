@@ -13,6 +13,7 @@
 #define _WEIGHT_TABLE_NUM	3
 enum {
 	_UNI_SIMPLEBLUR_WEIGHT = UNI_SIMPLE_TEXTURE_NUM,
+	_UNI_SIMPLEBLUR_IS_VERTICAL,
 	_UNI_SIMPLEBLUR_NUM,
 };
 @interface SimpleBlur()
@@ -49,6 +50,7 @@ enum {
 		[self initUniforms];
 		_uniforms[UNI_SIMPLE_TEXTURE_SAMPLER] = glGetUniformLocation(self.programId, "uSamplerBase");
 		_uniforms[_UNI_SIMPLEBLUR_WEIGHT] = glGetUniformLocation(self.programId, "uWeight");
+		_uniforms[_UNI_SIMPLEBLUR_IS_VERTICAL] = glGetUniformLocation(self.programId, "uIsVertical");
 		result =YES;
 	}
 	@catch (NSException *exception) {
@@ -67,6 +69,7 @@ enum {
 - (void)setUniformsOnRenderWithParam:(float)param pass:(int)passOfRender
 {
 	glUniform1fv(_uniforms[_UNI_SIMPLEBLUR_WEIGHT], _WEIGHT_TABLE_NUM, &_weight[0]);
+	glUniform1i(_uniforms[_UNI_SIMPLEBLUR_IS_VERTICAL], passOfRender);
 }
 
 - (void)makeWeightBySigma:(float)sigma andMu:(float)mu
@@ -88,12 +91,12 @@ enum {
 		
 		_weight[i] = leftV * rightV;
 		test += _weight[i];
-		//dbgLog(@"[%d]:%f", i, _weight[i]);
+		dbgLog(@"[%d]:%f", i, _weight[i]);
 	}
 	for (int i = 1; i < _WEIGHT_TABLE_NUM; i++) {
 		test += _weight[i];
 	}
-	//dbgLog(@"test:%f", test);
+	dbgLog(@"test:%f", test);
 }
 
 
