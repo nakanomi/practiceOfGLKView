@@ -80,7 +80,7 @@ enum {
 	leftV = 1.0f / leftV;
 	assert(sigma >= 1.0f / 65536.0f);
 	float sigma2 = sigma * sigma;
-	float test = 0.0f;
+	float sum = 0.0f;
 	for (int i = 0; i < _WEIGHT_TABLE_NUM; i++) {
 		float fI = (float)i;
 		float rightV = fI - mu;
@@ -90,13 +90,24 @@ enum {
 		rightV = expf(rightV);
 		
 		_weight[i] = leftV * rightV;
-		test += _weight[i];
+		sum += _weight[i];
 		dbgLog(@"[%d]:%f", i, _weight[i]);
 	}
 	for (int i = 1; i < _WEIGHT_TABLE_NUM; i++) {
-		test += _weight[i];
+		sum += _weight[i];
 	}
-	dbgLog(@"test:%f", test);
+	dbgLog(@"sum0:%f", sum);
+	// sumが１になるようにする
+	float denom = 1.0 / sum;
+	sum = 0.0f;
+	for (int i = 0; i < _WEIGHT_TABLE_NUM; i++) {
+		_weight[i] = _weight[i] * denom;
+		sum += _weight[i];
+	}
+	for (int i = 1; i < _WEIGHT_TABLE_NUM; i++) {
+		sum += _weight[i];
+	}
+	dbgLog(@"sum1:%f", sum);
 }
 
 
