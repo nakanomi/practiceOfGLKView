@@ -442,12 +442,14 @@ enum {
 - (void)setupFBO
 {
 	_fboFinal = [[FboBase alloc] init];
-	CGSize size = CGSizeMake(256.0f, 256.0f);
+	CGSize size = CGSizeMake(512.0f, 512.0f);
 	[_fboFinal setupFboWithSize:size withRenderTarget:[VArrayBase getScreenSize]];
 	_fboFinal.clearColor = GLKVector4Make(0.0f, 0.0f, 0.0f, 1.0f);
 	
 	_fbo0 = [[FboBase alloc] init];
-	[_fbo0 setupFboWithSize:size withRenderTarget:size];
+	//[_fbo0 setupFboWithSize:size withRenderTarget:size];
+	CGRect rectRenderPart = CGRectMake(128.0f, 128.0f, 256.0f, 256.0f);
+	[_fbo0 setupPartFboWithSize:size withRenderTarget:size withRenderPart:rectRenderPart withFboPart:rectRenderPart];
 	_fbo0.clearColor = GLKVector4Make(0.0f, 0.0f, 1.0f, 1.0f);
 }
 
