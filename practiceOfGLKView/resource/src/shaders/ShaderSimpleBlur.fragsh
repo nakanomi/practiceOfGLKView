@@ -8,49 +8,30 @@
 // 参考URL:http://wgld.org/d/webgl/w057.html
 uniform sampler2D uSamplerBase;
 uniform float uWeight[4];
-uniform int uIsVertical;
+uniform vec2 uVDelta;
 varying vec2 vTexcoord;
 
 void main()
 {
-	// レンダリング先座標を0~1に修正するための値
-	float tFrag = 1.0 / 512.0;
-	vec2 fc;
 	vec3 destColor = vec3(0.0, 0.0, 0.0);
-	
-	if (uIsVertical == 0) {
-		fc = vec2(gl_FragCoord.s, 512.0 - gl_FragCoord.t);
-		//	destColor += texture2D(uSamplerBase, (fc + vec2(-9.0, 0.0)) * tFrag).rgb * uWeight[9];
-		//	destColor += texture2D(uSamplerBase, (fc + vec2(-8.0, 0.0)) * tFrag).rgb * uWeight[8];
-		//	destColor += texture2D(uSamplerBase, (fc + vec2(-7.0, 0.0)) * tFrag).rgb * uWeight[7];
-		//	destColor += texture2D(uSamplerBase, (fc + vec2(-6.0, 0.0)) * tFrag).rgb * uWeight[6];
-		//	destColor += texture2D(uSamplerBase, (fc + vec2(-5.0, 0.0)) * tFrag).rgb * uWeight[5];
-//		destColor += texture2D(uSamplerBase, (fc + vec2(-4.0, 0.0)) * tFrag).rgb * uWeight[4];
-		destColor += texture2D(uSamplerBase, (fc + vec2(-3.0, 0.0)) * tFrag).rgb * uWeight[3];
-		destColor += texture2D(uSamplerBase, (fc + vec2(-2.0, 0.0)) * tFrag).rgb * uWeight[2];
-		destColor += texture2D(uSamplerBase, (fc + vec2(-1.0, 0.0)) * tFrag).rgb * uWeight[1];
-		destColor += texture2D(uSamplerBase, (fc + vec2( 0.0, 0.0)) * tFrag).rgb * uWeight[0];
-		destColor += texture2D(uSamplerBase, (fc + vec2( 1.0, 0.0)) * tFrag).rgb * uWeight[1];
-		destColor += texture2D(uSamplerBase, (fc + vec2( 2.0, 0.0)) * tFrag).rgb * uWeight[2];
-		destColor += texture2D(uSamplerBase, (fc + vec2( 3.0, 0.0)) * tFrag).rgb * uWeight[3];
-//		destColor += texture2D(uSamplerBase, (fc + vec2( 4.0, 0.0)) * tFrag).rgb * uWeight[4];
-		//	destColor += texture2D(uSamplerBase, (fc + vec2( 5.0, 0.0)) * tFrag).rgb * uWeight[5];
-		//	destColor += texture2D(uSamplerBase, (fc + vec2( 6.0, 0.0)) * tFrag).rgb * uWeight[6];
-		//	destColor += texture2D(uSamplerBase, (fc + vec2( 7.0, 0.0)) * tFrag).rgb * uWeight[7];
-		//	destColor += texture2D(uSamplerBase, (fc + vec2( 8.0, 0.0)) * tFrag).rgb * uWeight[8];
-		//	destColor += texture2D(uSamplerBase, (fc + vec2( 9.0, 0.0)) * tFrag).rgb * uWeight[9];
+
+	vec2 vOffset = uVDelta;
+	destColor += texture2D(uSamplerBase, vTexcoord).rgb * uWeight[0];
+	destColor += texture2D(uSamplerBase, (vTexcoord + vOffset)).rgb * uWeight[1];
+	destColor += texture2D(uSamplerBase, (vTexcoord - vOffset)).rgb * uWeight[1];
+	vOffset += uVDelta;
+	destColor += texture2D(uSamplerBase, (vTexcoord + vOffset)).rgb * uWeight[2];
+	destColor += texture2D(uSamplerBase, (vTexcoord - vOffset)).rgb * uWeight[2];
+	vOffset += uVDelta;
+	destColor += texture2D(uSamplerBase, (vTexcoord + vOffset)).rgb * uWeight[3];
+	destColor += texture2D(uSamplerBase, (vTexcoord - vOffset)).rgb * uWeight[3];
+	gl_FragColor = vec4(destColor, 1.0);
+	/*
+	if (uVDelta.x == 0.0) {
+		gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
 	}
 	else {
-		fc = gl_FragCoord.st;
-//		destColor += texture2D(uSamplerBase, (fc + vec2( 0.0, -4.0 )) * tFrag).rgb * uWeight[4];
-		destColor += texture2D(uSamplerBase, (fc + vec2( 0.0, -3.0 )) * tFrag).rgb * uWeight[3];
-		destColor += texture2D(uSamplerBase, (fc + vec2( 0.0, -2.0 )) * tFrag).rgb * uWeight[2];
-		destColor += texture2D(uSamplerBase, (fc + vec2( 0.0, -1.0 )) * tFrag).rgb * uWeight[1];
-		destColor += texture2D(uSamplerBase, (fc + vec2( 0.0, 0.0 )) * tFrag).rgb * uWeight[0];
-		destColor += texture2D(uSamplerBase, (fc + vec2( 0.0, 1.0 )) * tFrag).rgb * uWeight[1];
-		destColor += texture2D(uSamplerBase, (fc + vec2( 0.0, 2.0 )) * tFrag).rgb * uWeight[2];
-		destColor += texture2D(uSamplerBase, (fc + vec2( 0.0, 3.0 )) * tFrag).rgb * uWeight[3];
-//		destColor += texture2D(uSamplerBase, (fc + vec2( 0.0, 4.0 )) * tFrag).rgb * uWeight[4];
+		gl_FragColor = texture2D(uSamplerBase, vTexcoord);
 	}
-	gl_FragColor = vec4(destColor, 1.0);
+	 */
 }

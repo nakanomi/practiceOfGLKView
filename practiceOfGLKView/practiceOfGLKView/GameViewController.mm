@@ -595,7 +595,7 @@ enum {
 #else
 	[self changeRenderTargetToFBO:_fboFinal];
 	glUseProgram(_shader.programId);
-	[_shader setUniformsOnRenderWithParam:0.0f pass:1];
+	[_shader setUniformsOnRenderWithParam:0.0f pass:0];
 	// 頂点バッファを選択
 	glBindVertexArrayOES(_vArray.vertexArray);
 	glActiveTexture(GL_TEXTURE0);

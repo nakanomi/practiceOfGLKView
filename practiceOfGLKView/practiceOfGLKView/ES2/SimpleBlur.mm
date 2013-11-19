@@ -13,13 +13,14 @@
 #define _WEIGHT_TABLE_NUM	4
 enum {
 	_UNI_SIMPLEBLUR_WEIGHT = UNI_SIMPLE_TEXTURE_NUM,
-	_UNI_SIMPLEBLUR_IS_VERTICAL,
+	_UNI_SIMPLEBLUR_VDELTA,
 	_UNI_SIMPLEBLUR_NUM,
 };
 @interface SimpleBlur()
 {
 	GLint _uniforms[_UNI_SIMPLEBLUR_NUM];
 	float _weight[_WEIGHT_TABLE_NUM];
+	GLKVector2 _vDelta;
 }
 - (void)makeWeightBySigma:(float)sigma andMu:(float)mu;
 @end
@@ -31,7 +32,7 @@ enum {
 	self = [super init];
 	if (self != nil) {
 		_textureCount = 1;
-		[self makeWeightBySigma:4.0f andMu:0.0f];
+		[self makeWeightBySigma:1.0f andMu:0.0f];
 	}
 	return self;
 }
@@ -50,7 +51,7 @@ enum {
 		[self initUniforms];
 		_uniforms[UNI_SIMPLE_TEXTURE_SAMPLER] = glGetUniformLocation(self.programId, "uSamplerBase");
 		_uniforms[_UNI_SIMPLEBLUR_WEIGHT] = glGetUniformLocation(self.programId, "uWeight");
-		_uniforms[_UNI_SIMPLEBLUR_IS_VERTICAL] = glGetUniformLocation(self.programId, "uIsVertical");
+		_uniforms[_UNI_SIMPLEBLUR_VDELTA] = glGetUniformLocation(self.programId, "uVDelta");
 		result =YES;
 	}
 	@catch (NSException *exception) {
@@ -69,7 +70,14 @@ enum {
 - (void)setUniformsOnRenderWithParam:(float)param pass:(int)passOfRender
 {
 	glUniform1fv(_uniforms[_UNI_SIMPLEBLUR_WEIGHT], _WEIGHT_TABLE_NUM, &_weight[0]);
-	glUniform1i(_uniforms[_UNI_SIMPLEBLUR_IS_VERTICAL], passOfRender);
+	if (passOfRender == 0) {
+		_vDelta = GLKVector2Make(1.0f/256.0f, 0.0f);
+	}
+	else {
+		_vDelta = GLKVector2Make(0.0f, 1.0f/256.0f);
+		
+	}
+	glUniform2fv(_uniforms[_UNI_SIMPLEBLUR_VDELTA], 1, &_vDelta.x);
 }
 
 - (void)makeWeightBySigma:(float)sigma andMu:(float)mu
