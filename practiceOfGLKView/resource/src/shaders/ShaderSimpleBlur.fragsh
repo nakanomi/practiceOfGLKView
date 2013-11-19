@@ -14,12 +14,12 @@ varying vec2 vTexcoord;
 void main()
 {
 	// レンダリング先座標を0~1に修正するための値
-	float tFrag = 1.0 / 512.0;
+	float tFrag = 1.0 / 256.0;
 	vec2 fc;
 	vec3 destColor = vec3(0.0, 0.0, 0.0);
 	
 	if (uIsVertical == 0) {
-		fc = vec2(gl_FragCoord.s, 512.0 - gl_FragCoord.t);
+		fc = vec2(gl_FragCoord.s, 256.0 - gl_FragCoord.t);
 		//	destColor += texture2D(uSamplerBase, (fc + vec2(-9.0, 0.0)) * tFrag).rgb * uWeight[9];
 		//	destColor += texture2D(uSamplerBase, (fc + vec2(-8.0, 0.0)) * tFrag).rgb * uWeight[8];
 		//	destColor += texture2D(uSamplerBase, (fc + vec2(-7.0, 0.0)) * tFrag).rgb * uWeight[7];
