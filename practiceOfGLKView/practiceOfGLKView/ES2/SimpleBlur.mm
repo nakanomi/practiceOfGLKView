@@ -10,7 +10,7 @@
 #include "gameDefs.h"
 #include <math.h>
 
-#define _WEIGHT_TABLE_NUM	3
+#define _WEIGHT_TABLE_NUM	4
 enum {
 	_UNI_SIMPLEBLUR_WEIGHT = UNI_SIMPLE_TEXTURE_NUM,
 	_UNI_SIMPLEBLUR_IS_VERTICAL,
@@ -31,7 +31,7 @@ enum {
 	self = [super init];
 	if (self != nil) {
 		_textureCount = 1;
-		[self makeWeightBySigma:1.0f andMu:0.0f];
+		[self makeWeightBySigma:4.0f andMu:0.0f];
 	}
 	return self;
 }
