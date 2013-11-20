@@ -69,15 +69,17 @@ enum {
 }
 - (void)setUniformsOnRenderWithParam:(float)param pass:(int)passOfRender
 {
+	
 	glUniform1fv(_uniforms[_UNI_SIMPLEBLUR_WEIGHT], _WEIGHT_TABLE_NUM, &_weight[0]);
-	float val = 1.0f / 256.0f;
+	float textureSize = 1.0f / 256.0f;
+	float fboSize = 1.0f / 512.0f;
 	if (passOfRender == 0) {
-		_vDelta = GLKVector2Make(val, 0.0f);
+		// 1パス目は通常のテクスチャ
+		_vDelta = GLKVector2Make(textureSize, 0.0f);
 	}
 	else {
-		// テクスチャサイズが256x256、FBOサイズが512x512
-		// このため2パス目はテクスチャサイズが縦横とも２倍になるので、差分のベクトルを2で割る必要がある。
-		_vDelta = GLKVector2Make(0.0f, val / 2.0f);
+		// 2パス目はFBOを使う
+		_vDelta = GLKVector2Make(0.0f, fboSize);
 		
 	}
 	glUniform2fv(_uniforms[_UNI_SIMPLEBLUR_VDELTA], 1, &_vDelta.x);
