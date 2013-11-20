@@ -574,7 +574,14 @@ enum {
     
 	// シェーダープログラムを適用
     glUseProgram(_shader.programId);
-	[_shader setUniformsOnRenderWithParam:0.0f pass:0];
+	switch (self.setupShader) {
+		case BLUR_TEST_5DOT:
+			[_shader setUniformsOnRenderWithParam:_texture[_MULTEX_BASE].textureSize.width pass:0];
+			break;
+		default:
+			[_shader setUniformsOnRenderWithParam:0.0f pass:0];
+			break;
+	}
 	[self setupTextures:_shader.textureCount];
 	
 	// テクスチャの補間をしない。この設定はglDrawArraysごとに設定し直す必要があるらしい
@@ -586,7 +593,15 @@ enum {
 	// ************ pass1 *************
 	[self changeRenderTargetToFBO:_fboFinal];
 	glUseProgram(_shader.programId);
-	[_shader setUniformsOnRenderWithParam:0.0f pass:1];
+	switch (self.setupShader) {
+		case BLUR_TEST_5DOT:
+			[_shader setUniformsOnRenderWithParam:_fbo0.sizeFbo.width pass:1];
+			break;
+		default:
+			[_shader setUniformsOnRenderWithParam:0.0f pass:1];
+			break;
+	}
+
 	[_fbo0 bindVertex];
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, _fbo0.texId);

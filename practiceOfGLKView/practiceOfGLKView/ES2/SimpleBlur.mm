@@ -71,15 +71,14 @@ enum {
 {
 	
 	glUniform1fv(_uniforms[_UNI_SIMPLEBLUR_WEIGHT], _WEIGHT_TABLE_NUM, &_weight[0]);
-	float textureSize = 1.0f / 256.0f;
-	float fboSize = 1.0f / 512.0f;
+	float textureDotSize = 1.0f / param;
 	if (passOfRender == 0) {
-		// 1パス目は通常のテクスチャ
-		_vDelta = GLKVector2Make(textureSize, 0.0f);
+		// 1パス目は横
+		_vDelta = GLKVector2Make(textureDotSize, 0.0f);
 	}
 	else {
-		// 2パス目はFBOを使う
-		_vDelta = GLKVector2Make(0.0f, fboSize);
+		// 2パス目は縦
+		_vDelta = GLKVector2Make(0.0f, textureDotSize);
 		
 	}
 	glUniform2fv(_uniforms[_UNI_SIMPLEBLUR_VDELTA], 1, &_vDelta.x);
